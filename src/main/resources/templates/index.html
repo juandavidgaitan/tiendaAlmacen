@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="../css/csss.css">
+    <title>Hello, world!</title>
+    <style>
+
+    body{  
+    background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);
+    background: linear-gradient(to right, #ec2F4B, #009FFF);
+    }    
+    /* Para un comportamiento responsive */
+    .carousel-inner img {
+    width: 100%;
+    height: 100%;
+    }
+  </style> 
+      
+  </head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	<nav id="navbar" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+	
+  
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  
+    <span class="navbar-toggler-icon"></span>
+    
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="navbar-nav mr-auto">
+	    
+	       <li class="nav-item">
+	       <img src="../images/admin-ui.png">
+	      </li>
+	      
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/listarcategoria}" th:text="Categoria"></a>
+	      </li>
+	        <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/listarSubca}" th:text="SubCategoria"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/listarPais}" th:text="Pais"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand"   th:href="@{/listarDepartamento}" th:text="Departamento"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/listarMunicipio}" th:text="Municipio"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/listarProducto}" th:text="Producto"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/listarBodega}" th:text="Bodega"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href="@{/listarProveedor}" th:text="Proveedor"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href="@{/listarMunicipio}" th:text="Cliente"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href="@{/listarMunicipio}" th:text="Vendedor"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href="@{/listarMunicipio}" th:text="Factura"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href="@{/listarMunicipio}" th:text="DetalleFactura"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href="@{/listarMunicipio}" th:text="Despacho"></a>
+	      </li>
+	       <li class="nav-item">
+	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
+	      </li>
+	    </ul>
+  </div>  
+</nav>
+	</nav>
+	<img src="../images/admi1.jpg" class="img-fluid" alt="Responsive image" >
+	<br><br>
+
+		</div>  
+	</div>
+</body>
+</html>
