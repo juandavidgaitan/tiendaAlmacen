@@ -63,7 +63,7 @@ public class BodegaController {
     	model.addAttribute("departamentos", new Departamento());
     }
     @RequestMapping("/ajax/departamentos")
-	public String ajaxDeártamentos(@RequestParam("id_pais") String id_pais, Model model) {
+	public String ajaxDepartamentos(@RequestParam("id_pais") String id_pais, Model model) {
     	int id = Integer.parseInt(id_pais);
 		model.addAttribute("departamentos", iDepartamentoRepo.ListarDeartamentosPais(id));
 		return "add-bodega :: departamentos";

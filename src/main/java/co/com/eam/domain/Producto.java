@@ -13,7 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
-@Data
+
 @NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -55,6 +55,90 @@ public class Producto implements Serializable {
 	private Subcategoria subcategoria;
 
 	public Producto() {
+	}
+
+	public int getId_Producto() {
+		return id_Producto;
+	}
+
+	public void setId_Producto(int id_Producto) {
+		this.id_Producto = id_Producto;
+	}
+
+	public int getCantidadProducto() {
+		return cantidadProducto;
+	}
+
+	public void setCantidadProducto(int cantidadProducto) {
+		this.cantidadProducto = cantidadProducto;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public double getPrecioCompra() {
+		return precioCompra;
+	}
+
+	public void setPrecioCompra(double precioCompra) {
+		this.precioCompra = precioCompra;
+	}
+
+	public double getPrecioUnitario() {
+		return precioUnitario;
+	}
+
+	public void setPrecioUnitario(double precioUnitario) {
+		this.precioUnitario = precioUnitario;
+	}
+
+	public List<DetalleFactura> getDetalleFacturas() {
+		return detalleFacturas;
+	}
+
+	public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
+		this.detalleFacturas = detalleFacturas;
+	}
+
+	public Bodega getBodega() {
+		return bodega;
+	}
+
+	public void setBodega(Bodega bodega) {
+		this.bodega = bodega;
+	}
+
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public Subcategoria getSubcategoria() {
+		return subcategoria;
+	}
+
+	public void setSubcategoria(Subcategoria subcategoria) {
+		this.subcategoria = subcategoria;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 
