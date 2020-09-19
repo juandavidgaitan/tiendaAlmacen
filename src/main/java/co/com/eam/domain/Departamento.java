@@ -1,9 +1,10 @@
 package co.com.eam.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
 
-import lombok.Data;
+
 
 import java.util.List;
 
