@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the cliente database table.
+ * The persistent class for the cliente database table. feo es gaitan
  * 
  */
 @Entity
