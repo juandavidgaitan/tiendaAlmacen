@@ -134,7 +134,7 @@
                                  <a href="/administrador/{dni}(dni=${administrador.dni})/addCategoria" 
                                   class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
                              
-                                  <a th:href="@{/editCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
+                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                   
                                   
                                   <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}" 

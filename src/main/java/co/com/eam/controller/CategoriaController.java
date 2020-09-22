@@ -52,7 +52,7 @@ public class CategoriaController {
     @GetMapping("/{dni}/editCategoria/{id_categoria}")
     public String showUpdateForm(@PathVariable("id_categoria") int idCategoria, Model model) {
     	Categoria categoria = iCategoriaRepo.findById(idCategoria).orElseThrow(() -> new IllegalArgumentException("Invalid categoria id:" + idCategoria));
-        model.addAttribute("categorias", categoria);
+        model.addAttribute("categoria", categoria);
         return "update-categoria";
     }
     
@@ -60,7 +60,7 @@ public class CategoriaController {
     public String updateCategoria(@PathVariable("dni")String dni,@PathVariable("id_categoria") int idCategoria, @Valid Categoria categoria, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	
-        	 model.addAttribute("categorias", iCategoriaRepo.findAll());
+        	 model.addAttribute("categoria", iCategoriaRepo.findAll());
         	categoria.setId_categoria(idCategoria);
             return "update-categoria";
         }

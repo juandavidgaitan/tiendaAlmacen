@@ -57,7 +57,7 @@
             <h2 class="mb-5">Modificar Categoria</h2>
             <div class="row">
                 <div class="col-md-6">
-                     <form action="#" th:action="@{/updateCategoria/{id_categoria}(id_categoria=${categoria.id_categoria})}" th:object="${categoria}" method="post">
+                     <form action="#" th:action="@{/administrador/{dni}(dni=${administrador.dni})/updateCategoria/{id_categoria}(id_categoria=${categoria.id_categoria})}" th:object="${categoria}" method="post">
                         <div class="row">
                             <div class="form-group col-md-6">
                                 <label for="nombre" class="col-form-label">Nombre</label>
