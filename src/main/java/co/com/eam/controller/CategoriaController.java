@@ -67,7 +67,7 @@ public class CategoriaController {
         
         iCategoriaRepo.save(categoria);
         model.addAttribute("categorias", iCategoriaRepo.findAll());
-        return "add-categoria";
+        return "listarCategoria";
     }
     
     @GetMapping("/{dni}/deleteCategoria/{id_categoria}")
