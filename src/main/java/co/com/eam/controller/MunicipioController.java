@@ -50,17 +50,18 @@ public class MunicipioController {
         return "listarMunicipio";
     }
     
-    @GetMapping("/editMunicipio/{id_municipio}")
+    @GetMapping("/{dni}/editMunicipio/{id_municipio}")
     public String showUpdateForm(@PathVariable("id_municipio") int idMunicipio, Model model) {
     	Municipio municipio = iMunicipioRepo.findById(idMunicipio).orElseThrow(() -> new IllegalArgumentException("Invalid municipio id:" + idMunicipio));
-        model.addAttribute("municipio", municipio);
+        model.addAttribute("municipios", municipio);
         model.addAttribute("departamentos", iDepartamentoRepo.findAll());
         return "update-municipio";
     }
     
-    @PostMapping("/updateMunicipio/{id_municipio}")
+    @PostMapping("/{dni}/updateMunicipio/{id_municipio}")
     public String updateMunicipio(@PathVariable("id_municipio") int idMunicipio, @Valid Municipio municipio, BindingResult result, Model model) {
         if (result.hasErrors()) {
+        	  model.addAttribute("municipios", municipio);
         	municipio.setId_municipio(idMunicipio);
             return "update-municipio";
         }

@@ -46,24 +46,25 @@ public class SubcategoriaController {
         return "listarSubca";
     }
     
-    @GetMapping("/editSubcategoria/{id_subcategoria}")
+    @GetMapping("/{dni}/editSubcategoria/{id_subcategoria}")
     public String showUpdateForm(@PathVariable("id_subcategoria") int idSubCategoria, Model model) {
     	Subcategoria subcategoria = iSubCategoriaRepo.findById(idSubCategoria).orElseThrow(() -> new IllegalArgumentException("Invalid sub_categoria id:" + idSubCategoria));
-        model.addAttribute("subcategoria", subcategoria);
+        model.addAttribute("subcategorias", subcategoria);
         model.addAttribute("categorias", iCategoriaRepo.findAll());
         return "update-subca";
     }
     
-    @PostMapping("/updateSubcategoria/{id_subcategoria}")
+    @PostMapping("/{dni}/updateSubcategoria/{id_subcategoria}")
     public String updateSubcategoria(@PathVariable("id_subcategoria") int idSubCategoria, @Valid Subcategoria subcategoria, BindingResult result, Model model) {
         if (result.hasErrors()) {
+        	 model.addAttribute("subcategorias", subcategoria);
         	subcategoria.setId_subcategoria(idSubCategoria);
             return "update-subca";
         }
         
         iSubCategoriaRepo.save(subcategoria);
         model.addAttribute("subcategoria", iSubCategoriaRepo.findAll());
-        return "add-subCategoria";
+        return "listarSubca";
     }
     
     @GetMapping("/{dni}/deleteSubcategoria/{id_subcategoria}")
