@@ -104,21 +104,21 @@ public class ProveedorController {
     @GetMapping("/{dni}/editProveedor/{id_proveedor}")
     public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, Model model) {
     	Proveedor proveedor = iProveedorRepo.findById(idProveedor).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + idProveedor));
-        model.addAttribute("proveedors", proveedor);
+        model.addAttribute("proveedor", proveedor);
         return "update-proveedor";
     }
     
     @PostMapping("/{dni}/updateProveedor/{id_proveedor}")
     public String updateProveedor(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, @Valid Proveedor proveedor, BindingResult result, Model model) {
         if (result.hasErrors()) {
-        	model.addAttribute("proveedors", iProveedorRepo.findAll());
+        	model.addAttribute("proveedor", iProveedorRepo.findAll());
         	proveedor.setId_proveedor(idProveedor);
             return "update-proveedor";
         }
         
         iProveedorRepo.save(proveedor);
         model.addAttribute("proveedors", iProveedorRepo.findAll());
-        return "add-proveedor";
+        return "listarProveedor";
     }
     
     @GetMapping("/{dni}/deleteProveedor/{id_proveedor}")

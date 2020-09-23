@@ -90,24 +90,25 @@ public class BodegaControllerViejo {
 //    		return "add-bodega :: municipios";
 //    	}
     
-    @GetMapping("/editBodega/{id_bodega}")
+    @GetMapping("/{dni}/editBodega/{id_bodega}")
     public String showUpdateForm(@PathVariable("id_bodega") int idBodega, Model model) {
     	Bodega bodega = iBodegaRepo.findById(idBodega).orElseThrow(() -> new IllegalArgumentException("Invalid bodega id:" + idBodega));
-        model.addAttribute("bodegas", bodega);
+        model.addAttribute("bodega", bodega);
+        model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-bodega";
     }
     
     @PostMapping("/{dni}/updateBodega/{id_bodega}")
     public String updateBodega(@PathVariable("dni")String dni,@PathVariable("id_bodega") int idBodega, @Valid Bodega bodega, BindingResult result, Model model) {
         if (result.hasErrors()) {
-        	model.addAttribute("bodegas", iBodegaRepo.findAll());
+        	model.addAttribute("bodega", iBodegaRepo.findAll());
         	bodega.setId_bodega(idBodega);
             return "update-bodega";
         }
         
         iBodegaRepo.save(bodega);
         model.addAttribute("bodegas", iBodegaRepo.findAll());
-        return "add-bodegas";
+        return "listarBodega";
     }
     
     @GetMapping("/{dni}/deleteBodega/{id_bodega}")

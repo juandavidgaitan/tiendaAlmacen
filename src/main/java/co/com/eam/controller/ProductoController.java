@@ -64,10 +64,10 @@ public class ProductoController {
 	    }
 	
     
-    @GetMapping("/editProducto/{id_producto}")
+    @GetMapping("/{dni}/editProducto/{id_producto}")
     public String showUpdateForm(@PathVariable("id_producto") int idProducto, Model model) {
     	Producto producto = iProductoRepo.findById(idProducto).orElseThrow(() -> new IllegalArgumentException("Invalid producto id:" + idProducto));
-        model.addAttribute("productos", producto);
+        model.addAttribute("producto", producto);
         return "update-producto";
     }
     
@@ -75,14 +75,14 @@ public class ProductoController {
     public String updateProdcto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	
-        	 model.addAttribute("productos", iProductoRepo.findAll());
+        	 model.addAttribute("producto", iProductoRepo.findAll());
         	producto.setId_Producto(idProducto);
             return "update-producto";
         }
         
         iProductoRepo.save(producto);
         model.addAttribute("productos", iProductoRepo.findAll());
-        return "add-producto";
+        return "listarProducto";
     }
     
     @GetMapping("/{dni}/deleteProducto/{id_producto}")

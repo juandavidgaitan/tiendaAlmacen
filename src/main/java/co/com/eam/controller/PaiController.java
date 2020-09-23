@@ -53,16 +53,17 @@ public class PaiController {
         return "listarPai";
     }
     
-    @GetMapping("/editPais/{id_pais}")
+    @GetMapping("/{dni}/editPais/{id_pais}")
     public String showUpdateForm(@PathVariable("id_pais") int idPais, Model model) {
     	Pai pai = iPaiRepo.findById(idPais).orElseThrow(() -> new IllegalArgumentException("Invalid pais id:" + idPais));
         model.addAttribute("pai", pai);
         return "update-pai";
     }
     
-    @PostMapping("/updatePais/{id_pais}")
+    @PostMapping("/{dni}/updatePais/{id_pais}")
     public String updatePais(@PathVariable("id_pais") int idPais, @Valid Pai pai, BindingResult result, Model model) {
         if (result.hasErrors()) {
+        	 
         	pai.setId_pais(idPais);
             return "update-pai";
         }

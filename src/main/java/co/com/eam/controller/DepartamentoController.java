@@ -50,17 +50,18 @@ public class DepartamentoController {
         return "listarDepartamento";
     }
     
-    @GetMapping("/editDepartamento/{id_departamento}")
+    @GetMapping("/{dni}/editDepartamento/{id_departamento}")
     public String showUpdateForm(@PathVariable("id_departamento") int idDepartamento, Model model) {
     	Departamento departamento = iDepartamentoRepo.findById(idDepartamento).orElseThrow(() -> new IllegalArgumentException("Invalid departamento id:" + idDepartamento));
     	model.addAttribute("paises", iPaiRepo.findAll());
-    	model.addAttribute("departamentos", departamento);
+    	model.addAttribute("departamento", departamento);
         return "update-departamento";
     }
     
-    @PostMapping("/updateDepartamento/{id_departamento}")
+    @PostMapping("({dni}/updateDepartamento/{id_departamento}")
     public String updateDepartamento(@PathVariable("id_departamento") int idDepartamento, @Valid Departamento departamento, BindingResult result, Model model) {
         if (result.hasErrors()) {
+        	model.addAttribute("departamento", departamento);
         	departamento.setId_departamento(idDepartamento); 
             return "update-departamento";
         }
