@@ -143,12 +143,23 @@
                              <a href="/administrador/{dni}(dni=${administrador.dni})/addProducto" 
                                   class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
                                   
+<<<<<<< HEAD
                                   <a href="@{/administrador/{dni}(dni=${administrador.dni})/editProducto/{id_producto}(id_producto=${po.id_producto})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                   
                                   
                                   <a href="@{/administrador/{dni}(dni=${administrador.dni})/deleteProducto/{id_producto}(id_producto=${po.id_producto})}" 
                                   class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>  
+=======
+                                
+                                  
+                                 <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editProducto/{id_producto}(id_producto=${po.id_producto})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
+                                  
+                                  
+                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteProducto/{id_producto}(id_producto=${po.id_producto})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a> 
+>>>>>>> e4bc8b69ab2120b64bc716100578ff3ccb4ccc50
                                   
                                   
                                     </td>
