@@ -105,6 +105,7 @@ public class ProveedorController {
     public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, Model model) {
     	Proveedor proveedor = iProveedorRepo.findById(idProveedor).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + idProveedor));
         model.addAttribute("proveedor", proveedor);
+        model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-proveedor";
     }
     

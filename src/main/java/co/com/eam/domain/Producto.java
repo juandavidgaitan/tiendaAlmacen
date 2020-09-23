@@ -142,5 +142,7 @@ public class Producto implements Serializable {
 		return serialVersionUID;
 	}
 
+	
+
 
 }
