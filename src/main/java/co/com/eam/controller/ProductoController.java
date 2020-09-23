@@ -67,7 +67,7 @@ public class ProductoController {
 	
     
 	 @GetMapping("/{dni}/editProducto/{id_producto}")
-	   public String showUpdateForm(@PathVariable("id_producto") int idProducto, Model model) {
+	 public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, Model model) {
 	   	Producto producto = iProductoRepo.findById(idProducto).orElseThrow(() -> new IllegalArgumentException("Invalid categoria id:" + idProducto));
 	       model.addAttribute("producto", producto);
 	       model.addAttribute("bodegas", iBodegaRepo.findAll());
@@ -80,7 +80,7 @@ public class ProductoController {
 	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model) {
 	       if (result.hasErrors()) {
 	    	 
-	       	producto.setId_Producto(idProducto);
+	       	producto.setId_producto(idProducto);
 	           return "update-producto";
 	       }
 	       
