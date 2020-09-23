@@ -29,7 +29,7 @@
 			</div>
 			<div class="col-md-9 register-right">
 				<h3 class="register-heading">Modificar Proveedor</h3>
-				<form action="#" th:action="@{/updateProveedor/{id_proveedor}(id_proveedor=${proveedor.id_proveedor})}" th:object="${proveedor}" method="post">
+				<form action="#" th:action="@{/administrador/{dni}(dni=${administrador.dni})/updateProveedor/{id_proveedor}(id_proveedor=${proveedor.id_proveedor})}" th:object="${proveedor}" method="post">
 					<div class="tab-content" id="myTabContent">
 						<br> <br> <br> <br> <br>
 						<div class="row">

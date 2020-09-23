@@ -18,6 +18,7 @@ import co.com.eam.repository.ICategoriaRepo;
 
 @Controller
 @RequestMapping("/administrador")
+
 public class CategoriaController {
 	@Autowired
 	private ICategoriaRepo iCategoriaRepo;
@@ -30,14 +31,17 @@ public class CategoriaController {
 	        this.iCategoriaRepo = iCategoriaRepo;
 	    }
 	    
-    @GetMapping("/{dni}/addCategoria")
+    
+	 
+	 @GetMapping("/{dni}/addCategoria")
     public String showSignUpForm(@PathVariable("dni") String dni,Categoria categoria,Model model) {
     	 model.addAttribute("administrador",iAdministradorRepo.findAll());
      	 model.addAttribute("categorias", iCategoriaRepo.findAll());
         return "add-categoria";
     }
     
-    @PostMapping("/{dni}/add_categoria")
+   
+	 @PostMapping("/{dni}/add_categoria")
     public String addCategoria(@PathVariable("dni") String dni,@Valid Categoria categoria, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	 model.addAttribute("categorias", iCategoriaRepo.findAll());

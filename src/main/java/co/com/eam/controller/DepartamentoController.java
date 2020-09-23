@@ -58,10 +58,9 @@ public class DepartamentoController {
         return "update-departamento";
     }
     
-    @PostMapping("({dni}/updateDepartamento/{id_departamento}")
+    @PostMapping("/{dni}/updateDepartamento/{id_departamento}")
     public String updateDepartamento(@PathVariable("id_departamento") int idDepartamento, @Valid Departamento departamento, BindingResult result, Model model) {
         if (result.hasErrors()) {
-        	model.addAttribute("departamento", departamento);
         	departamento.setId_departamento(idDepartamento); 
             return "update-departamento";
         }

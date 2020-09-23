@@ -36,51 +36,49 @@
     <span class="navbar-toggler-icon"></span>
     
   </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
    <ul class="navbar-nav mr-auto">
 	    
-
+	       <li class="nav-item">
+	       <img src="../images/admin-ui.png">
+	      </li>
 	      
 	      <li class="nav-item">
-	   
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarcategoria}" th:text="Categoria"></a>
-	    
+	        <a class="navbar-brand"  th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarcategoria}" th:text="Categoria"></a>
 	      </li>
 	        <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarSubca}" th:text="SubCategoria"></a>
+	        <a class="navbar-brand"  th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarSubca}" th:text="SubCategoria"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarPais}" th:text="Pais"></a>
+	        <a class="navbar-brand"  th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarPais}" th:text="Pais"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand"  th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarDepartamento}" th:text="Departamento"></a>
+	        <a class="navbar-brand"   th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarDepartamento}" th:text="Departamento"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Municipio"></a>
+	        <a class="navbar-brand"  th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Municipio"></a>
+	      </li>
+	      
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarBodega}" th:text="Bodega"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProducto}" th:text="Producto"></a>
+	        <a class="navbar-brand" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProveedor}" th:text="Proveedor"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarBodega}" th:text="Bodega"></a>
+	        <a class="navbar-brand" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Cliente"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProveedor}" th:text="Proveedor"></a>
+	        <a class="navbar-brand" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Vendedor"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Cliente"></a>
+	        <a class="navbar-brand" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Factura"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Vendedor"></a>
+	        <a class="navbar-brand" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="DetalleFactura"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Factura"></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="DetalleFactura"></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Despacho"></a>
+	        <a class="navbar-brand" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Despacho"></a>
 	      </li>
 	       <li class="nav-item">
 	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
@@ -91,6 +89,13 @@
 	</nav>
 		</div>  
 	</div>
+	
+	<div class="row">
+                
+                    <div class="col-sm-8"><h2>Producto <b>Detalles</b></h2></div>
+                    <div class="col-sm-4">
+                   </div>
+                </div>
 
 
 <div class="container">
@@ -137,17 +142,16 @@
                             <td> 
                              <a href="/administrador/{dni}(dni=${administrador.dni})/addProducto" 
                                   class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
-                                 
-                                 <a href="@{/administrador/{dni}(dni=${administrador.dni})/editProducto/{id_producto}(id_producto=${po.id_producto})}" 
+                                  
+                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editProducto/{id_producto}(id_producto=${po.id_producto})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
-                                
-                                <a href="@{/administrador/{dni}(dni=${administrador.dni})/deleteProducto/{id_producto}(id_producto=${po.id_producto})}" 
-                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>
                                   
                                   
+                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteProducto/{id_producto}(id_producto=${po.id_producto})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>  
                                   
-                                        </td>
-               
+                                  
+                                    </td>
                 </tr>      
                 </tbody>
             </table>

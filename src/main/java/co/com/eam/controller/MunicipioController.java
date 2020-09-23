@@ -62,7 +62,7 @@ public class MunicipioController {
     public String updateMunicipio(@PathVariable("id_municipio") int idMunicipio, @Valid Municipio municipio, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	  
-        	municipio.setId_municipio(idMunicipio);
+         municipio.setId_municipio(idMunicipio);
             return "update-municipio";
         }
         

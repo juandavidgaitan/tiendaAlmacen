@@ -24,7 +24,7 @@
                 <div class="col-md-9 register-right">
                 <h3 class="register-heading">Modificar Bodega</h3>
                     <form action="#"
-					th:action="@{/updateBodega/{id_bodega}(id_bodega=${bodega.id_bodega})}"
+					th:action="@{/administrador/{dni}(dni=${administrador.dni})/updateBodega/{id_bodega}(id_bodega=${bodega.id_bodega})}"
 					th:object="${bodega}" method="post">
                           <div class="tab-content" id="myTabContent">
                             <br>
