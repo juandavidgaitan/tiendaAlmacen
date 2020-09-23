@@ -94,6 +94,7 @@ public class BodegaControllerViejo {
     public String showUpdateForm(@PathVariable("id_bodega") int idBodega, Model model) {
     	Bodega bodega = iBodegaRepo.findById(idBodega).orElseThrow(() -> new IllegalArgumentException("Invalid bodega id:" + idBodega));
         model.addAttribute("bodega", bodega);
+        model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-bodega";
     }
     
