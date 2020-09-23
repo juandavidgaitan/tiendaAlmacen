@@ -26,7 +26,7 @@
 		</div>
 		<div class="col-md-9 register-right">
 			<h3 class="register-heading">Modificar Departamento</h3>
-			<form action="#" th:action="@{/updateDepartamento/{id_departamento}(id_departamento=${departamento.id_departamento})}" th:object="${departamento}" method="post">
+			<form action="#" th:action="@{/administrador/{dni}(dni=${administrador.dni})/updateDepartamento/{id_departamento}(id_departamento=${departamento.id_departamento})}" th:object="${departamento}" method="post">
 				<div class="tab-content" id="myTabContent">
 					<div class="tab-pane fade show active" id="home" role="tabpanel"
 						aria-labelledby="home-tab">

@@ -29,7 +29,7 @@
 			</div>
 			<div class="col-md-9 register-right">
 				<h3 class="register-heading">Modificar Municipio</h3>
-				 <form action="#" th:action="@{/updateMunicipio/{id_municipio}(id_municipio=${municipio.id_municipio})}" th:object="${municipio}" method="post">
+				 <form action="#" th:action="@{/administrador/{dni}(dni=${administrador.dni})/updateMunicipio/{id_municipio}(id_municipio=${municipio.id_municipio})}" th:object="${municipio}" method="post">
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
 							aria-labelledby="home-tab">

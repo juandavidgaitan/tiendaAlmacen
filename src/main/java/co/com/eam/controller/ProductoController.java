@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
  
 import co.com.eam.domain.Producto;
- 
+import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IBodegaRepo;
 import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.IProveedorRepo;
@@ -27,6 +27,8 @@ import co.com.eam.repository.ISubCategoriaRepo;
 public class ProductoController {
 	@Autowired
 	private IProductoRepo iProductoRepo;
+	@Autowired
+	private IAdministradorRepo iAdministradorRepo;
 	 
 	@Autowired
 	private  IBodegaRepo iBodegaRepo;
@@ -41,6 +43,7 @@ public class ProductoController {
 		model.addAttribute("bodegas", iBodegaRepo.findAll());
 		model.addAttribute("proveedors", iProveedorRepo.findAll());
 		model.addAttribute("subcategorias", iSubcategoriaRepo.findAll());
+		 model.addAttribute("administrador",iAdministradorRepo.findAll());
      
         return "add-producto";
     }
@@ -86,11 +89,12 @@ public class ProductoController {
         Producto producto = iProductoRepo.findById(idProducto).orElseThrow(() -> new IllegalArgumentException("Invalid producto id:" + idProducto));
         iProductoRepo.delete(producto);
     	model.addAttribute("productos", iProductoRepo.findAll());
-        return "listarproducto";
+        return "listarProducto";
     }
     @GetMapping("/{dni}/listarProducto")
     public String ListarProducto(Model model) {
-    	 
+    	
+    	model.addAttribute("administrador",iAdministradorRepo.findAll());
         model.addAttribute("productos", iProductoRepo.findAll());
         return "listarProducto";
     }
