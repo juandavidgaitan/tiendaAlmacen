@@ -94,7 +94,7 @@
 								<label for="proveedor" class="col-form-label"
 									th:text="Seleccione-proveedor"></label> <select
 									th:field="*{proveedor}" class="form-control">
-									<option value="Seleccionar" th:text="Seleccione"></option>
+									 
 									<option th:each="cate : ${proveedors}"
 										th:value="${cate.id_proveedor}" th:text="${cate.nombre}">
 									</option>
@@ -105,7 +105,7 @@
 								<label for="Subcategoria" class="col-form-label"
 									th:text="Seleccione-SubCategoria"></label> <select
 									th:field="*{subcategoria}" class="form-control">
-									<option value="Seleccionar" th:text="Seleccione"></option>
+									 
 									<option th:each="cate : ${subcategorias}"
 										th:value="${cate.id_subcategoria}"
 										th:text="${cate.descripcion}"></option>
@@ -117,17 +117,20 @@
 								<label for="bodega" class="col-form-label"
 									th:text="Seleccione-Bodega"></label> <select
 									th:field="*{bodega}" class="form-control">
-									<option value="Seleccionar" th:text="Seleccione"></option>
+									 
 									<option th:each="cate : ${bodegas}"
 										th:value="${cate.id_bodega}" th:text="${cate.nombre}">
 									</option>
 								</select>
 							</div>
-
-
-							<div class="col-md-6 mt-5">
-								<input type="submit" class="btnRegister" th:value="Agregar">
+							<div class="row">
+								<div class="col-md-6 mt-5">
+									<input type="submit" class="btn btn-primary"
+										value="modificar categoria">
+								</div>
 							</div>
+
+
 						</div>
 					</div>
 			</div>
