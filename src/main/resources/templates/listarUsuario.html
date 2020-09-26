@@ -163,7 +163,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="usu : ${categorias}">
+						<tr th:each="usu : ${usuario}">
 							<td th:text="${usu.nombre}"></td>
 							<td><a
 								href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
