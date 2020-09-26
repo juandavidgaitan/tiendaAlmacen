@@ -35,27 +35,71 @@
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
 							aria-labelledby="home-tab">
+							
 							<div class="row register-form">
 
-								<label for="nombre" class="col-form-label"
-									th:text="Nombre"></label> <input type="text"
-									th:field="*{nombre}" class="form-control" id="nombre"
-									th:placeholder="nombre" required="true"> <span
-									th:if="${#fields.hasErrors('nombre')}"
-									th:errors="*{nombre}" class="text-danger"></span>
+								<label for="nombre" class="col-form-label" th:text="Nombre"></label>
+								<input type="text" th:field="*{nombre}" class="form-control"
+									id="nombre" th:placeholder="nombre" required="true"> <span
+									th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+									class="text-danger"></span>
 
-								
-
-								<div class="col-md-6 mt-5">
-									<input type="submit" class="btnRegister" th:value="REGISTRAR">
-								</div>
 							</div>
+							
+							<div class="row register-form">
+
+								<label for="apellido" class="col-form-label" th:text="Apellido"></label>
+								<input type="text" th:field="*{apellido}" class="form-control"
+									id="apellidp" th:placeholder="apellido" required="true"> <span
+									th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"
+									class="text-danger"></span>
+
+							</div>
+							<div class="row register-form">
+
+								<label for="telefono" class="col-form-label" th:text="Telefono"></label>
+								<input type="text" th:field="*{telefono}" class="form-control"
+									id="telefono" th:placeholder="telefono" required="true"> <span
+									th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"
+									class="text-danger"></span>
+
+							</div>
+							
+							<div class="row register-form">
+
+								<label for="direccion" class="col-form-label" th:text="Direccion"></label>
+								<input type="text" th:field="*{direccion}" class="form-control"
+									id="direccion" th:placeholder="direccion" required="true"> <span
+									th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"
+									class="text-danger"></span>
+
+							</div>
+							
+							<div class="row register-form">
+
+								<label for="email" class="col-form-label" th:text="Email"></label>
+								<input type="text" th:field="*{email}" class="form-control"
+									id="email" th:placeholder="email" required="true"> <span
+									th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+									class="text-danger"></span>
+
+							</div>
+							
+							
+							
+							
+							
+
+							<div class="col-md-6 mt-5">
+								<input type="submit" class="btnRegister" th:value="REGISTRAR">
+							</div>
+
 						</div>
 					</div>
+				</form>
 			</div>
 		</div>
 		<div class="row"></div>
-		</form>
 	</div>
 	</div>
 	</div>
