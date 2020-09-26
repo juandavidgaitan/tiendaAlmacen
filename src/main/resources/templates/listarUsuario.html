@@ -51,58 +51,57 @@
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarSubca}"
 						th:text="SubCategoria"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarPais}"
 						th:text="Pais"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarDepartamento}"
 						th:text="Departamento"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}"
 						th:text="Municipio"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProducto}"
 						th:text="Producto"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarBodega}"
 						th:text="Bodega"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProveedor}"
 						th:text="Proveedor"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}"
 						th:text="Cliente"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarUsuario}"
 						th:text="Vendedor"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
-						
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}"
 						th:text="Factura"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}"
 						th:text="DetalleFactura"></a></li>
-						
+
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${administrador}"
 						th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}"
@@ -151,7 +150,7 @@
 			</div>
 			<div class="col-md-9">
 
- 
+
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -162,26 +161,33 @@
 							<th th:text="email"></th>
 							<th th:text="username"></th>
 							<th th:text="Password"></th>
+							<th th:text="Municipio"></th>
 							<th th:text="actions"></th>
-							
-							
-							
-							<a href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
+
+
+
+							<a
+								href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
 								class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="usu : ${usuario}">
-							<td th:text="${usu.nombre}"></td>
-							
-							
-							
-							
+							<td th:text="${usu.nombre}">
+							<td th:text="${usu.apellido}">
+							<td th:text="${usu.telefono}">
+							<td th:text="${usu.direccion}">
+							<td th:text="${usu.email}">
+							<td th:text="${usu.username}">
+							<td th:text="${usu.password}">
+							<td th:text="${usu.municipio.nombre}">
+							</td>
+
 							<td><a
 								href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
 								class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
 
-							
+
 							</td>
 
 						</tr>
