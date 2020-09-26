@@ -2,6 +2,7 @@ package co.com.eam.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.com.eam.domain.Administrador;
 import co.com.eam.domain.Vendedor;
 import co.com.eam.repository.IAdministradorRepo;
-import co.com.eam.repository.IUsuarioRepo;
+import co.com.eam.repository.IVendedorRepo;
 
 
 
@@ -20,7 +21,7 @@ import co.com.eam.repository.IUsuarioRepo;
 
 public class InicioController {
 	@Autowired
-	private  IUsuarioRepo iUsuarioRepo;
+	private  IVendedorRepo iVendedorRepo;
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 //	@Autowired
@@ -70,8 +71,8 @@ public class InicioController {
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
-		Vendedor nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
-		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getUsername(), usuario.getContrasena());
+		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), usuario.getContrasena());
+		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), usuario.getContrasena());
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;
 			return "redirect:/usuario";
