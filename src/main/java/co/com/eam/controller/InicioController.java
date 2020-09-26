@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.com.eam.domain.Administrador;
-import co.com.eam.domain.Usuario;
+import co.com.eam.domain.Vendedor;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
@@ -28,7 +28,7 @@ public class InicioController {
 //	@Autowired
 //	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
-	public static Usuario usuariologeado;
+	public static Vendedor usuariologeado;
 	@Autowired
 	public static Administrador admindlogeado;
 	
@@ -57,20 +57,20 @@ public class InicioController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Usuario usuario, Model model) {
-	 	model.addAttribute("usuario", new Usuario());
+	public String login(Vendedor usuario, Model model) {
+	 	model.addAttribute("usuario", new Vendedor());
 		return "login";
 	}
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/ingresar")
-	public String ingresar(Usuario usuario,BindingResult result, Model model) {
+	public String ingresar(Vendedor usuario,BindingResult result, Model model) {
 		if(result.hasErrors()) {
-		 	model.addAttribute("usuario", new Usuario());
+		 	model.addAttribute("usuario", new Vendedor());
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
-		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+		Vendedor nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
 		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getUsername(), usuario.getContrasena());
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;
