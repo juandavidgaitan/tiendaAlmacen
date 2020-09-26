@@ -30,10 +30,7 @@ public class Usuario implements Serializable {
 	private String email;
 
 	private String nombre;
-
-	@Column(name="nombre_usuario")
-	private String nombre_usuario;
-
+   
 	private String password;
 
 	private String telefono;
@@ -104,13 +101,7 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
-	}
-
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
-	}
+	 
 
 	public String getPassword() {
 		return password;
