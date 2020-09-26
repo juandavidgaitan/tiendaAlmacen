@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title th:text="Listar Vendedor"></title>
+<title th:text="ListarVendedor"></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -156,27 +156,32 @@
 					<thead>
 						<tr>
 							<th th:text="nombre"></th>
+							<th th:text="apellido"></th>
+							<th th:text="telefono"></th>
+							<th th:text="direccion"></th>
+							<th th:text="email"></th>
+							<th th:text="username"></th>
+							<th th:text="Password"></th>
 							<th th:text="actions"></th>
-							<a
-								href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
+							
+							
+							
+							<a href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
 								class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
 						</tr>
 					</thead>
 					<tbody>
 						<tr th:each="usu : ${usuario}">
 							<td th:text="${usu.nombre}"></td>
+							
+							
+							
+							
 							<td><a
 								href="/administrador/{dni}(dni=${administrador.dni})/addUsuario"
 								class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
 
-								<a
-								th:href="@{/administrador/{dni}(dni=${administrador.dni})/editCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}"
-								class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
-
-
-								<a
-								th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}"
-								class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>
+							
 							</td>
 
 						</tr>
