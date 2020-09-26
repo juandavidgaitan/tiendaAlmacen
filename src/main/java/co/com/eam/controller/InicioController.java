@@ -70,8 +70,8 @@ public class InicioController {
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
-		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getNombre_usuario(), usuario.getContrasena());
-		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getNombre_usuario(), usuario.getContrasena());
+		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getUsername(), usuario.getContrasena());
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;
 			return "redirect:/usuario";
