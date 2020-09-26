@@ -19,6 +19,8 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	 
+	@Column(name="dni")
 	private int dni;
 
 	private String apellido;

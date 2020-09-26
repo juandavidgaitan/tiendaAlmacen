@@ -2,6 +2,7 @@ package co.com.eam.controller;
 
 import javax.validation.Valid;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,14 +11,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+ 
 
-import co.com.eam.domain.Categoria;
-import co.com.eam.domain.Departamento;
-import co.com.eam.domain.Municipio;
+ 
 import co.com.eam.domain.Proveedor;
-import co.com.eam.domain.Subcategoria;
+ 
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IDepartamentoRepo;
 import co.com.eam.repository.IMunicipioRepo;
