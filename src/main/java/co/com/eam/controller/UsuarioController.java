@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
+ 
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IDepartamentoRepo;
@@ -44,14 +42,14 @@ public class UsuarioController {
 		model.addAttribute("departamentos", iDepartamentoRepo.findAll());
 		model.addAttribute("municipios", iMunicipioRepo.findAll());
     	model.addAttribute("administrador",iAdministradorRepo.findAll());
-        return "add-proveedor";
+        return "add-usuario";
     }
 
 	 @PostMapping("/{dni}/add_usuario")
 	    public String addProveedor(@PathVariable("dni") String dni,@Valid Usuario usuario, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	 model.addAttribute("usuario", iUsuarioRepo.findAll());
-	            return "add-proveedor";
+	            return "add-usuario";
 	        }
 	        
 	        iUsuarioRepo.save(usuario);
@@ -99,42 +97,42 @@ public class UsuarioController {
 //    		return "add-proveedor :: municipios";
 //    	}
     
-    @GetMapping("/{dni}/editUsuario/{id_usuario}")
-    public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_usuario") int idUsuario, Model model) {
-    	Usuario usuario = iUsuarioRepo.findById(idUsuario).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + idUsuario));
+    @GetMapping("/{dni}/editUsuario/{dni}")
+    public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
+    	Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + Dni));
         model.addAttribute("usuario", usuario);
         model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-usuario";
     }
     
-    @PostMapping("/{dni}/updateUsuario/{id_usuario}")
-    public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("id_usuario") int idUsuario, @Valid Usuario usuario, BindingResult result, Model model) {
+    @PostMapping("/{dni}/updateUsuario/{dni}")
+    public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, @Valid Usuario usuario, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	model.addAttribute("usuario", iUsuarioRepo.findAll());
-        	usuario.setId_proveedor(idUsuario);
-            return "update-proveedor";
+        	usuario.setDni(Dni);
+            return "update-usuario";
         }
         
-        iProveedorRepo.save(proveedor);
-        model.addAttribute("proveedors", iProveedorRepo.findAll());
-        return "listarProveedor";
+        iUsuarioRepo.save(usuario);
+        model.addAttribute("usuario", iUsuarioRepo.findAll());
+        return "listarUsuario";
     }
     
-    @GetMapping("/{dni}/deleteProveedor/{id_proveedor}")
-    public String deleteProveedor(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, Model model) {
-        Proveedor proveedor = iProveedorRepo.findById(idProveedor).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + idProveedor));
-        iProveedorRepo.delete(proveedor);
-    	model.addAttribute("proveedors", iProveedorRepo.findAll());
-        return "listarProveedor";
+    @GetMapping("/{dni}/deleteUsuario/{dni}")
+    public String deleteProveedor(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
+        Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + Dni));
+        iUsuarioRepo.delete(usuario);
+    	model.addAttribute("usuario", iUsuarioRepo.findAll());
+        return "listarUsuario";
     }
     
     
-    @GetMapping("/{dni}/listarProveedor")
+    @GetMapping("/{dni}/listarUsuario")
     public String ListarProveedor(@PathVariable ("dni")String dni,Model model) {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());
-        model.addAttribute("proveedors", iProveedorRepo.findAll());
+        model.addAttribute("usuario", iUsuarioRepo.findAll());
         model.addAttribute("municipio", iMunicipioRepo.findAll());
-        return "listarProveedor";
+        return "listarUsuario";
     }
      
 
