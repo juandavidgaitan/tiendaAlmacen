@@ -90,14 +90,24 @@
                                     <td th:text="${usu.email}"></td>
                                     <td th:text="${usu.direccion.descripcion}"></td>
                                     <td th:text="${usu.nombre_usuario}"></td>
-                                     <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{dni}(dni=${usu.dni})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                    <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteUsuario/{dni}(dni=${usu.dni})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    
+                                       <td>     
+                                 <a href="/administrador/{dni}(dni=${administrador.dni})/addVendedor" 
+                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                             
+                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editVendedor/{id_vendedor}(id_vendedor=${usu.id_vendedor})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
+                                  
+                                  
+                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteVendedor/{id_vendedor}(id_vendedor=${usu.id_vendedor})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>              </td>
+               
                                     
                                 </tr>
                             </tbody>
                         </table>
                     </div>      
-                    <p class="my-5"><a href="/administrador/{dni}(dni=${administrador.dni})/addusuario" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+                    <p class="my-5"><a href="/administrador/{dni}(dni=${administrador.dni})/addVendedor" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
                 </div>
             </div>
         </div>
