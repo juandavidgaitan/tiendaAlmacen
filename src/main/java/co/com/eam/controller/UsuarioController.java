@@ -10,8 +10,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< Updated upstream
  
 import co.com.eam.domain.Vendedor;
+=======
+
+import co.com.eam.domain.Municipio;
+import co.com.eam.domain.Usuario;
+>>>>>>> Stashed changes
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IDepartamentoRepo;
 import co.com.eam.repository.IMunicipioRepo;
@@ -36,6 +42,7 @@ public class UsuarioController {
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 	
+<<<<<<< Updated upstream
 	@GetMapping("/{dni}/addusuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Vendedor usuario, Model model) {
 		model.addAttribute("paises", iPaiRepo.findAll());
@@ -45,6 +52,16 @@ public class UsuarioController {
         return "add-usuario";
     }
 
+=======
+	  @GetMapping("/{dni}/addUsuario")
+	    public String showSignUpForm(@PathVariable("dni")String dni,Usuario usuario, Model model) {
+	    	model.addAttribute("administrador",iAdministradorRepo.findAll());
+	    	model.addAttribute("departamentos", iDepartamentoRepo.findAll());
+	    	
+	        return "add-usuario";
+	    }
+	    
+>>>>>>> Stashed changes
 	 @PostMapping("/{dni}/add_usuario")
 	    public String addProveedor(@PathVariable("dni") String dni,@Valid Vendedor usuario, BindingResult result, Model model) {
 	        if (result.hasErrors()) {

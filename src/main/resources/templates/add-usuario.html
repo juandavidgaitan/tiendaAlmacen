@@ -38,6 +38,15 @@
 							
 							<div class="row register-form">
 
+								<label for="dni" class="col-form-label" th:text="Dni"></label>
+								<input type="text" th:field="*{nombre}" class="form-control"
+									id="dni" th:placeholder="dni" required="true"> <span
+									th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"
+									class="text-danger"></span>
+
+							</div>
+							<div class="row register-form">
+
 								<label for="nombre" class="col-form-label" th:text="Nombre"></label>
 								<input type="text" th:field="*{nombre}" class="form-control"
 									id="nombre" th:placeholder="nombre" required="true"> <span
