@@ -7,7 +7,11 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import co.com.eam.domain.Producto;
+<<<<<<< HEAD
 import co.com.eam.domain.Proveedor;
+=======
+
+>>>>>>> parent of a280581... modifique los dominan
 
 
 @Repository

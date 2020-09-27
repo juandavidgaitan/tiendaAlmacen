@@ -2,9 +2,6 @@ package co.com.eam.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import lombok.Data;
-
 import java.util.List;
 
 
@@ -13,7 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Data
 @NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -141,5 +137,6 @@ public class Producto implements Serializable {
 		return serialVersionUID;
 	}
 
+	 
 
 }
