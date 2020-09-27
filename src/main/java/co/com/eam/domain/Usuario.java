@@ -20,8 +20,8 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
- 
-	private int dni;
+	@Column(name="id_usuario")
+	private int id_usuario;
 
 	private String apellido;
 
@@ -36,6 +36,8 @@ public class Usuario implements Serializable {
 	private String password;
 
 	private String telefono;
+	
+	private String nombre_usuario;
 
 	private String username;
 
@@ -55,12 +57,12 @@ public class Usuario implements Serializable {
 	public Usuario() {
 	}
 
-	public int getDni() {
-		return dni;
+	public int getId_usuario() {
+		return id_usuario;
 	}
 
-	public void setDni(int dni) {
-		this.dni = dni;
+	public void setId_usuario(int id_usuario) {
+		this.id_usuario = id_usuario;
 	}
 
 	public String getApellido() {
@@ -119,6 +121,14 @@ public class Usuario implements Serializable {
 		this.telefono = telefono;
 	}
 
+	public String getNombre_usuario() {
+		return nombre_usuario;
+	}
+
+	public void setNombre_usuario(String nombre_usuario) {
+		this.nombre_usuario = nombre_usuario;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -155,5 +165,7 @@ public class Usuario implements Serializable {
 		return serialVersionUID;
 	}
 	
+
+	 
 
 }	 

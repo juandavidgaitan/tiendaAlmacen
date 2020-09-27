@@ -81,16 +81,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr th:each="usu : ${usuario}">
-                                    <td th:text="${usu.dni}"></td>
-                                    <td th:text="${usu.nombre}"></td>
-                                     <td th:text="${usu.apellido}"></td>
-                                    <td th:text="${usu.telefono}"></td>
-                                    <td th:text="${usu.email}"></td>
-                                    <td th:text="${usu.direccion.descripcion}"></td>
-                                    <td th:text="${usu.nombre_usuario}"></td>
-                                     <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{dni}(dni=${usu.dni})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                    <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteUsuario/{dni}(dni=${usu.dni})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                <tr th:each="usus : ${usuario}">
+                                    <td th:text="${usus.dni}"></td>
+                                    <td th:text="${usus.nombre}"></td>
+                                     <td th:text="${usus.apellido}"></td>
+                                    <td th:text="${usus.telefono}"></td>
+                                    <td th:text="${usus.email}"></td>
+                                    <td th:text="${usus.direccion.descripcion}"></td>
+                                    <td th:text="${usus.nombre_usuario}"></td>
+                                    
+                                    
+                                     <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
+                                    <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
                                     
                                 </tr>
                             </tbody>

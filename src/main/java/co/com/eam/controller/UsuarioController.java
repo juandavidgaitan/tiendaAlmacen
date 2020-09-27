@@ -109,7 +109,7 @@ public class UsuarioController {
     public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, @Valid Usuario usuario, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	model.addAttribute("usuario", iUsuarioRepo.findAll());
-        	usuario.setDni(Dni);
+        	usuario.setId_usuario(Dni);
             return "update-usuario";
         }
         

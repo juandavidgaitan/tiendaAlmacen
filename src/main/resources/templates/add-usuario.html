@@ -36,6 +36,17 @@
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
 							aria-labelledby="home-tab">
 							
+							
+							<div class="row register-form">
+
+								<label for="id_usuario" class="col-form-label" th:text="id_usuario"></label>
+								<input type="text" th:field="*{id_usuario}" class="form-control"
+									id="dni" th:placeholder="dni" required="true"> <span
+									th:if="${#fields.hasErrors('id_usuario')}" th:errors="*{id_usuario}"
+									class="text-danger"></span>
+
+							</div>
+							
 							<div class="row register-form">
 
 								<label for="nombre" class="col-form-label" th:text="Nombre"></label>

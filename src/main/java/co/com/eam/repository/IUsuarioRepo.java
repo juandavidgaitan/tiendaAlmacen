@@ -4,11 +4,12 @@ package co.com.eam.repository;
 import java.util.List;
 
 
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import co.com.eam.domain.Bodega;
+ 
 import co.com.eam.domain.Usuario;
 
 
@@ -24,5 +25,5 @@ CrudRepository<Usuario, Integer>{
 	
 	@Query("SELECT u FROM Usuario u WHERE u.nombre=?1")
 	List<Usuario> BuscarUsuarioNombre(String nombre);
-	
+  
 }
