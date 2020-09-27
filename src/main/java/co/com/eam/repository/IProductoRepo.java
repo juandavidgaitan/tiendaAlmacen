@@ -8,7 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import co.com.eam.domain.Producto;
- 
+
+
 
 @Repository
 public interface IProductoRepo extends

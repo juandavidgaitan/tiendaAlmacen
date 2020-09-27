@@ -2,9 +2,6 @@ package co.com.eam.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import lombok.Data;
-
 import java.util.List;
 
 
@@ -13,7 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Data
 @Table(name="pais")
 @NamedQuery(name="Pai.findAll", query="SELECT p FROM Pai p")
 public class Pai implements Serializable {
@@ -59,6 +55,6 @@ public class Pai implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 
+	 
 }

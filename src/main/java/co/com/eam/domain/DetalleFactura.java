@@ -18,13 +18,10 @@ public class DetalleFactura implements Serializable {
 	@Column(name="id_detalle")
 	private int idDetalle;
 
+	private int factura_fk;
+
 	@Column(name="total_factura")
 	private String totalFactura;
-
-	//bi-directional many-to-one association to Factura
-	@ManyToOne
-	@JoinColumn(name="Factura_fk")
-	private Factura factura;
 
 	//bi-directional many-to-one association to Producto
 	@ManyToOne
@@ -42,20 +39,20 @@ public class DetalleFactura implements Serializable {
 		this.idDetalle = idDetalle;
 	}
 
+	public int getFactura_fk() {
+		return this.factura_fk;
+	}
+
+	public void setFactura_fk(int factura_fk) {
+		this.factura_fk = factura_fk;
+	}
+
 	public String getTotalFactura() {
 		return this.totalFactura;
 	}
 
 	public void setTotalFactura(String totalFactura) {
 		this.totalFactura = totalFactura;
-	}
-
-	public Factura getFactura() {
-		return this.factura;
-	}
-
-	public void setFactura(Factura factura) {
-		this.factura = factura;
 	}
 
 	public Producto getProducto() {
