@@ -58,21 +58,21 @@ public class InicioController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Vendedor vendedor, Model model) {
-	 	model.addAttribute("vendedor", new Vendedor());
+	public String login(Vendedor usuario, Model model) {
+	 	model.addAttribute("usuario", new Vendedor());
 		return "login";
 	}
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/ingresar")
-	public String ingresar(Vendedor vendedor,BindingResult result, Model model) {
+	public String ingresar(Vendedor usuario,BindingResult result, Model model) {
 		if(result.hasErrors()) {
 		 	model.addAttribute("usuario", new Vendedor());
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
-		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), vendedor.getContrasena());
-		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), vendedor.getContrasena());
+		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), usuario.getContrasena());
+		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), usuario.getContrasena());
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;
 			return "redirect:/usuario";

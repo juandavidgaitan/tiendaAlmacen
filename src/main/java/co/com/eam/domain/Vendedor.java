@@ -28,7 +28,7 @@ public class Vendedor implements Serializable {
 	private String nombre;
 
 	@Column(name="nombre_usuario")
-	private String nombre_usuario;
+	private String nombreUsuario;
 
 	private String password;
 
@@ -48,16 +48,16 @@ public class Vendedor implements Serializable {
 	public Vendedor() {
 	}
 
-	public int getId_vendedor() {
-		return id_vendedor;
+	public int getIdVendedor() {
+		return this.id_vendedor;
 	}
 
-	public void setId_vendedor(int id_vendedor) {
-		this.id_vendedor = id_vendedor;
+	public void setIdVendedor(int idVendedor) {
+		this.id_vendedor = idVendedor;
 	}
 
 	public String getApellido() {
-		return apellido;
+		return this.apellido;
 	}
 
 	public void setApellido(String apellido) {
@@ -65,7 +65,7 @@ public class Vendedor implements Serializable {
 	}
 
 	public String getContrasena() {
-		return contrasena;
+		return this.contrasena;
 	}
 
 	public void setContrasena(String contrasena) {
@@ -73,7 +73,7 @@ public class Vendedor implements Serializable {
 	}
 
 	public String getDireccion() {
-		return direccion;
+		return this.direccion;
 	}
 
 	public void setDireccion(String direccion) {
@@ -81,7 +81,7 @@ public class Vendedor implements Serializable {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -89,23 +89,23 @@ public class Vendedor implements Serializable {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return this.nombre;
 	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-	public String getNombre_usuario() {
-		return nombre_usuario;
+	public String getNombreUsuario() {
+		return this.nombreUsuario;
 	}
 
-	public void setNombre_usuario(String nombre_usuario) {
-		this.nombre_usuario = nombre_usuario;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -113,7 +113,7 @@ public class Vendedor implements Serializable {
 	}
 
 	public String getTelefono() {
-		return telefono;
+		return this.telefono;
 	}
 
 	public void setTelefono(String telefono) {
@@ -121,7 +121,7 @@ public class Vendedor implements Serializable {
 	}
 
 	public String getUsername() {
-		return username;
+		return this.username;
 	}
 
 	public void setUsername(String username) {
@@ -129,7 +129,7 @@ public class Vendedor implements Serializable {
 	}
 
 	public Vendedor getVendedor() {
-		return vendedor;
+		return this.vendedor;
 	}
 
 	public void setVendedor(Vendedor vendedor) {
@@ -137,17 +137,25 @@ public class Vendedor implements Serializable {
 	}
 
 	public List<Vendedor> getVendedors() {
-		return vendedors;
+		return this.vendedors;
 	}
 
 	public void setVendedors(List<Vendedor> vendedors) {
 		this.vendedors = vendedors;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-}
+	public Vendedor addVendedor(Vendedor vendedor) {
+		getVendedors().add(vendedor);
+		vendedor.setVendedor(this);
 
-	 
+		return vendedor;
+	}
+
+	public Vendedor removeVendedor(Vendedor vendedor) {
+		getVendedors().remove(vendedor);
+		vendedor.setVendedor(null);
+
+		return vendedor;
+	}
+
+}
