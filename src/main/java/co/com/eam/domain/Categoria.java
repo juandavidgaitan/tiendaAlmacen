@@ -1,13 +1,12 @@
 package co.com.eam.domain;
 
 import java.io.Serializable;
-<<<<<<< HEAD
+
 
 import javax.persistence.*;
  
-=======
-import javax.persistence.*;
->>>>>>> parent of a280581... modifique los dominan
+ 
+ 
 import java.util.List;
 
 
