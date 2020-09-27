@@ -1,43 +1,18 @@
 package co.com.eam.domain;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-
-import lombok.Data;
-
->>>>>>> parent of 7a45363... modifique todo el paquete dominan
+ 
 import java.util.List;
->>>>>>> parent of a280581... modifique los dominan
-
-
-=======
->>>>>>> parent of a280581... modifique los dominan
-import java.util.List;
-=======
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import com.sun.istack.NotNull;
->>>>>>> parent of e716b16... Revert "modifique los dominan"
-=======
-import java.util.List;
->>>>>>> parent of a280581... modifique los dominan
-
+ 
 
 /**
  * The persistent class for the subcategoria database table.
  * 
  */
 @Entity
-@Data
+ 
 @NamedQuery(name="Subcategoria.findAll", query="SELECT s FROM Subcategoria s")
 public class Subcategoria implements Serializable {
 	private static final long serialVersionUID = 1L;

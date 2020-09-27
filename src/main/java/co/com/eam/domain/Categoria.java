@@ -4,30 +4,7 @@ package co.com.eam.domain;
 import java.io.Serializable;
 
 import javax.persistence.*;
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> parent of a280581... modifique los dominan
-=======
->>>>>>> parent of a280581... modifique los dominan
-=======
-
-import lombok.Data;
-
->>>>>>> parent of e716b16... Revert "modifique los dominan"
-=======
->>>>>>> parent of a280581... modifique los dominan
-=======
-
-
-
->>>>>>> parent of 7a45363... modifique todo el paquete dominan
+ 
 import java.util.List;
 
 
