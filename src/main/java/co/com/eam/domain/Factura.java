@@ -59,7 +59,6 @@ public class Factura implements Serializable {
 		this.detalleFacturas = detalleFacturas;
 	}
 
-<<<<<<< HEAD
 	public DetalleFactura addDetalleFactura(DetalleFactura detalleFactura) {
 		getDetalleFacturas().add(detalleFactura);
 		detalleFactura.setFactura(this);
@@ -74,14 +73,7 @@ public class Factura implements Serializable {
 		return detalleFactura;
 	}
 
-<<<<<<< HEAD
-=======
- 
->>>>>>> parent of a280581... modifique los dominan
-	public Vendedor getUsuario() {
-=======
 	public Usuario getUsuario() {
->>>>>>> parent of 558c902... modificque el dominan de vendedor
 		return this.usuario;
 	}
 

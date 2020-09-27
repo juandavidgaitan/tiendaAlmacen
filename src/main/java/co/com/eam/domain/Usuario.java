@@ -3,7 +3,8 @@ package co.com.eam.domain;
 import java.io.Serializable;
 import javax.persistence.*;
 
-import lombok.Data;
+
+
 
 import java.util.List;
 
@@ -13,14 +14,13 @@ import java.util.List;
  * 
  */
 @Entity
-@Data
+
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	 
-	@Column(name="dni")
+ 
 	private int dni;
 
 	private String apellido;
@@ -103,8 +103,6 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 	}
 
-	 
-
 	public String getPassword() {
 		return password;
 	}
@@ -158,4 +156,4 @@ public class Usuario implements Serializable {
 	}
 	
 
-}
+}	 

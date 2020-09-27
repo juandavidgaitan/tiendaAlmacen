@@ -1,12 +1,12 @@
 package co.com.eam.domain;
 
+
 import java.io.Serializable;
 
-
 import javax.persistence.*;
- 
- 
- 
+
+
+
 import java.util.List;
 
 
@@ -59,7 +59,7 @@ public class Categoria implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 
-	 
 
 }
