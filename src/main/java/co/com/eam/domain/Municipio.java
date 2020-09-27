@@ -37,7 +37,7 @@ public class Municipio implements Serializable {
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="municipio")
-	private List<Vendedor> vendedors;
+	private List<Vendedor> usuarios;
 
 	public Municipio() {
 	}
@@ -74,19 +74,17 @@ public class Municipio implements Serializable {
 		this.departamento = departamento;
 	}
 
-	public List<Vendedor> getVendedors() {
-		return vendedors;
+	public List<Vendedor> getUsuarios() {
+		return usuarios;
 	}
 
-	public void setVendedors(List<Vendedor> vendedors) {
-		this.vendedors = vendedors;
+	public void setUsuarios(List<Vendedor> usuarios) {
+		this.usuarios = usuarios;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	 
 
 
 }

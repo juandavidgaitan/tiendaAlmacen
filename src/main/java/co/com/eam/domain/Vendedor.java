@@ -36,132 +36,113 @@ public class Vendedor implements Serializable {
 
 	private String username;
 
-	 
+	//bi-directional many-to-one association to Vendedor
+	@ManyToOne
+	@JoinColumn(name="municipio_fk")
+	private Vendedor vendedor;
+
+	//bi-directional many-to-one association to Vendedor
+	@OneToMany(mappedBy="vendedor")
+	private List<Vendedor> vendedors;
 
 	public Vendedor() {
 	}
-
-
 
 	public int getId_vendedor() {
 		return id_vendedor;
 	}
 
-
-
 	public void setId_vendedor(int id_vendedor) {
 		this.id_vendedor = id_vendedor;
 	}
-
-
 
 	public String getApellido() {
 		return apellido;
 	}
 
-
-
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-
-
 
 	public String getContrasena() {
 		return contrasena;
 	}
 
-
-
 	public void setContrasena(String contrasena) {
 		this.contrasena = contrasena;
 	}
-
-
 
 	public String getDireccion() {
 		return direccion;
 	}
 
-
-
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
 	}
 
-
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	public String getNombre_usuario() {
 		return nombre_usuario;
 	}
 
-
-
 	public void setNombre_usuario(String nombre_usuario) {
 		this.nombre_usuario = nombre_usuario;
 	}
-
-
 
 	public String getPassword() {
 		return password;
 	}
 
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
 
 	public String getTelefono() {
 		return telefono;
 	}
 
-
-
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-
-
 
 	public String getUsername() {
 		return username;
 	}
 
-
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
 
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public List<Vendedor> getVendedors() {
+		return vendedors;
+	}
+
+	public void setVendedors(List<Vendedor> vendedors) {
+		this.vendedors = vendedors;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -169,4 +150,4 @@ public class Vendedor implements Serializable {
 	
 }
 
-	 	 
+	 

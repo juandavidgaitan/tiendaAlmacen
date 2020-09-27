@@ -23,7 +23,8 @@ CrudRepository<Vendedor, Integer>{
 	@Query("SELECT v From Vendedor v WHERE v.nombre_usuario=?1 and v.contrasena=?2")
 	Vendedor Login(String nombre_usuario, String contrasena);
 	
- 
+	@Query("Select v from Vendedor v WHERE v.municipio.id_municipio=?1")
+	List<Vendedor> listarmunicipio(int idMunicipio);
 	
 	@Query("SELECT v FROM Vendedor v WHERE v.nombre=?1")
 	List<Vendedor> BuscarUsuarioNombre(String nombre);
