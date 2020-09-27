@@ -8,22 +8,21 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import co.com.eam.domain.Administrador;
 import co.com.eam.domain.Bodega;
 import co.com.eam.domain.Vendedor;
 
 
 @Repository
-public interface IVendedorRepo extends
+public interface IUsuarioRepo extends
 CrudRepository<Vendedor, Integer>{
 	
-	@Query("SELECT v From Vendedor v WHERE v.usuario=?1 and v.contrasena=?2")
-	Administrador LoginAdmin(String nombreUsuario, String password);
+	@Query("SELECT u From Usuario u WHERE u.username=?1 and u.contrasena=?2")
+	Vendedor Login(String username, String contrasena);
 	
-	@Query("Select v from Vendedor v WHERE v.municipio.id_municipio=?1")
+	@Query("Select u from Usuario u WHERE u.municipio.id_municipio=?1")
 	List<Vendedor> listarmunicipio(int idMunicipio);
 	
-	@Query("SELECT v FROM Vendedor v WHERE v.nombre=?1")
+	@Query("SELECT u FROM Usuario u WHERE u.nombre=?1")
 	List<Vendedor> BuscarUsuarioNombre(String nombre);
 	
 }
