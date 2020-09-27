@@ -70,8 +70,13 @@ public class InicioController {
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
+<<<<<<< HEAD
 		Vendedor nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
 		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getUsername(), usuario.getContrasena());
+=======
+		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), usuario.getContrasena());
+		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), usuario.getContrasena());
+>>>>>>> parent of 3859eea... cree el controlador de vendedor
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;
 			return "redirect:/usuario";
