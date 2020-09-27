@@ -1,34 +1,48 @@
 package co.com.eam.domain;
+
 import java.io.Serializable;
 import javax.persistence.*;
-import java.util.List;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import com.sun.istack.NotNull;
+
+import lombok.Data;
 
 /**
  * The persistent class for the subcategoria database table.
  * 
  */
 @Entity
+@Data
 @NamedQuery(name="Subcategoria.findAll", query="SELECT s FROM Subcategoria s")
 public class Subcategoria implements Serializable {
+	 
+ 
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
 	@Id
-	@Column(name="id_subcategoria")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id_subcategoria;
-
+	    
+	@NotBlank (message = "El campo descripcion es obligatorio")
+	@Size(min = 3, max = 100)
+	@Pattern(regexp = "^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$", message = "La  descripcion solo puede contener letras")
 	private String descripcion;
-
-	//bi-directional many-to-one association to Producto
-	@OneToMany(mappedBy="subcategoria")
-	private List<Producto> productos;
-
+	
 	//bi-directional many-to-one association to Categoria
 	@ManyToOne
 	@JoinColumn(name="categoria_fk")
+	@NotNull
+
 	private Categoria categoria;
 
 	public Subcategoria() {
+		super();
 	}
 
 	public int getId_subcategoria() {
@@ -47,14 +61,6 @@ public class Subcategoria implements Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public List<Producto> getProductos() {
-		return productos;
-	}
-
-	public void setProductos(List<Producto> productos) {
-		this.productos = productos;
-	}
-
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -67,5 +73,4 @@ public class Subcategoria implements Serializable {
 		return serialVersionUID;
 	}
 
-	 
 }

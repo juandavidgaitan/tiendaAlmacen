@@ -30,7 +30,7 @@ public class Factura implements Serializable {
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="Usuario_fk")
-	private Vendedor usuario;
+	private Usuario usuario;
 
 	public Factura() {
 	}
@@ -59,12 +59,25 @@ public class Factura implements Serializable {
 		this.detalleFacturas = detalleFacturas;
 	}
 
- 
-	public Vendedor getUsuario() {
+	public DetalleFactura addDetalleFactura(DetalleFactura detalleFactura) {
+		getDetalleFacturas().add(detalleFactura);
+		detalleFactura.setFactura(this);
+
+		return detalleFactura;
+	}
+
+	public DetalleFactura removeDetalleFactura(DetalleFactura detalleFactura) {
+		getDetalleFacturas().remove(detalleFactura);
+		detalleFactura.setFactura(null);
+
+		return detalleFactura;
+	}
+
+	public Usuario getUsuario() {
 		return this.usuario;
 	}
 
-	public void setUsuario(Vendedor usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 

@@ -2,21 +2,24 @@ package co.com.eam.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.List;
 
 
 /**
- * The persistent class for the vendedor database table.
+ * The persistent class for the usuario database table.
  * 
  */
 @Entity
-@NamedQuery(name="Vendedor.findAll", query="SELECT v FROM Vendedor v")
-public class Vendedor implements Serializable {
+@Data
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_vendedor")
-	private int id_vendedor;
+	private int dni;
 
 	private String apellido;
 
@@ -37,24 +40,28 @@ public class Vendedor implements Serializable {
 
 	private String username;
 
-	//bi-directional many-to-one association to Vendedor
+	//bi-directional many-to-one association to Despacho
+	@OneToMany(mappedBy="usuario")
+	private List<Despacho> despachos;
+
+	//bi-directional many-to-one association to Factura
+	@OneToMany(mappedBy="usuario")
+	private List<Factura> facturas;
+
+	//bi-directional many-to-one association to Municipio
 	@ManyToOne
 	@JoinColumn(name="municipio_fk")
-	private Vendedor vendedor;
+	private Municipio municipio;
 
-	//bi-directional many-to-one association to Vendedor
-	@OneToMany(mappedBy="vendedor")
-	private List<Vendedor> vendedors;
-
-	public Vendedor() {
+	public Usuario() {
 	}
 
-	public int getId_vendedor() {
-		return id_vendedor;
+	public int getDni() {
+		return dni;
 	}
 
-	public void setId_vendedor(int id_vendedor) {
-		this.id_vendedor = id_vendedor;
+	public void setDni(int dni) {
+		this.dni = dni;
 	}
 
 	public String getApellido() {
@@ -129,26 +136,33 @@ public class Vendedor implements Serializable {
 		this.username = username;
 	}
 
-	public Vendedor getVendedor() {
-		return vendedor;
+	public List<Despacho> getDespachos() {
+		return despachos;
 	}
 
-	public void setVendedor(Vendedor vendedor) {
-		this.vendedor = vendedor;
+	public void setDespachos(List<Despacho> despachos) {
+		this.despachos = despachos;
 	}
 
-	public List<Vendedor> getVendedors() {
-		return vendedors;
+	public List<Factura> getFacturas() {
+		return facturas;
 	}
 
-	public void setVendedors(List<Vendedor> vendedors) {
-		this.vendedors = vendedors;
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+
+	public Municipio getMunicipio() {
+		return municipio;
+	}
+
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	 
+	
 
 }
