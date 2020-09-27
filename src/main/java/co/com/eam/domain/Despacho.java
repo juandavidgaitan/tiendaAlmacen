@@ -30,11 +30,15 @@ public class Despacho implements Serializable {
 	@ManyToOne
 <<<<<<< HEAD
 	@JoinColumn(name="Usuario_fk")
+<<<<<<< HEAD
 	private Vendedor usuario;
 =======
 	@JoinColumn(name="cliente_fk")
 	private Cliente cliente2;
 >>>>>>> parent of a280581... modifique los dominan
+=======
+	private Usuario usuario;
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 
 	public Despacho() {
 	}
@@ -63,16 +67,20 @@ public class Despacho implements Serializable {
 		this.usuario_fk = usuario_fk;
 	}
 
+<<<<<<< HEAD
 	public Cliente getCliente1() {
 		return cliente1;
 	}
 
 <<<<<<< HEAD
 	public Vendedor getUsuario() {
+=======
+	public Usuario getUsuario() {
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 		return this.usuario;
 	}
 
-	public void setUsuario(Vendedor usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 =======
 	public void setCliente1(Cliente cliente1) {

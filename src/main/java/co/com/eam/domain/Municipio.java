@@ -48,12 +48,16 @@ public class Municipio implements Serializable {
 <<<<<<< HEAD
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="municipio")
+<<<<<<< HEAD
 	private List<Vendedor> vendedors;
 =======
 	//bi-directional many-to-one association to Proveedor
 	@OneToMany(mappedBy="municipio2")
 	private List<Proveedor> proveedors2;
 >>>>>>> parent of a280581... modifique los dominan
+=======
+	private List<Usuario> usuarios;
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 
 	public Municipio() {
 	}
@@ -115,6 +119,7 @@ public class Municipio implements Serializable {
 	}
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public List<Vendedor> getVendedors() {
 		return vendedors;
 	}
@@ -137,6 +142,14 @@ public class Municipio implements Serializable {
 	public void setProveedors2(List<Proveedor> proveedors2) {
 		this.proveedors2 = proveedors2;
 >>>>>>> parent of a280581... modifique los dominan
+=======
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 	}
 
 	public static long getSerialversionuid() {

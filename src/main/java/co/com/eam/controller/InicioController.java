@@ -36,6 +36,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.com.eam.domain.Administrador;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IUsuarioRepo;
@@ -102,6 +105,7 @@ public class InicioController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static Usuario usuariologeado;
 =======
 	public static Vendedor usuariologeado;
@@ -115,6 +119,9 @@ public class InicioController {
 =======
 	public static Vendedor usuariologeado;
 >>>>>>> parent of a280581... modifique los dominan
+=======
+	public static Usuario usuariologeado;
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 	@Autowired
 	public static Administrador admindlogeado;
 	
@@ -147,6 +154,7 @@ public class InicioController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public String login(Usuario usuario, Model model) {
 	 	model.addAttribute("usuario", new Usuario());
 =======
@@ -165,6 +173,10 @@ public class InicioController {
 	public String login(Vendedor vendedor, Model model) {
 	 	model.addAttribute("vendedor", new Vendedor());
 >>>>>>> parent of a280581... modifique los dominan
+=======
+	public String login(Usuario usuario, Model model) {
+	 	model.addAttribute("usuario", new Usuario());
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 		return "login";
 	}
 	
@@ -174,6 +186,9 @@ public class InicioController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 	public String ingresar(Usuario usuario,BindingResult result, Model model) {
 		if(result.hasErrors()) {
 		 	model.addAttribute("usuario", new Usuario());
@@ -184,7 +199,11 @@ public class InicioController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Vendedor nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+=======
+		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 =======
 		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
 >>>>>>> parent of 558c902... modificque el dominan de vendedor
