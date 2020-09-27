@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import co.com.eam.domain.Vendedor;
 =======
 
 import co.com.eam.domain.Municipio;
 import co.com.eam.domain.Usuario;
 >>>>>>> Stashed changes
+=======
+import co.com.eam.domain.Usuario;
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 =======
 import co.com.eam.domain.Usuario;
 >>>>>>> parent of 558c902... modificque el dominan de vendedor
@@ -52,9 +56,14 @@ public class UsuarioController {
 	
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	@GetMapping("/{dni}/addusuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Vendedor usuario, Model model) {
+=======
+	@GetMapping("/{dni}/addUsuario")
+    public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 =======
 	@GetMapping("/{dni}/addUsuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {

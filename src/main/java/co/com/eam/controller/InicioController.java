@@ -73,7 +73,11 @@ public class InicioController {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Vendedor nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+=======
+		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 =======
 		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
 >>>>>>> parent of 558c902... modificque el dominan de vendedor
