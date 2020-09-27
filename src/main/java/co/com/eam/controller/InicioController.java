@@ -2,6 +2,7 @@ package co.com.eam.controller;
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -13,10 +14,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 >>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of e716b16... Revert "modifique los dominan"
+=======
+import org.springframework.beans.factory.annotation.Autowired;
+
+>>>>>>> parent of a280581... modifique los dominan
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 import co.com.eam.domain.Administrador;
 <<<<<<< HEAD
@@ -38,9 +47,19 @@ import co.com.eam.repository.IVendedorRepo;
 
 =======
 >>>>>>> parent of e716b16... Revert "modifique los dominan"
+=======
+import co.com.eam.domain.Administrador;
+import co.com.eam.domain.Vendedor;
+import co.com.eam.repository.IAdministradorRepo;
+import co.com.eam.repository.IVendedorRepo;
+
+
+>>>>>>> parent of a280581... modifique los dominan
 
 @Controller
+
 public class InicioController {
+<<<<<<< HEAD
 <<<<<<< HEAD
 	@Autowired
 <<<<<<< HEAD
@@ -52,6 +71,10 @@ public class InicioController {
 =======
 	private  IVendedorRepo iVendedorRepo;
 >>>>>>> parent of a280581... modifique los dominan
+=======
+	@Autowired
+	private  IVendedorRepo iVendedorRepo;
+>>>>>>> parent of a280581... modifique los dominan
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 //	@Autowired
@@ -61,7 +84,11 @@ public class InicioController {
 	@Autowired
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static Usuario usuariologeado;
+=======
+	public static Vendedor usuariologeado;
+>>>>>>> parent of a280581... modifique los dominan
 =======
 	public static Vendedor usuariologeado;
 >>>>>>> parent of a280581... modifique los dominan
@@ -98,8 +125,13 @@ public class InicioController {
 	@GetMapping("/login")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public String login(Usuario usuario, Model model) {
 	 	model.addAttribute("usuario", new Usuario());
+=======
+	public String login(Vendedor vendedor, Model model) {
+	 	model.addAttribute("vendedor", new Vendedor());
+>>>>>>> parent of a280581... modifique los dominan
 =======
 	public String login(Vendedor vendedor, Model model) {
 	 	model.addAttribute("vendedor", new Vendedor());
@@ -113,6 +145,7 @@ public class InicioController {
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/ingresar")
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 	public String ingresar(Usuario usuario,BindingResult result, Model model) {
@@ -143,6 +176,8 @@ public class InicioController {
 =======
 =======
 >>>>>>> parent of a280581... modifique los dominan
+=======
+>>>>>>> parent of a280581... modifique los dominan
 	public String ingresar(Vendedor vendedor,BindingResult result, Model model) {
 		if(result.hasErrors()) {
 		 	model.addAttribute("usuario", new Vendedor());
@@ -152,6 +187,9 @@ public class InicioController {
 		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), vendedor.getContrasena());
 		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), vendedor.getContrasena());
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> parent of a280581... modifique los dominan
+=======
 >>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
@@ -164,10 +202,13 @@ public class InicioController {
 		}
 	 	model.addAttribute("error", "usuario o contraseña incorectos");
 		return "login";	
+<<<<<<< HEAD
 =======
 	@RequestMapping("/")
 	public String Inicio(Model model) {
 		return "index";
 >>>>>>> parent of e716b16... Revert "modifique los dominan"
+=======
+>>>>>>> parent of a280581... modifique los dominan
 	}
 }
