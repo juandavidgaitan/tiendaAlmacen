@@ -1,3 +1,4 @@
+
 package co.com.eam.domain;
 
 import java.io.Serializable;
@@ -6,7 +7,7 @@ import java.util.List;
 
 
 /**
- * The persistent class for the cliente database table.
+ * The persistent class for the cliente database table. 
  * 
  */
 @Entity
@@ -28,20 +29,11 @@ public class Cliente implements Serializable {
 	//bi-directional many-to-one association to Municipio
 	@ManyToOne
 	@JoinColumn(name="Municipio_fk")
-	private Municipio municipio1;
-
-	//bi-directional many-to-one association to Municipio
-	@ManyToOne
-	@JoinColumn(name="Municipio_fk")
-	private Municipio municipio2;
+	private Municipio municipio;
 
 	//bi-directional many-to-one association to Despacho
-	@OneToMany(mappedBy="cliente1")
-	private List<Despacho> despachos1;
-
-	//bi-directional many-to-one association to Despacho
-	@OneToMany(mappedBy="cliente2")
-	private List<Despacho> despachos2;
+	@OneToMany(mappedBy="cliente")
+	private List<Despacho> despachos;
 
 	public Cliente() {
 	}
@@ -86,64 +78,34 @@ public class Cliente implements Serializable {
 		this.telefono = telefono;
 	}
 
-	public Municipio getMunicipio1() {
-		return this.municipio1;
+	public Municipio getMunicipio() {
+		return this.municipio;
 	}
 
-	public void setMunicipio1(Municipio municipio1) {
-		this.municipio1 = municipio1;
+	public void setMunicipio(Municipio municipio) {
+		this.municipio = municipio;
 	}
 
-	public Municipio getMunicipio2() {
-		return this.municipio2;
+	public List<Despacho> getDespachos() {
+		return this.despachos;
 	}
 
-	public void setMunicipio2(Municipio municipio2) {
-		this.municipio2 = municipio2;
+	public void setDespachos(List<Despacho> despachos) {
+		this.despachos = despachos;
 	}
 
-	public List<Despacho> getDespachos1() {
-		return this.despachos1;
+	public Despacho addDespacho(Despacho despacho) {
+		getDespachos().add(despacho);
+		despacho.setCliente(this);
+
+		return despacho;
 	}
 
-	public void setDespachos1(List<Despacho> despachos1) {
-		this.despachos1 = despachos1;
-	}
+	public Despacho removeDespacho(Despacho despacho) {
+		getDespachos().remove(despacho);
+		despacho.setCliente(null);
 
-	public Despacho addDespachos1(Despacho despachos1) {
-		getDespachos1().add(despachos1);
-		despachos1.setCliente1(this);
-
-		return despachos1;
-	}
-
-	public Despacho removeDespachos1(Despacho despachos1) {
-		getDespachos1().remove(despachos1);
-		despachos1.setCliente1(null);
-
-		return despachos1;
-	}
-
-	public List<Despacho> getDespachos2() {
-		return this.despachos2;
-	}
-
-	public void setDespachos2(List<Despacho> despachos2) {
-		this.despachos2 = despachos2;
-	}
-
-	public Despacho addDespachos2(Despacho despachos2) {
-		getDespachos2().add(despachos2);
-		despachos2.setCliente2(this);
-
-		return despachos2;
-	}
-
-	public Despacho removeDespachos2(Despacho despachos2) {
-		getDespachos2().remove(despachos2);
-		despachos2.setCliente2(null);
-
-		return despachos2;
+		return despacho;
 	}
 
 }

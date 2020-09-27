@@ -1,6 +1,10 @@
 package co.com.eam.domain;
+
 import java.io.Serializable;
 import javax.persistence.*;
+
+import lombok.Data;
+
 import java.util.List;
 
 
@@ -9,6 +13,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Data
 @NamedQuery(name="Subcategoria.findAll", query="SELECT s FROM Subcategoria s")
 public class Subcategoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -66,6 +71,6 @@ public class Subcategoria implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 
-	 
 }
