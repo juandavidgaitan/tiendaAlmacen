@@ -1,11 +1,18 @@
 package co.com.eam.domain;
+
 import java.io.Serializable;
 import javax.persistence.*;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+import lombok.Data;
+
+>>>>>>> parent of 7a45363... modifique todo el paquete dominan
 import java.util.List;
 >>>>>>> parent of a280581... modifique los dominan
 
@@ -30,6 +37,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Data
 @NamedQuery(name="Subcategoria.findAll", query="SELECT s FROM Subcategoria s")
 public class Subcategoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -89,5 +97,4 @@ public class Subcategoria implements Serializable {
 	}
 	
 
-	 
 }

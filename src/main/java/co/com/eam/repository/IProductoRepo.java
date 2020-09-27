@@ -11,6 +11,7 @@ import co.com.eam.domain.Producto;
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import co.com.eam.domain.Proveedor;
 =======
 
@@ -24,6 +25,9 @@ import co.com.eam.domain.Proveedor;
 >>>>>>> parent of e716b16... Revert "modifique los dominan"
 =======
 
+=======
+import co.com.eam.domain.Proveedor;
+>>>>>>> parent of 7a45363... modifique todo el paquete dominan
 
 >>>>>>> parent of a280581... modifique los dominan
 
