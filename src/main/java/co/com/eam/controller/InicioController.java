@@ -1,6 +1,7 @@
 package co.com.eam.controller;
 
 
+<<<<<<< HEAD
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -10,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 =======
 
 >>>>>>> parent of a280581... modifique los dominan
+=======
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+<<<<<<< HEAD
 import co.com.eam.domain.Administrador;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -35,10 +36,12 @@ import co.com.eam.repository.IVendedorRepo;
 >>>>>>> parent of a280581... modifique los dominan
 
 
+=======
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 
 @Controller
-
 public class InicioController {
+<<<<<<< HEAD
 	@Autowired
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -161,5 +164,10 @@ public class InicioController {
 		}
 	 	model.addAttribute("error", "usuario o contraseña incorectos");
 		return "login";	
+=======
+	@RequestMapping("/")
+	public String Inicio(Model model) {
+		return "index";
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 	}
 }

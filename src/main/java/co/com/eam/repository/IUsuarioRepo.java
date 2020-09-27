@@ -1,18 +1,24 @@
 package co.com.eam.repository;
 
 
+<<<<<<< HEAD
 import java.util.List;
 
 
+=======
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+<<<<<<< HEAD
 <<<<<<< HEAD:src/main/java/co/com/eam/repository/IUsuarioRepo.java
 =======
 import co.com.eam.domain.Administrador;
 >>>>>>> parent of 3859eea... cree el controlador de vendedor:src/main/java/co/com/eam/repository/IVendedorRepo.java
 import co.com.eam.domain.Bodega;
+=======
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 import co.com.eam.domain.Usuario;
 
 
@@ -20,6 +26,7 @@ import co.com.eam.domain.Usuario;
 public interface IUsuarioRepo extends
 CrudRepository<Usuario, Integer>{
 	
+<<<<<<< HEAD
 <<<<<<< HEAD:src/main/java/co/com/eam/repository/IUsuarioRepo.java
 	@Query("SELECT u From Usuario u WHERE u.username=?1 and u.contrasena=?2")
 <<<<<<< HEAD
@@ -45,5 +52,9 @@ CrudRepository<Usuario, Integer>{
 	
 	@Query("SELECT u FROM Usuario u WHERE u.nombre=?1")
 	List<Usuario> BuscarUsuarioNombre(String nombre);
+=======
+	@Query("SELECT u From Usuario u WHERE u.nombre_usuario=?1 and u.contrasena=?2")
+	Usuario Login(String nombre_usuario, String contrasena);
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 	
 }

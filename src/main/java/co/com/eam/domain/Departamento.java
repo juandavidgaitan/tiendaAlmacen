@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.*;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -12,6 +13,11 @@ import javax.persistence.*;
 >>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
+=======
+
+import lombok.Data;
+
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 import java.util.List;
 
 
@@ -22,11 +28,15 @@ import java.util.List;
 @Entity
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
+=======
+@Data
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 @NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
 public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -84,7 +94,7 @@ public class Departamento implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 
-	 
 
 }

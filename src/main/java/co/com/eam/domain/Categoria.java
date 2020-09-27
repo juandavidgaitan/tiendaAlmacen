@@ -1,10 +1,12 @@
 package co.com.eam.domain;
 
+
 import java.io.Serializable;
 
 import javax.persistence.*;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
@@ -12,6 +14,11 @@ import javax.persistence.*;
 >>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
+=======
+
+import lombok.Data;
+
+>>>>>>> parent of e716b16... Revert "modifique los dominan"
 import java.util.List;
 
 
@@ -20,6 +27,7 @@ import java.util.List;
  * 
  */
 @Entity
+@Data
 @NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -64,7 +72,7 @@ public class Categoria implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
 
-	 
 
 }
