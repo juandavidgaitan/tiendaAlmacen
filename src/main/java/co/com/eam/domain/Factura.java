@@ -59,20 +59,7 @@ public class Factura implements Serializable {
 		this.detalleFacturas = detalleFacturas;
 	}
 
-	public DetalleFactura addDetalleFactura(DetalleFactura detalleFactura) {
-		getDetalleFacturas().add(detalleFactura);
-		detalleFactura.setFactura(this);
-
-		return detalleFactura;
-	}
-
-	public DetalleFactura removeDetalleFactura(DetalleFactura detalleFactura) {
-		getDetalleFacturas().remove(detalleFactura);
-		detalleFactura.setFactura(null);
-
-		return detalleFactura;
-	}
-
+ 
 	public Vendedor getUsuario() {
 		return this.usuario;
 	}

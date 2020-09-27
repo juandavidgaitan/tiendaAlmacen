@@ -25,7 +25,12 @@ public class Bodega implements Serializable {
 	//bi-directional many-to-one association to Municipio
 	@ManyToOne
 	@JoinColumn(name="Municipio_fk")
-	private Municipio municipio;
+	private Municipio municipio1;
+
+	//bi-directional many-to-one association to Municipio
+	@ManyToOne
+	@JoinColumn(name="Municipio_fk")
+	private Municipio municipio2;
 
 	//bi-directional many-to-one association to Producto
 	@OneToMany(mappedBy="bodega")
@@ -58,12 +63,20 @@ public class Bodega implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public Municipio getMunicipio() {
-		return municipio;
+	public Municipio getMunicipio1() {
+		return municipio1;
 	}
 
-	public void setMunicipio(Municipio municipio) {
-		this.municipio = municipio;
+	public void setMunicipio1(Municipio municipio1) {
+		this.municipio1 = municipio1;
+	}
+
+	public Municipio getMunicipio2() {
+		return municipio2;
+	}
+
+	public void setMunicipio2(Municipio municipio2) {
+		this.municipio2 = municipio2;
 	}
 
 	public List<Producto> getProductos() {
@@ -79,5 +92,4 @@ public class Bodega implements Serializable {
 	}
 
 	 
-
 }

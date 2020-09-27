@@ -2,9 +2,6 @@ package co.com.eam.domain;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import lombok.Data;
-
 import java.util.List;
 
 
@@ -13,7 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Data
 @NamedQuery(name="Municipio.findAll", query="SELECT m FROM Municipio m")
 public class Municipio implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -24,20 +20,34 @@ public class Municipio implements Serializable {
 
 	private String nombre;
 
+	//bi-directional many-to-one association to Bodega
+	@OneToMany(mappedBy="municipio1")
+	private List<Bodega> bodegas1;
+
+	//bi-directional many-to-one association to Bodega
+	@OneToMany(mappedBy="municipio2")
+	private List<Bodega> bodegas2;
 
 	//bi-directional many-to-one association to Cliente
-	@OneToMany(mappedBy="municipio")
-	private List<Cliente> clientes;
+	@OneToMany(mappedBy="municipio1")
+	private List<Cliente> clientes1;
+
+	//bi-directional many-to-one association to Cliente
+	@OneToMany(mappedBy="municipio2")
+	private List<Cliente> clientes2;
 
 	//bi-directional many-to-one association to Departamento
 	@ManyToOne
 	@JoinColumn(name="departamento_fk")
 	private Departamento departamento;
 
+	//bi-directional many-to-one association to Proveedor
+	@OneToMany(mappedBy="municipio1")
+	private List<Proveedor> proveedors1;
 
-	//bi-directional many-to-one association to Usuario
-	@OneToMany(mappedBy="municipio")
-	private List<Vendedor> vendedors;
+	//bi-directional many-to-one association to Proveedor
+	@OneToMany(mappedBy="municipio2")
+	private List<Proveedor> proveedors2;
 
 	public Municipio() {
 	}
@@ -58,12 +68,36 @@ public class Municipio implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public List<Cliente> getClientes() {
-		return clientes;
+	public List<Bodega> getBodegas1() {
+		return bodegas1;
 	}
 
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
+	public void setBodegas1(List<Bodega> bodegas1) {
+		this.bodegas1 = bodegas1;
+	}
+
+	public List<Bodega> getBodegas2() {
+		return bodegas2;
+	}
+
+	public void setBodegas2(List<Bodega> bodegas2) {
+		this.bodegas2 = bodegas2;
+	}
+
+	public List<Cliente> getClientes1() {
+		return clientes1;
+	}
+
+	public void setClientes1(List<Cliente> clientes1) {
+		this.clientes1 = clientes1;
+	}
+
+	public List<Cliente> getClientes2() {
+		return clientes2;
+	}
+
+	public void setClientes2(List<Cliente> clientes2) {
+		this.clientes2 = clientes2;
 	}
 
 	public Departamento getDepartamento() {
@@ -74,19 +108,25 @@ public class Municipio implements Serializable {
 		this.departamento = departamento;
 	}
 
-	public List<Vendedor> getVendedors() {
-		return vendedors;
+	public List<Proveedor> getProveedors1() {
+		return proveedors1;
 	}
 
-	public void setVendedors(List<Vendedor> vendedors) {
-		this.vendedors = vendedors;
+	public void setProveedors1(List<Proveedor> proveedors1) {
+		this.proveedors1 = proveedors1;
+	}
+
+	public List<Proveedor> getProveedors2() {
+		return proveedors2;
+	}
+
+	public void setProveedors2(List<Proveedor> proveedors2) {
+		this.proveedors2 = proveedors2;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	 
-
+ 
 
 }

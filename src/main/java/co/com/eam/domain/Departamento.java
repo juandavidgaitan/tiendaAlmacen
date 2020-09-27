@@ -1,11 +1,7 @@
 package co.com.eam.domain;
 
 import java.io.Serializable;
-
 import javax.persistence.*;
-
-
-
 import java.util.List;
 
 
@@ -14,7 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-
 @NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")
 public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -72,7 +67,7 @@ public class Departamento implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
 
+	 
 
 }
