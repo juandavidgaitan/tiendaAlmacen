@@ -36,19 +36,36 @@ public class Vendedor implements Serializable {
 
 	private String username;
 
+<<<<<<< HEAD:src/main/java/co/com/eam/domain/Vendedor.java
 	 
 
 	public Vendedor() {
 	}
 
 
+=======
+	//bi-directional many-to-one association to Vendedor
+	@ManyToOne
+	@JoinColumn(name="municipio_fk")
+	private Vendedor vendedor;
+
+	//bi-directional many-to-one association to Vendedor
+	@OneToMany(mappedBy="vendedor")
+	private List<Vendedor> vendedors;
+
+	public Vendedor() {
+	}
+>>>>>>> parent of a280581... modifique los dominan:src/main/java/co/com/eam/domain/Usuario.java
 
 	public int getId_vendedor() {
 		return id_vendedor;
 	}
 
+<<<<<<< HEAD:src/main/java/co/com/eam/domain/Vendedor.java
 
 
+=======
+>>>>>>> parent of a280581... modifique los dominan:src/main/java/co/com/eam/domain/Usuario.java
 	public void setId_vendedor(int id_vendedor) {
 		this.id_vendedor = id_vendedor;
 	}
@@ -151,6 +168,7 @@ public class Vendedor implements Serializable {
 
 
 
+<<<<<<< HEAD:src/main/java/co/com/eam/domain/Vendedor.java
 	public String getUsername() {
 		return username;
 	}
@@ -162,11 +180,33 @@ public class Vendedor implements Serializable {
 	}
 
 
+=======
+	public Vendedor getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Vendedor vendedor) {
+		this.vendedor = vendedor;
+	}
+
+	public List<Vendedor> getVendedors() {
+		return vendedors;
+	}
+
+	public void setVendedors(List<Vendedor> vendedors) {
+		this.vendedors = vendedors;
+	}
+>>>>>>> parent of a280581... modifique los dominan:src/main/java/co/com/eam/domain/Usuario.java
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+<<<<<<< HEAD:src/main/java/co/com/eam/domain/Vendedor.java
 	
 }
+=======
+
+	 
+>>>>>>> parent of a280581... modifique los dominan:src/main/java/co/com/eam/domain/Usuario.java
 
 	 	 

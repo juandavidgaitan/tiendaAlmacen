@@ -1,18 +1,26 @@
 package co.com.eam.domain;
-
 import java.io.Serializable;
+<<<<<<< HEAD
 
 import javax.persistence.*;
  
 import java.util.List;
  
+=======
+import javax.persistence.*;
+import java.util.List;
+
+>>>>>>> parent of a280581... modifique los dominan
 
 /**
  * The persistent class for the subcategoria database table.
  * 
  */
 @Entity
+<<<<<<< HEAD
  
+=======
+>>>>>>> parent of a280581... modifique los dominan
 @NamedQuery(name="Subcategoria.findAll", query="SELECT s FROM Subcategoria s")
 public class Subcategoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -72,4 +80,5 @@ public class Subcategoria implements Serializable {
 	}
 	
 
+	 
 }
