@@ -3,6 +3,10 @@ package co.com.eam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of a280581... modifique los dominan
 =======
 
 >>>>>>> parent of a280581... modifique los dominan
@@ -15,9 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.com.eam.domain.Administrador;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IUsuarioRepo;
+=======
+import co.com.eam.domain.Vendedor;
+import co.com.eam.repository.IAdministradorRepo;
+import co.com.eam.repository.IVendedorRepo;
+>>>>>>> parent of a280581... modifique los dominan
 =======
 import co.com.eam.domain.Vendedor;
 import co.com.eam.repository.IAdministradorRepo;
@@ -31,7 +41,11 @@ import co.com.eam.repository.IVendedorRepo;
 public class InicioController {
 	@Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
 	private  IUsuarioRepo iUsuarioRepo;
+=======
+	private  IVendedorRepo iVendedorRepo;
+>>>>>>> parent of a280581... modifique los dominan
 =======
 	private  IVendedorRepo iVendedorRepo;
 >>>>>>> parent of a280581... modifique los dominan
@@ -43,7 +57,11 @@ public class InicioController {
 //	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public static Usuario usuariologeado;
+=======
+	public static Vendedor usuariologeado;
+>>>>>>> parent of a280581... modifique los dominan
 =======
 	public static Vendedor usuariologeado;
 >>>>>>> parent of a280581... modifique los dominan
@@ -76,8 +94,13 @@ public class InicioController {
 	
 	@GetMapping("/login")
 <<<<<<< HEAD
+<<<<<<< HEAD
 	public String login(Usuario usuario, Model model) {
 	 	model.addAttribute("usuario", new Usuario());
+=======
+	public String login(Vendedor vendedor, Model model) {
+	 	model.addAttribute("vendedor", new Vendedor());
+>>>>>>> parent of a280581... modifique los dominan
 =======
 	public String login(Vendedor vendedor, Model model) {
 	 	model.addAttribute("vendedor", new Vendedor());
@@ -87,6 +110,7 @@ public class InicioController {
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/ingresar")
+<<<<<<< HEAD
 <<<<<<< HEAD
 	public String ingresar(Usuario usuario,BindingResult result, Model model) {
 		if(result.hasErrors()) {
@@ -114,6 +138,8 @@ public class InicioController {
 		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), usuario.getContrasena());
 >>>>>>> parent of 3859eea... cree el controlador de vendedor
 =======
+=======
+>>>>>>> parent of a280581... modifique los dominan
 	public String ingresar(Vendedor vendedor,BindingResult result, Model model) {
 		if(result.hasErrors()) {
 		 	model.addAttribute("usuario", new Vendedor());
@@ -122,6 +148,9 @@ public class InicioController {
 		}
 		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), vendedor.getContrasena());
 		Administrador admind = iAdministradorRepo.LoginAdmin(vendedor.getNombre_usuario(), vendedor.getContrasena());
+<<<<<<< HEAD
+>>>>>>> parent of a280581... modifique los dominan
+=======
 >>>>>>> parent of a280581... modifique los dominan
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;

@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
 import java.util.List;
@@ -18,7 +21,10 @@ import java.util.List;
  */
 @Entity
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
 @NamedQuery(name="Departamento.findAll", query="SELECT d FROM Departamento d")

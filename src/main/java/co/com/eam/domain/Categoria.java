@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> parent of a280581... modifique los dominan
 =======
 >>>>>>> parent of a280581... modifique los dominan
 import java.util.List;
