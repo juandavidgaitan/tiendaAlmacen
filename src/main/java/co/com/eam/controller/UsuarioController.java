@@ -12,12 +12,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 <<<<<<< Updated upstream
  
+<<<<<<< HEAD
 import co.com.eam.domain.Vendedor;
 =======
 
 import co.com.eam.domain.Municipio;
 import co.com.eam.domain.Usuario;
 >>>>>>> Stashed changes
+=======
+import co.com.eam.domain.Usuario;
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IDepartamentoRepo;
 import co.com.eam.repository.IMunicipioRepo;
@@ -42,9 +46,14 @@ public class UsuarioController {
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 	
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 	@GetMapping("/{dni}/addusuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Vendedor usuario, Model model) {
+=======
+	@GetMapping("/{dni}/addUsuario")
+    public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 		model.addAttribute("paises", iPaiRepo.findAll());
 		model.addAttribute("departamentos", iDepartamentoRepo.findAll());
 		model.addAttribute("municipios", iMunicipioRepo.findAll());
@@ -63,7 +72,7 @@ public class UsuarioController {
 	    
 >>>>>>> Stashed changes
 	 @PostMapping("/{dni}/add_usuario")
-	    public String addProveedor(@PathVariable("dni") String dni,@Valid Vendedor usuario, BindingResult result, Model model) {
+	    public String addProveedor(@PathVariable("dni") String dni,@Valid Usuario usuario, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
 	        	 model.addAttribute("usuario", iUsuarioRepo.findAll());
 	            return "add-usuario";
@@ -116,14 +125,14 @@ public class UsuarioController {
     
     @GetMapping("/{dni}/editUsuario/{dni}")
     public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
-    	Vendedor usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + Dni));
+    	Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + Dni));
         model.addAttribute("usuario", usuario);
         model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-usuario";
     }
     
     @PostMapping("/{dni}/updateUsuario/{dni}")
-    public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, @Valid Vendedor usuario, BindingResult result, Model model) {
+    public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, @Valid Usuario usuario, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	model.addAttribute("usuario", iUsuarioRepo.findAll());
         	usuario.setDni(Dni);
@@ -137,7 +146,7 @@ public class UsuarioController {
     
     @GetMapping("/{dni}/deleteUsuario/{dni}")
     public String deleteProveedor(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
-        Vendedor usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + Dni));
+        Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + Dni));
         iUsuarioRepo.delete(usuario);
     	model.addAttribute("usuario", iUsuarioRepo.findAll());
         return "listarUsuario";

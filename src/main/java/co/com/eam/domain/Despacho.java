@@ -27,7 +27,7 @@ public class Despacho implements Serializable {
 	//bi-directional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="Usuario_fk")
-	private Vendedor usuario;
+	private Usuario usuario;
 
 	public Despacho() {
 	}
@@ -56,11 +56,11 @@ public class Despacho implements Serializable {
 		this.cliente = cliente;
 	}
 
-	public Vendedor getUsuario() {
+	public Usuario getUsuario() {
 		return this.usuario;
 	}
 
-	public void setUsuario(Vendedor usuario) {
+	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
 

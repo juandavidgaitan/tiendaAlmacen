@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.com.eam.domain.Administrador;
-import co.com.eam.domain.Vendedor;
+import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
@@ -28,7 +28,7 @@ public class InicioController {
 //	@Autowired
 //	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
-	public static Vendedor usuariologeado;
+	public static Usuario usuariologeado;
 	@Autowired
 	public static Administrador admindlogeado;
 	
@@ -57,21 +57,25 @@ public class InicioController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Vendedor usuario, Model model) {
-	 	model.addAttribute("usuario", new Vendedor());
+	public String login(Usuario usuario, Model model) {
+	 	model.addAttribute("usuario", new Usuario());
 		return "login";
 	}
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/ingresar")
-	public String ingresar(Vendedor usuario,BindingResult result, Model model) {
+	public String ingresar(Usuario usuario,BindingResult result, Model model) {
 		if(result.hasErrors()) {
-		 	model.addAttribute("usuario", new Vendedor());
+		 	model.addAttribute("usuario", new Usuario());
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		Vendedor nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+=======
+		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+>>>>>>> parent of 558c902... modificque el dominan de vendedor
 		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getUsername(), usuario.getContrasena());
 =======
 		Vendedor nuevousuario = iVendedorRepo.Login(vendedor.getNombre_usuario(), usuario.getContrasena());
