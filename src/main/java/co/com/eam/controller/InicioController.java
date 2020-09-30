@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.com.eam.domain.Administrador;
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
+import co.com.eam.repository.ISubCategoriaRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
 
@@ -23,8 +24,8 @@ public class InicioController {
 	private  IUsuarioRepo iUsuarioRepo;
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
-//	@Autowired
-//	private ISubCategoriaRepo iSubCategoriaRepo;
+	@Autowired
+	private ISubCategoriaRepo iSubCategoriaRepo;
 //	@Autowired
 //	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
@@ -40,14 +41,14 @@ public class InicioController {
 //		
 //	}
 //
-//	@RequestMapping("/usuario")
-//	public String InicioUsuario(Model model) {
-//		model.addAttribute("usuario", usuariologeado);
-//		model.addAttribute("subcategorias", iSubCategoriaRepo.findAll());
-//
-//		return "index-usuario";
-//	}
-//	
+	@RequestMapping("/usuario")
+	public String InicioUsuario(Model model) {
+		model.addAttribute("usuario", usuariologeado);
+		model.addAttribute("subcategorias", iSubCategoriaRepo.findAll());
+
+		return "index-usuario";
+	}
+	
 	@RequestMapping("/admind")
 	public String InicioAdministrador(Model model) {
 		model.addAttribute("administrador", admindlogeado);

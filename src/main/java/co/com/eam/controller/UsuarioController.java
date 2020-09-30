@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
- 
+
+import co.com.eam.domain.Administrador;
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IDepartamentoRepo;
@@ -35,6 +36,8 @@ public class UsuarioController {
 	private IMunicipioRepo iMunicipioRepo;	
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
+	
+	 
 	
 	@GetMapping("/{dni}/addusuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {
