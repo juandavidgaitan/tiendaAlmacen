@@ -1,0 +1,154 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title  th:text="#{addAnuncio.titulo1}"></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" th:href="@{/css/all.css}">
+        <link rel="stylesheet" th:href="@{/css/brands.css}">
+        <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+        <link rel="stylesheet" th:href="@{/css/shard.min.css}">
+        <link rel="stylesheet" th:href="@{/css/solid.css}">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	</head>
+	<body>
+	
+		<select class="custom-select" id="locales">
+		<option selected th:text="#{language}"></option>
+		<option value="es" th:text="#{language.spanish}"></option>
+		<option value="en" th:text="#{language.english}"></option>
+		<option value="al" th:text="#{language.aleman}"></option>
+	</select>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	  <img src="../images/indice2.ico">
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+	  aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-auto">  
+	      <li class="nav-item">
+	        <a class="nav-link" th:field="${usuario}" th:href="@{/addAnuncio/{dni}(dni=${usuario.dni})}" th:text="#{index.vender}"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" ></a>
+	      </li>
+	    </ul>
+	    
+	 <select th:field="${subcategorias}" id="categoria" class="btn btn-outline-success">
+                 <option value="categoria" th:text="#{index.categorias}"></option>
+                 <option th:fragment="categorias" 
+                          th:each="cate : ${subcategorias}"
+                          th:id="${cate.categoria.id_categoria}" 
+                          th:value="${cate.categoria.id_categoria}"
+                          th:text="${cate.categoria.nombre}"
+                          >
+                 </option>
+         </select>
+         <select th:field="${subcategorias}" id="subcategoria" class="btn btn-outline-success">
+                 <option value="subcategoria" th:text="#{index.subcategorias}"></option>
+                 <option th:fragment="subcategorias" 
+                          th:each="subca : ${subcategorias}"
+                          th:id="${subca.id_subcategoria}" 
+                          th:value="${subca.id_subcategoria}"
+                          th:text="${subca.descripcion}"
+                          >
+                 </option>
+         </select>
+	  
+	    <br>
+	    <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="#{index.salir}"><i class="fas fa-power-off"></i></a>
+	  </div>
+	</nav>
+	
+	
+	<img src="/images/banner.jpg" class="img-fluid" alt="Responsive image">
+	<br><br>
+	
+	
+	<div class="container my-5 text-center">
+        <h1></h1>
+        <br>
+        <div class="row">
+            <div class="col">
+            	<div class="row">
+            		<div class="col-md-4" th:each="foto : ${fotos}">
+            			<div class="container text-left">
+						       <div class="card-deck">
+									 <div class="card">
+										   <img th:src="${foto.url_foto}" class="card-img-top" alt="...">
+										   <div class="card-body">
+										   		<div class="row">
+										   			<div class="col">
+										   				<h5 class="card-title"  th:text="#{index.tituloAnuncio}"></h5>	
+										   			</div>
+										   			<div class="col">
+										   				<h5 class="card-title" th:text=${foto.anuncio.titulo}></h5>	
+										   			</div>
+										   		</div>
+										   		
+										   		<div class="row">	
+										   			<div class="col">
+										   				<h5 class="card-title"  th:text="#{index.precioAnuncio}"></h5>	
+										   			</div>
+										   			<div class="col">
+										   				<p class="card-text" th:text=${foto.anuncio.precio}></p>	
+										   			</div>
+										   		</div>
+										   		<div class="row">	
+										   			<div class="col">
+										   				<h5 class="card-title"  th:text="#{index.categoriaAnuncio}"></h5>	
+										   			</div>
+										   			<div class="col">
+										   				<p class="card-text" th:text=${foto.anuncio.subcategoria.categoria.nombre}></p>	
+										   			</div>
+										   		</div>
+										   		<div class="row">	
+										   			<div class="col">
+										   				<h5 class="card-title"  th:text="#{index.subcategoriaAnuncio}"></h5>	
+										   			</div>
+										   			<div class="col">
+										   				<p class="card-text" th:text=${foto.anuncio.subcategoria.descripcion}></p>	
+										   			</div>
+										   		</div>
+										   		<div class="row">	
+										   			<div class="col">
+										   				<h5 class="card-title"  th:text="#{index.fechaAnuncio}"></h5>	
+										   			</div>
+										   			<div class="col">
+										   				<p class="card-text" th:text=${foto.anuncio.fecha}></p>	
+										   			</div>
+										   		</div>
+										   		<br>
+										     	<a th:href="@{/mostrar/{id_anuncio}(id_anuncio=${foto.anuncio.id_anuncio})}" 
+										     	class="btn btn-primary"  th:text="#{index.verAnuncio}"></a>
+										   </div>
+									 </div>	
+						       </div>
+					    </div>
+		    			<br>
+            		</div>
+            	</div>	
+            </div>
+        </div>
+    </div>
+        
+	<script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
+    crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption != '') {
+					window.location.replace('?lang=' + selectedOption);
+				}
+			});
+		});
+	</script>
+</body>
+<footer>
+</footer>
+</html>
