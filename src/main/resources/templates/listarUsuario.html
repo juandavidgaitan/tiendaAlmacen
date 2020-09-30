@@ -69,25 +69,29 @@
                         <table class="table table-striped table-responsive-md">
                             <thead>
                                 <tr>
-                                    <th th:text="#{listarUsu.dni}"></th>
+                                    <th th:text="#{listarUsu.id_usuario}"></th>
                                     <th th:text="#{listarUsu.nombre}"></th>
                                     <th th:text="#{listarUsu.apellido}"></th>
                                     <th th:text="#{listarUsu.telefono}"></th>
                                     <th th:text="#{listarUsu.email}"></th>
+                                     <th th:text="#{listarUsu.municipio}"></th>
                                     <th th:text="#{listarUsu.direccion}"></th>
+                                    
                                     <th th:text="#{listarUsu.nombreUsu}"></th>
                                     <th th:text="#{listarUsu.editar}"></th>
+                                       
                                     <th th:text="#{listarUsu.eliminar}"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="usus : ${usuario}">
-                                    <td th:text="${usus.dni}"></td>
+                                    <td th:text="${usus.id_usuario}"></td>
                                     <td th:text="${usus.nombre}"></td>
                                      <td th:text="${usus.apellido}"></td>
                                     <td th:text="${usus.telefono}"></td>
                                     <td th:text="${usus.email}"></td>
-                                    <td th:text="${usus.direccion.descripcion}"></td>
+                                     <td th:text="${usus.municipio.nombre}"></td>
+                                    <td th:text="${usus.direccion}"></td>
                                     <td th:text="${usus.nombre_usuario}"></td>
                                     
                                     
