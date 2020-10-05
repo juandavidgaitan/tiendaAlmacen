@@ -24,7 +24,7 @@
 			</div>
 			<div class="col-md-9 register-right">
 				<h3 class="register-heading">Modificar Cliente</h3>
-				<form action="#" th:action="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/updateCliente/{id_usuario}(id_usuario=${usuario.id_usuario})}" th:object="${usuario}" method="post">
+				<form action="#" th:action="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/updateCliente/{cedula}(cedula=${clie.cedula})}" method="post">
 				
 				
 					<div class="tab-content" id="myTabContent">
