@@ -25,19 +25,20 @@
 			<div class="col-md-9 register-right">
 				<h3 class="register-heading">Registrar Vendedor</h3>
 				<form action="#"
-					th:action="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuaro})/add_usuario}"
-					th:object="${usuario}" method="post">
+					th:action="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/add_cliente}"
+					th:object="${cliente}" method="post">
 					<div class="tab-content" id="myTabContent">
 						<br> <br> <br> <br> <br>
 						<div class="row">
 							
-						
-						<div class="form-group col-md-6">
-                                <label for="Id" class="col-form-label" 
+						 <div class="form-group col-md-6">
+                                <label for="cedula" class="col-form-label" 
                                 th:text="Cedula"></label>
                                 <input type="text" th:field="*{cedula}" class="form-control" id="cedula" th:placeholder="Cedula" required="required">
                                  <span th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}" class="text-danger"></span>
                             </div>
+                           
+						 
 						
                          
                            <div class="form-group col-md-6">
@@ -62,12 +63,7 @@
                             </div>
                            
                             
-                            <div class="form-group col-md-6">
-                                <label for="email" class="col-form-label"
-                                 th:text="Email"></label>
-                                <input type="email" th:field="*{email}" class="form-control" id="email" th:placeholder="Email" required="required">
-                                <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></span>
-                            </div>
+                            
                             <div class="form-group col-md-6">
 	                             <label for="categoria" class="col-form-label" 
 	                             th:text="Pais"> </label>
