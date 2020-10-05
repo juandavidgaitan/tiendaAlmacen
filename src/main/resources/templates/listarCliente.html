@@ -141,6 +141,16 @@
                <td th:text="${clie.direccion}"></td>  
                <td th:text="${clie.municipio.nombre}"></td>  
                
+                <td>     
+                                 <a href="/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/addCliente" 
+                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                             
+                                  <a th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/editCliente/{id_cliente}(id_cliente=${clie.id_cliente})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
+                                  
+                                  
+                                  <a th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/deleteCliente/{id_cliente}(id_cliente=${clie.id_cliente})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>              </td>
                
                 </tr>      
                 </tbody>
