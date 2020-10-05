@@ -128,6 +128,8 @@
                           <th th:text="Direccion"></th>
                           <th th:text="Municipio"></th>
                           <th th:text="actions"></th>    
+                           <a href="/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/addcliente" 
+                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a> 
                 
                     </tr>
                 </thead>
@@ -150,7 +152,8 @@
                                   
                                   
                                   <a th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/deleteCliente/{cedula}(cedula=${clie.cedula})}" 
-                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>              </td>
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>             
+               </td>
                
                 </tr>      
                 </tbody>
