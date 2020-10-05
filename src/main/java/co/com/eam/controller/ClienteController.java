@@ -134,7 +134,7 @@ public class ClienteController {
     }
     
     
-    @GetMapping("/{id_usuario}/listarUsuario")
+    @GetMapping("/{id_usuario}/listarCliente")
     public String ListarProveedor(@PathVariable ("id_usuario")String id_usuario,Model model) {
     	model.addAttribute("usuario",iUsuarioRepo.findAll());
         model.addAttribute("cliente", iClienteRepo.findAll());
