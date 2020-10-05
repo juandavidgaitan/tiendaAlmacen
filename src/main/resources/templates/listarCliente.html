@@ -135,7 +135,6 @@
                 </thead>
                 <tbody>
               <tr th:each="clie : ${cliente}">
-              
               <td th:text="${clie.cedula}"></td>  
                <td th:text="${clie.nombre}"></td>  
                <td th:text="${clie.apellido}"></td>  
@@ -144,16 +143,16 @@
                <td th:text="${clie.municipio.nombre}"></td>  
                
                 <td>     
-                                 <a href="/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/addcliente" 
-                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                                  
                              
-                                  <a th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/editCliente/{cedula}(cedula=${clie.cedula})}" 
+                                  <a th:href=" @{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/editCliente/{cedula}(cedula=${clie.cedula})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                   
                                   
-                                  <a th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/deleteCliente/{cedula}(cedula=${clie.cedula})}" 
-                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>             
-               </td>
+                                  <a th:href=" @{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/deleteCliente/{cedula}(cedula=${clie.cedula})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>         
+                                       </td>
+              
                
                 </tr>      
                 </tbody>

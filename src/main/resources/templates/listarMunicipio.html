@@ -124,8 +124,7 @@
               <td th:text="${mun.departamento.nombre}"></td>  
               
                             <td>     
-                                 <a href="/administrador/{dni}(dni=${administrador.dni})/addMunicipio" 
-                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                                  
                              
                                   <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editMunicipio/{id_municipio}(id_municipio=${mun.id_municipio})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>

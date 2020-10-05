@@ -124,8 +124,7 @@
               <tr th:each="pai : ${pai}">
                <td th:text="${pai.nombre}"></td>  
                             <td>     
-                                 <a href="/administrador/{dni}(dni=${administrador.dni})/addpai" 
-                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                                  
                              
                                   <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editPais/{id_pais}(id_pais=${pai.id_pais})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
