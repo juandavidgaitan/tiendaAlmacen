@@ -140,8 +140,7 @@
                <td th:text="${po.proveedor.nombre}"> </td>  
                <td th:text="${po.subcategoria.descripcion}"> </td>  
                             <td> 
-                             <a href="/administrador/{dni}(dni=${administrador.dni})/addProducto" 
-                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
+                              
                                   
 
                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editProducto/{id_producto}(id_producto=${po.id_producto})}" 

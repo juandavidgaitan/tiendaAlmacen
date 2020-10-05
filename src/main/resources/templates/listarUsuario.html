@@ -142,9 +142,7 @@
                                     <td th:text="${usus.nombre_usuario}"></td>
                                     <td>
                                    
-                                    <a href="/administrador/{dni}(dni=${administrador.dni})/addusuario" 
-                                    class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
-                                    
+                                  
                                     <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" 
                                     class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                     
