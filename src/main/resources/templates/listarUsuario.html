@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
+      <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title th:text="#{listarCategorias.titulo1}"></title>
+        <title th:text="listarVendedor"></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" href="css/shards.min.css">
@@ -13,102 +14,154 @@
         <script th:src="@{/js/solid.js}"></script>
         <script th:src="@{/js/fontawesome.js}"></script>
     </head>
-    <body>
-    
-   	<select class="custom-select" id="locales">
-		<option selected th:text="#{language}"></option>
-		<option value="es" th:text="#{language.spanish}"></option>
-		<option value="en" th:text="#{language.english}"></option>
-		<option value="en" th:text="#{language.aleman}"></option>
-	</select>
+<body>
+
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <img src="../images/indice2.ico">
+
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
+
+	<nav id="navbar" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
 	
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="nav-link" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarcategoria}" th:text="#{index.AgregarCate}"></a>
-	      </li>
-	        <li class="nav-item">
-	        <a class="nav-link" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarSubca}" th:text="#{index.AgregarSubca}"></a>
-	      </li>
-	      
-	      <li class="nav-item">
-	        <a class="nav-link" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarPais}" th:text="#{index.AgregarPais}"></a>
-	      </li>
-	      
-	      <li class="nav-item">
-	        <a class="nav-link"  th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarDepartamento}" th:text="#{index.AgregarDepartamento}"></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="#{index.AgregarMunicipio}"></a>
-	      </li>
-	      
-	       <li class="nav-item">
-	        <a class="nav-link"  th:field="${administrador}"  th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarUsuario}" th:text="#{index.registrarusuario}"></a>
-	      </li>
-	          
-	    </ul>
-	    <form class="form-inline my-2 my-lg-0">
-	      
-	      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" th:text="#{index.btnbuscar}"></button>
-	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="#{index.salir}"><i class="fas fa-power-off"></i></a>
-	    </form>
-	  </div>
-	</nav>
+  
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  
+    <span class="navbar-toggler-icon"></span>
     
-        <div th:switch="${usuario}" class="container my-5">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2 th:case="null" th:text="#{listarUsu.aviso}"></h2>
-                    <div th:case="*">
-                        <h2 class="my-5" th:text="#{listarUsu.titulo}"></h2>
-                        <table class="table table-striped table-responsive-md">
-                            <thead>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="navbar-nav mr-auto">
+   
+   <li class="nav-item">
+	      
+
+	   
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarcategoria}" th:text="Categoria"></a>
+	    
+	      </li>
+
+	        <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarSubca}" th:text="SubCategoria"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarPais}" th:text="Pais"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand"  th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarDepartamento}" th:text="Departamento"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Municipio"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProducto}" th:text="Producto"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarBodega}" th:text="Bodega"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProveedor}" th:text="Proveedor"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Cliente"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarUsuario}" th:text="Vendedor"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Factura"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="DetalleFactura"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Despacho"></a>
+	      </li>
+	      
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/signupAdmind}" th:text="INICIO"></a>
+	      </li>
+
+	       <li class="nav-item">
+	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
+	      </li>
+	    </ul>
+  </div>  
+</nav>
+	</nav>
+		</div>  
+	</div>
+	
+	<div class="row">
+                
+                    <div class="col-sm-8"><h2>Vendedor <b>Detalles</b></h2></div>
+                    <div class="col-sm-4">
+                   </div>
+                </div>
+
+
+<div class="container">
+
+        <div class="table-wrapper">
+            <div class="table-title">
+               <div class="row">
+                
+                    <div class="col-sm-8"><h2>Vendedor <b>Detalles</b></h2></div>
+                    <div class="col-sm-4">
+                    
+                   </div>
+                </div>
+            </div>
+             <div class="col-md-9">
+           <table class="table table-bordered">
+                <thead> 
                                 <tr>
-                                    <th th:text="#{listarUsu.id_usuario}"></th>
-                                    <th th:text="#{listarUsu.nombre}"></th>
-                                    <th th:text="#{listarUsu.apellido}"></th>
-                                    <th th:text="#{listarUsu.telefono}"></th>
-                                    <th th:text="#{listarUsu.email}"></th>
-                                     <th th:text="#{listarUsu.municipio}"></th>
-                                    <th th:text="#{listarUsu.direccion}"></th>
-                                    
-                                    <th th:text="#{listarUsu.nombreUsu}"></th>
-                                    <th th:text="#{listarUsu.editar}"></th>
-                                       
-                                    <th th:text="#{listarUsu.eliminar}"></th>
+                                    <th th:text="Id"></th>
+                                    <th th:text="Nombre"></th>
+                                    <th th:text="Apellido"></th>
+                                    <th th:text="Telefono"></th>
+                                    <th th:text="Email"></th>
+                                    <th th:text="Municipio"></th>
+                                    <th th:text="Direccion"></th>
+                                    <th th:text="NombreUsuario"></th>
+                                    <th th:text="Actions"></th>
+                                     <a href="/administrador/{dni}(dni=${administrador.dni})/addusuario" 
+                                    class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr th:each="usus : ${usuario}">
                                     <td th:text="${usus.id_usuario}"></td>
                                     <td th:text="${usus.nombre}"></td>
-                                     <td th:text="${usus.apellido}"></td>
+                                    <td th:text="${usus.apellido}"></td>
                                     <td th:text="${usus.telefono}"></td>
                                     <td th:text="${usus.email}"></td>
-                                     <td th:text="${usus.municipio.nombre}"></td>
+                                    <td th:text="${usus.municipio.nombre}"></td>
                                     <td th:text="${usus.direccion}"></td>
                                     <td th:text="${usus.nombre_usuario}"></td>
+                                    <td>
+                                   
+                                    <a href="/administrador/{dni}(dni=${administrador.dni})/addusuario" 
+                                    class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
                                     
+                                    <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" 
+                                    class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                     
-                                     <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a></td>
-                                    <td><a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
+                                    <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" 
+                                    class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a></td>
                                     
                                 </tr>
                             </tbody>
                         </table>
-                    </div>      
-                    <p class="my-5"><a href="/administrador/{dni}(dni=${administrador.dni})/addusuario" class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a></p>
+                      
+                   
                 </div>
             </div>
         </div>
-  <script th:src="@{/js/jquery.js}"></script>
-    <script th:src="@{/js/script.js}"></script>
-    
+            
+        </div>
+    </div>    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
@@ -130,7 +183,5 @@
 			});
 		});
 	</script>
-</body>
-<footer>
-</footer>
-</html>
+	</body>
+	</html>
