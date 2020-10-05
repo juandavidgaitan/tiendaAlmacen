@@ -64,7 +64,7 @@
 	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProveedor}" th:text="Proveedor"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Cliente"></a>
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarCliente}" th:text="Cliente"></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarUsuario}" th:text="Vendedor"></a>
@@ -121,25 +121,26 @@
             <table class="table table-bordered">
                 <thead>                
                     <tr>
-                          <th th:text="nombre"></th>
+                    	<th th:text="Cedula"></th>
+                          <th th:text="Nombre"></th>
+                          <th th:text="Apellido"></th>
+                          <th th:text="telefono"></th>
+                          <th th:text="Direccion"></th>
+                          <th th:text="Municipio"></th>
                           <th th:text="actions"></th>    
-                          <a href="/administrador/{dni}(dni=${administrador.dni})/addCategoria" 
-                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>                      
+                
                     </tr>
                 </thead>
                 <tbody>
-              <tr th:each="cate : ${categorias}">
-               <td th:text="${cate.nombre}"></td>  
-                            <td>     
-                                 <a href="/administrador/{dni}(dni=${administrador.dni})/addCategoria" 
-                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>
-                             
-                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}" 
-                                  class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
-                                  
-                                  
-                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/deleteCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}" 
-                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>              </td>
+              <tr th:each="clie : ${clientes}">
+              
+              <td th:text="${clie.cedula}"></td>  
+               <td th:text="${clie.nombre}"></td>  
+               <td th:text="${clie.apellido}"></td>  
+               <td th:text="${clie.telefono}"></td>  
+               <td th:text="${clie.direccion}"></td>  
+               <td th:text="${clie.municipio.nombre}"></td>  
+               
                
                 </tr>      
                 </tbody>
