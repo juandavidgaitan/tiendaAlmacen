@@ -104,7 +104,7 @@ public class ClienteController {
 //    		return "add-proveedor :: municipios";
 //    	}
     
-    @GetMapping("/{id_usuario}/editUsuario/{cedula}")
+    @GetMapping("/{id_usuario}/editCliente/{cedula}")
     public String showUpdateForm(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
     	Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + cedula));
         model.addAttribute("cliente", cliente);
