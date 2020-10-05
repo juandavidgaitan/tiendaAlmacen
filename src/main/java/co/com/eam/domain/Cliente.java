@@ -16,6 +16,7 @@ public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="cedula")
 	private int cedula;
 
 	private String apellido;

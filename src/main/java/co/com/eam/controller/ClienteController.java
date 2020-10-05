@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import co.com.eam.domain.Cliente;
  
-import co.com.eam.domain.Usuario;
-import co.com.eam.repository.IAdministradorRepo;
+import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.IDepartamentoRepo;
 import co.com.eam.repository.IMunicipioRepo;
 import co.com.eam.repository.IPaiRepo;
@@ -25,8 +25,11 @@ import co.com.eam.repository.IUsuarioRepo;
 
 
 @Controller
-@RequestMapping("/administrador")
-public class UsuarioController {
+@RequestMapping("/usuario")
+public class ClienteController {
+	
+	@Autowired
+	private IClienteRepo iClienteRepo;
 	@Autowired
 	private IUsuarioRepo iUsuarioRepo;
 	
@@ -36,29 +39,28 @@ public class UsuarioController {
 	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
 	private IMunicipioRepo iMunicipioRepo;	
-	@Autowired
-	private IAdministradorRepo iAdministradorRepo;
+	
 	
 	 
 	
-	@GetMapping("/{dni}/addusuario")
-    public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {
+	@GetMapping("/{id_usuario}/addcliente")
+    public String showSignUpForm(@PathVariable("id_usuario") String id_usuario,Cliente cliente, Model model) {
 		model.addAttribute("paises", iPaiRepo.findAll());
 		model.addAttribute("departamentos", iDepartamentoRepo.findAll());
 		model.addAttribute("municipios", iMunicipioRepo.findAll());
-    	model.addAttribute("administrador",iAdministradorRepo.findAll());
-        return "add-usuario";
+    	model.addAttribute("usuario",iUsuarioRepo.findAll());
+        return "add-cliente";
     }
 
-	 @PostMapping("/{dni}/add_usuario")
-	    public String addProveedor(@PathVariable("dni") String dni,@Valid Usuario usuario, BindingResult result, Model model) {
+	 @PostMapping("/{id_usuario}/add_cliente")
+	    public String addProveedor(@PathVariable("id_usuario") String id_usuario,@Valid Cliente cliente, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	        	 model.addAttribute("usuario", iUsuarioRepo.findAll());
-	            return "add-usuario";
+	        	 model.addAttribute("cliente", iClienteRepo.findAll());
+	            return "add-cliente";
 	        }
 	        
-	        iUsuarioRepo.save(usuario);
-	        model.addAttribute("usuario", iUsuarioRepo.findAll());
+	        iClienteRepo.save(cliente);
+	        model.addAttribute("cliente", iClienteRepo.findAll());
 	        return "listarUsuario";
 	    }
 	
@@ -102,42 +104,42 @@ public class UsuarioController {
 //    		return "add-proveedor :: municipios";
 //    	}
     
-    @GetMapping("/{dni}/editUsuario/{dni}")
-    public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
-    	Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + Dni));
-        model.addAttribute("usuario", usuario);
+    @GetMapping("/{id_usuario}/editUsuario/{cedula}")
+    public String showUpdateForm(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
+    	Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + cedula));
+        model.addAttribute("cliente", cliente);
         model.addAttribute("municipios", iMunicipioRepo.findAll());
-        return "update-usuario";
+        return "update-cliente";
     }
     
-    @PostMapping("/{dni}/updateUsuario/{dni}")
-    public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, @Valid Usuario usuario, BindingResult result, Model model) {
+    @PostMapping("/{id_usuario}/updateCliente/{cedula}")
+    public String updateUsuario(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, @Valid Cliente cliente, BindingResult result, Model model) {
         if (result.hasErrors()) {
-        	model.addAttribute("usuario", iUsuarioRepo.findAll());
-        	usuario.setId_usuario(Dni);
-            return "update-usuario";
+        	model.addAttribute("cliente", iClienteRepo.findAll());
+        	cliente.setCedula(cedula);
+            return "update-cliente";
         }
         
-        iUsuarioRepo.save(usuario);
-        model.addAttribute("usuario", iUsuarioRepo.findAll());
-        return "listarUsuario";
+        iClienteRepo.save(cliente);
+        model.addAttribute("cliente", iClienteRepo.findAll());
+        return "listarCliente";
     }
     
-    @GetMapping("/{dni}/deleteUsuario/{dni}")
-    public String deleteProveedor(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
-        Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + Dni));
-        iUsuarioRepo.delete(usuario);
-    	model.addAttribute("usuario", iUsuarioRepo.findAll());
-        return "listarUsuario";
+    @GetMapping("/{id_usuario}/deleteCliente/{cedula}")
+    public String deleteProveedor(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
+        Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + cedula));
+        iClienteRepo.delete(cliente);
+    	model.addAttribute("cliente", iClienteRepo.findAll());
+        return "listarCliente";
     }
     
     
-    @GetMapping("/{dni}/listarUsuario")
-    public String ListarProveedor(@PathVariable ("dni")String dni,Model model) {
-    	model.addAttribute("administrador",iAdministradorRepo.findAll());
-        model.addAttribute("usuario", iUsuarioRepo.findAll());
+    @GetMapping("/{id_usuario}/listarUsuario")
+    public String ListarProveedor(@PathVariable ("id_usuario")String id_usuario,Model model) {
+    	model.addAttribute("usuario",iUsuarioRepo.findAll());
+        model.addAttribute("cliente", iClienteRepo.findAll());
         model.addAttribute("municipio", iMunicipioRepo.findAll());
-        return "listarUsuario";
+        return "listarCliente";
     }
      
 
