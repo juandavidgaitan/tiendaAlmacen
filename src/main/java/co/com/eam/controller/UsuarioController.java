@@ -29,7 +29,6 @@ import co.com.eam.repository.IUsuarioRepo;
 public class UsuarioController {
 	@Autowired
 	private IUsuarioRepo iUsuarioRepo;
-	
 	@Autowired
     IPaiRepo iPaiRepo;
 	@Autowired
