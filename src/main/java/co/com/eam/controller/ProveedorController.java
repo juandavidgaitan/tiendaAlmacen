@@ -38,6 +38,7 @@ public class ProveedorController {
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 	
+//Metodo que nos permite acceder a la plantilla add-proveedor con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
 	@GetMapping("/{dni}/addProveedor")
     public String showSignUpForm(@PathVariable("dni") String dni,Proveedor proveedor, Model model) {
 		model.addAttribute("paises", iPaiRepo.findAll());
@@ -46,7 +47,8 @@ public class ProveedorController {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());
         return "add-proveedor";
     }
-
+	 //Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
+	 //En este caso es para agregar un nuevo proveedor, estos metodos tienen que se publicos 
 	 @PostMapping("/{dni}/add_proveedor")
 	    public String addProveedor(@PathVariable("dni") String dni,@Valid Proveedor proveedor, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
@@ -98,7 +100,7 @@ public class ProveedorController {
 //    		mo.addAttribute("municipios", iMunicipioRepo.ListarMunicipioDeartamento(id));
 //    		return "add-proveedor :: municipios";
 //    	}
-    
+//Metodo que nos permite hacer una solicitud para hacer un edit, para ver que tiene ese registro, antes de esto recibe unos parametros          
     @GetMapping("/{dni}/editProveedor/{id_proveedor}")
     public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, Model model) {
     	Proveedor proveedor = iProveedorRepo.findById(idProveedor).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + idProveedor));
@@ -106,7 +108,8 @@ public class ProveedorController {
         model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-proveedor";
     }
-    
+  //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
+  //Pero si es verdadero llama el repository si esta lo actualiza.   
     @PostMapping("/{dni}/updateProveedor/{id_proveedor}")
     public String updateProveedor(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, @Valid Proveedor proveedor, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -119,7 +122,7 @@ public class ProveedorController {
         model.addAttribute("proveedors", iProveedorRepo.findAll());
         return "listarProveedor";
     }
-    
+  //Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista            
     @GetMapping("/{dni}/deleteProveedor/{id_proveedor}")
     public String deleteProveedor(@PathVariable("dni")String dni,@PathVariable("id_proveedor") int idProveedor, Model model) {
         Proveedor proveedor = iProveedorRepo.findById(idProveedor).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + idProveedor));
@@ -128,7 +131,7 @@ public class ProveedorController {
         return "listarProveedor";
     }
     
-    
+  //Metodo que nos devuelve una cadena(lista)     
     @GetMapping("/{dni}/listarProveedor")
     public String ListarProveedor(@PathVariable ("dni")String dni,Model model) {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());
