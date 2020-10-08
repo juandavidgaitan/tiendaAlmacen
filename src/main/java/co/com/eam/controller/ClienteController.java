@@ -40,7 +40,7 @@ public class ClienteController {
 	@Autowired
 	private IMunicipioRepo iMunicipioRepo;	
 	
-	
+	 
 	 
 	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
 	@GetMapping("/{id_usuario}/addcliente")
