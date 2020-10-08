@@ -15,7 +15,7 @@
         <script th:src="@{/js/fontawesome.js}"></script>
     </head>
 <body>
-
+<!--Etiqueta nav la cual es la que contiene el menu -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,7 +92,7 @@
 	</div>
 	
 	<div class="row">
-                
+                <!--Etiqueta para ponerle el nombre a la vista de Vendedor-->
                     <div class="col-sm-8"><h2>Vendedor <b>Detalles</b></h2></div>
                     <div class="col-sm-4">
                    </div>
@@ -112,9 +112,11 @@
                 </div>
             </div>
              <div class="col-md-9">
+              <!--Creacion de la tabla--->
            <table class="table table-bordered">
                 <thead> 
                                 <tr>
+                                  <!--Nombre de los campos de la tabla --->
                                     <th th:text="Id"></th>
                                     <th th:text="Nombre"></th>
                                     <th th:text="Apellido"></th>
@@ -129,6 +131,7 @@
                                 </tr>
                             </thead>
                             <tbody>
+                              <!--Accedo a el objeto usuario y traigo los atributos para que me los liste-->
                                 <tr th:each="usus : ${usuario}">
                                     <td th:text="${usus.id_usuario}"></td>
                                     <td th:text="${usus.nombre}"></td>
@@ -140,7 +143,7 @@
                                     <td th:text="${usus.nombre_usuario}"></td>
                                     <td>
                                    
-                                  
+                                    <!--Botones de modificar y eliminar -->
                                     <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editUsuario/{id_usuario}(id_usuario=${usus.id_usuario})}" 
                                     class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                     

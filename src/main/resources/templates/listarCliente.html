@@ -15,7 +15,7 @@
         <script th:src="@{/js/fontawesome.js}"></script>
     </head>
 <body>
-
+<!--Etiqueta nav la cual es la que contiene el menu del listar cliente -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,11 +53,9 @@
   </div>  
 </nav>
 	</nav>
-		</div>  
-	</div>
 	
 	<div class="row">
-                
+                	<!--Etiqueta para ponerle el nombre a la vista de Cliente -->
                     <div class="col-sm-8"><h2>Cliente <b>Detalles</b></h2></div>
                     <div class="col-sm-4">
                    </div>
@@ -80,10 +78,11 @@
             </div>
             <div class="col-md-9">
             
-            
+            <!--Creacion de la tabla--->
             <table class="table table-bordered">
                 <thead>                
                     <tr>
+                    <!--Nombre de los campos de la tabla --->
                     	<th th:text="Cedula"></th>
                           <th th:text="Nombre"></th>
                           <th th:text="Apellido"></th>
@@ -97,6 +96,8 @@
                     </tr>
                 </thead>
                 <tbody>
+         <!--Accedo a el objeto clientes y traigo los atributos para que me los liste-->
+                
               <tr th:each="clie : ${cliente}">
               <td th:text="${clie.cedula}"></td>  
                <td th:text="${clie.nombre}"></td>  

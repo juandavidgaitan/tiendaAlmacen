@@ -22,11 +22,14 @@ import co.com.eam.repository.IPaiRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
  
-
+//Esta clase es la encargada de recibir todas las solicitudes que vienen de la vistas relacionadas con el usuario
 
 @Controller
 @RequestMapping("/administrador")
 public class UsuarioController {
+	
+	//Por medio de las inyecciones de dependencias este controlader esta accediendo al los siguientes repositorios
+	
 	@Autowired
 	private IUsuarioRepo iUsuarioRepo;
 	@Autowired
@@ -38,7 +41,7 @@ public class UsuarioController {
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 	
-	 
+	 //Metodo que nos permite acceder a la plantilla add-usuarrio con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases
 	
 	@GetMapping("/{dni}/addusuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {
@@ -49,6 +52,8 @@ public class UsuarioController {
         return "add-usuario";
     }
 
+	//Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
+	//En este caso es para agregar un nuevo Usuario, estos metodos tienen que ser publicos
 	 @PostMapping("/{dni}/add_usuario")
 	    public String addProveedor(@PathVariable("dni") String dni,@Valid Usuario usuario, BindingResult result, Model model) {
 	        if (result.hasErrors()) {

@@ -104,7 +104,7 @@
         <div class="table-wrapper">
             <div class="table-title">
             
-            
+            	<!--Etiqueta para ponerle el nombre a la vista de Categoria -->
                 <div class="row">
                 
                     <div class="col-sm-8"><h2>Categoria <b>Detalles</b></h2></div>
@@ -115,10 +115,11 @@
             </div>
             <div class="col-md-9">
             
-            
+             <!--Creacion de la tabla--->
             <table class="table table-bordered">
                 <thead>                
                     <tr>
+                     <!--Nombre de los campos de la tabla --->
                           <th th:text="nombre"></th>
                           <th th:text="actions"></th>    
                           <a href="/administrador/{dni}(dni=${administrador.dni})/addCategoria" 
@@ -126,11 +127,12 @@
                     </tr>
                 </thead>
                 <tbody>
+                <!--Accedo a el objeto categoria y traigo los atributos para que me los liste-->
               <tr th:each="cate : ${categorias}">
                <td th:text="${cate.nombre}"></td>  
                             <td>     
                                  
-                             
+                              <!--Botones de modificar y eliminar -->
                                   <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editCategoria/{id_categoria}(id_categoria=${cate.id_categoria})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                   
