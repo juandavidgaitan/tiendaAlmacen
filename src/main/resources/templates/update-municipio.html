@@ -19,7 +19,7 @@
 
 <body>
 
-
+<!-- Creacion de template para modificar  -->
 	<div class="container register">
 		<h2 class="mb-5" th:text="Modificar-Municipio"></h2>
 		<div class="row">
@@ -34,6 +34,9 @@
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
 							aria-labelledby="home-tab">
 							<div class="row register-form">
+
+					<!-- Aca me trae los datos que quiera modificar y podemos cambiarlo por lo que deseemos  -->
+
 
 								<label for="nombre" class="col-form-label"
 									th:text="Nombre-Municipio"></label> <input type="text"
@@ -51,7 +54,7 @@
 										</option>
 									</select>
 								</div>
-
+<!-- Boto para modificar -->
 								<div class="col-md-6 mt-5">
 									<input type="submit" class="btnRegister" th:value="MODIFICAR">
 								</div>
