@@ -38,7 +38,7 @@ public class UsuarioController {
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 	
-	 
+	//Metodo que nos permite acceder a la plantilla add-usuario con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases		 
 	
 	@GetMapping("/{dni}/addusuario")
     public String showSignUpForm(@PathVariable("dni") String dni,Usuario usuario, Model model) {
@@ -48,7 +48,8 @@ public class UsuarioController {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());
         return "add-usuario";
     }
-
+	//Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
+	 //En este caso es para agregar un nuevo usuario , estos metodos tienen que se publicos
 	 @PostMapping("/{dni}/add_usuario")
 	    public String addProveedor(@PathVariable("dni") String dni,@Valid Usuario usuario, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
@@ -100,7 +101,7 @@ public class UsuarioController {
 //    		mo.addAttribute("municipios", iMunicipioRepo.ListarMunicipioDeartamento(id));
 //    		return "add-proveedor :: municipios";
 //    	}
-    
+	//Metodo que nos permite hacer una solicitud para hacer un edit, para ver que tiene ese registro, antes de esto recibe unos parametros           
     @GetMapping("/{dni}/editUsuario/{dni}")
     public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
     	Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + Dni));
@@ -108,7 +109,8 @@ public class UsuarioController {
         model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-usuario";
     }
-    
+  //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
+  //Pero si es verdadero llama el repository si esta lo actualiza.    
     @PostMapping("/{dni}/updateUsuario/{dni}")
     public String updateUsuario(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, @Valid Usuario usuario, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -121,7 +123,7 @@ public class UsuarioController {
         model.addAttribute("usuario", iUsuarioRepo.findAll());
         return "listarUsuario";
     }
-    
+    //Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista            
     @GetMapping("/{dni}/deleteUsuario/{dni}")
     public String deleteProveedor(@PathVariable("dni")String dni,@PathVariable("dni") int Dni, Model model) {
         Usuario usuario = iUsuarioRepo.findById(Dni).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + Dni));
@@ -130,7 +132,7 @@ public class UsuarioController {
         return "listarUsuario";
     }
     
-    
+//Metodo que nos devuelve una cadena(lista)      
     @GetMapping("/{dni}/listarUsuario")
     public String ListarProveedor(@PathVariable ("dni")String dni,Model model) {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());

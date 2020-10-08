@@ -38,13 +38,13 @@ public class BodegaController {
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
 	
-	
+//Metodo que nos permite acceder a la plantilla add-bodega con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases
     @GetMapping("/addbodega")
     public String showSignUpForm(Bodega bodega, Model model) {
     	Modelos(model);
         return "add-bodega";
     }
-    
+//Anotación que se encarga de relacionar un método con una petición http    
     @RequestMapping(value = "{dni}/add_bodega", method = RequestMethod.POST)
     public String addbodega(@Valid Bodega bodega, BindingResult result, Model model) {
     	if (result.hasErrors()) {
@@ -74,7 +74,7 @@ public class BodegaController {
 		model.addAttribute("municipios", iMunicipioRepo.ListarMunicipioDeartamento(id));
 		return "add-bodega :: municipios";
 	}
-    
+//Metodo que nos devuelve una cadena(lista)   
     @GetMapping("/{dni}/listarBodega")
     public String ListarCate(@PathVariable ("dni")String dni,Model model) {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());

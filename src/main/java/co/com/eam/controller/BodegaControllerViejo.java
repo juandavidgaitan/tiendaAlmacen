@@ -90,7 +90,7 @@ public class BodegaControllerViejo {
 //    		model.addAttribute("municipios", iMunicipioRepo.ListarMunicipioDeartamento(id));
 //    		return "add-bodega :: municipios";
 //    	}
-    
+//Metodo que nos permite hacer una solicitud para hacer un edit, para ver que tiene ese registro, antes de esto recibe unos parametros    
     @GetMapping("/{dni}/editBodega/{id_bodega}")
     public String showUpdateForm(@PathVariable("id_bodega") int idBodega, Model model) {
     	Bodega bodega = iBodegaRepo.findById(idBodega).orElseThrow(() -> new IllegalArgumentException("Invalid bodega id:" + idBodega));
@@ -98,7 +98,8 @@ public class BodegaControllerViejo {
         model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-bodega";
     }
-    
+ //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
+ //Pero si es verdadero llama el repository si esta lo actualiza.   
     @PostMapping("/{dni}/updateBodega/{id_bodega}")
     public String updateBodega(@PathVariable("dni")String dni,@PathVariable("id_bodega") int idBodega, @Valid Bodega bodega, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -111,7 +112,7 @@ public class BodegaControllerViejo {
         model.addAttribute("bodegas", iBodegaRepo.findAll());
         return "listarBodega";
     }
-    
+//Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista   
     @GetMapping("/{dni}/deleteBodega/{id_bodega}")
     public String deleteBodega(@PathVariable("dni")String dni,@PathVariable("id_bodega") int idBodega, Model model) {
         Bodega bodega = iBodegaRepo.findById(idBodega).orElseThrow(() -> new IllegalArgumentException("Invalid bodega id:" + idBodega));
@@ -119,6 +120,7 @@ public class BodegaControllerViejo {
     	model.addAttribute("bodegas", iBodegaRepo.findAll());
         return "listarBodega";
     }
+//Metodo que nos devuelve una cadena(lista)
     @GetMapping("/{dni}/listarBodega")
     public String ListarBodega(@PathVariable ("dni")String dni,Model model) {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());

@@ -40,7 +40,7 @@ public class ProductoController {
 	@Autowired
 	private ISubCategoriaRepo iSubcategoriaRepo;	
 
-	    
+//Metodo que nos permite acceder a la plantilla add-producto con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases		    
 	@GetMapping("/{dni}/addProducto")
 	public String showSignUpForm(@PathVariable("dni") String dni,Producto producto,Model model) {
 		model.addAttribute("productos", iProductoRepo.findAll());
@@ -51,7 +51,8 @@ public class ProductoController {
      
         return "add-producto";
     }
-
+//Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
+//En este caso es para agregar una nuevo producto, estos metodos tienen que se publicos   
 	 @PostMapping("/{dni}/add_producto")
 	 public String addCategoria(@PathVariable("dni") String dni,@Valid Producto producto, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
@@ -65,7 +66,7 @@ public class ProductoController {
 	        return "listarProducto";
 	    }
 	
-    
+//Metodo que nos permite hacer una solicitud para hacer un edit, para ver que tiene ese registro, antes de esto recibe unos parametros           
 	 @GetMapping("/{dni}/editProducto/{id_producto}")
 	 public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, Model model) {
 	   	Producto producto = iProductoRepo.findById(idProducto).orElseThrow(() -> new IllegalArgumentException("Invalid categoria id:" + idProducto));
@@ -75,7 +76,8 @@ public class ProductoController {
 			model.addAttribute("subcategorias", iSubcategoriaRepo.findAll());
 	       return "update-producto";
 	   }
-	   
+//Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
+//Pero si es verdadero llama el repository si esta lo actualiza	   
 	   @PostMapping("/{dni}/updateProducto/{id_producto}")
 	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model) {
 	       if (result.hasErrors()) {
@@ -88,7 +90,7 @@ public class ProductoController {
 	       model.addAttribute("productos", iProductoRepo.findAll());
 	       return "listarProducto";
 	   }
-    
+//Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista             
     @GetMapping("/{dni}/deleteProducto/{id_producto}")
     public String deleteProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, Model model) {
         Producto producto = iProductoRepo.findById(idProducto).orElseThrow(() -> new IllegalArgumentException("Invalid producto id:" + idProducto));
@@ -96,6 +98,7 @@ public class ProductoController {
     	model.addAttribute("productos", iProductoRepo.findAll());
         return "listarProducto";
     }
+  //Metodo que nos devuelve una cadena(lista)
     @GetMapping("/{dni}/listarProducto")
     public String ListarProducto(@PathVariable("dni")String dni,Model model) {
     model.addAttribute("administrador",iAdministradorRepo.findAll());

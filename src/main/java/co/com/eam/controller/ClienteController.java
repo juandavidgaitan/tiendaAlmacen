@@ -42,7 +42,7 @@ public class ClienteController {
 	
 	
 	 
-	
+	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
 	@GetMapping("/{id_usuario}/addcliente")
     public String showSignUpForm(@PathVariable("id_usuario") String id_usuario,Cliente cliente, Model model) {
 		model.addAttribute("paises", iPaiRepo.findAll());
@@ -51,7 +51,9 @@ public class ClienteController {
     	model.addAttribute("usuario",iUsuarioRepo.findAll());
         return "add-cliente";
     }
-
+	
+//Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
+//En este caso es para agregar un	 nuevo cliente, estos metodos tienen que se publicos    
 	 @PostMapping("/{id_usuario}/add_cliente")
 	    public String addProveedor(@PathVariable("id_usuario") String id_usuario,@Valid Cliente cliente, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
@@ -103,7 +105,7 @@ public class ClienteController {
 //    		mo.addAttribute("municipios", iMunicipioRepo.ListarMunicipioDeartamento(id));
 //    		return "add-proveedor :: municipios";
 //    	}
-    
+//Metodo que nos permite hacer una solicitud para hacer un edit, para ver que tiene ese registro, antes de esto recibe unos parametros   
     @GetMapping("/{id_usuario}/editCliente/{cedula}")
     public String showUpdateForm(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
     	Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + cedula));
@@ -111,7 +113,8 @@ public class ClienteController {
         model.addAttribute("municipios", iMunicipioRepo.findAll());
         return "update-cliente";
     }
-    
+//Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
+//Pero si es verdadero llama el repository si esta lo actualiza.     
     @PostMapping("/{id_usuario}/updateCliente/{cedula}")
     public String updateUsuario(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, @Valid Cliente cliente, BindingResult result, Model model) {
         if (result.hasErrors()) {
@@ -125,6 +128,7 @@ public class ClienteController {
         return "listarCliente";
     }
     
+//Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista      
     @GetMapping("/{id_usuario}/deleteCliente/{cedula}")
     public String deleteProveedor(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
         Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + cedula));
@@ -133,8 +137,8 @@ public class ClienteController {
         return "listarCliente";
     }
     
-    
-    @GetMapping("/{id_usuario}/listarCliente")
+//Metodo que nos devuelve una cadena(lista)
+ @GetMapping("/{id_usuario}/listarCliente")
     public String ListarProveedor(@PathVariable ("id_usuario")String id_usuario,Model model) {
     	model.addAttribute("usuario",iUsuarioRepo.findAll());
         model.addAttribute("cliente", iClienteRepo.findAll());
