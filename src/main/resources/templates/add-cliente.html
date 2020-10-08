@@ -14,7 +14,7 @@
 
 <body>
 
-
+<!-- Template para Agregar -->
 	<div class="container register">
 		<h2 class="mb-5" th:text="Agregar-Cliente"></h2>
 		<div class="row">
@@ -30,7 +30,7 @@
 					<div class="tab-content" id="myTabContent">
 						<br> <br> <br> <br> <br>
 						<div class="row">
-							
+							  <!-- Campos para llenar el formulario -->
 						 <div class="form-group col-md-6">
                                 <label for="cedula" class="col-form-label" 
                                 th:text="Cedula"></label>
@@ -107,7 +107,7 @@
 	                            <input type="text" th:field="*{direccion}" class="form-control" id="direccion" th:placeholder="Direccion" required="required">
 	                  	        <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}" class="text-danger"></span>
 	                       </div>
-							
+							<!-- Boton para agregar -->
 							<div class="col-md-6 mt-5">
 								<input type="submit" class="btnRegister" th:value="Agregar">
 							</div>

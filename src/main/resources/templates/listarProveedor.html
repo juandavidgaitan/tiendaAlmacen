@@ -17,7 +17,7 @@
         <script th:src="@{/js/fontawesome.js}"></script>
 	</head>
 	<body>
-
+<!--Etiqueta nav la cual es la que contiene el menu-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,8 +87,6 @@
 	<img src="../images/admi1.jpg" class="img-fluid" alt="Responsive image" >
 	<br><br>
 
-		</div>  
-	</div>
 	
 
 <div class="container">
@@ -96,7 +94,7 @@
             <div class="table-title">
             
                 <div class="row">
-                
+                <!--Etiqueta para ponerle el nombre a la vista de Proveedor -->
                     <div class="col-sm-8"><h2>Proveedor <b>Detalles</b></h2></div>
                     <div class="col-sm-4">
                     
@@ -105,10 +103,11 @@
             </div>
             <div class="col-md-9">
             
-            
+            <!--Creacion de la tabla--->
             <table class="table table-bordered">
                 <thead>                
                     <tr>
+                    <!--Nombre de los campos de la tabla --->
                           <th th:text="nombre"></th>
                           <th th:text="Telefono"></th>
                           <th th:text="Direccion"></th>
@@ -119,6 +118,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                 <!--Accedo a el objeto bodegas y traigo los atributos para que me los liste-->
               <tr th:each="po : ${proveedors}">
                <td th:text="${po.nombre}"> </td>  
                <td th:text="${po.telefono}"> </td> 
@@ -126,7 +126,7 @@
                <td th:text="${po.municipio.nombre}"></td>  
                             <td> 
                              
-                                  
+                                   <!--Botones de modificar y eliminar -->
                                   <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editProveedor/{id_proveedor}(id_proveedor=${po.id_proveedor})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                             

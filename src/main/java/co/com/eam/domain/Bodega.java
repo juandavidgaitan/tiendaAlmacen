@@ -6,7 +6,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the bodega database table.
+ La clase persistente para la tabla en la base de datos de la bodega.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -14,6 +15,8 @@ import java.util.List;
 public class Bodega implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_bodega")
 	private int id_bodega;
@@ -22,6 +25,8 @@ public class Bodega implements Serializable {
 
 	private String nombre;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Municipio
 	@ManyToOne
 	@JoinColumn(name="Municipio_fk")

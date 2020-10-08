@@ -20,7 +20,7 @@
     </head>
     <body>
     
-    
+    <!--Etiqueta nav la cual es la que contiene el menu-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,11 +85,9 @@
   </div>  
 </nav>
 	</nav>
-		</div>  
-	</div>
 	
 	<div class="row">
-                
+                <!--Etiqueta para ponerle el nombre a la vista de Producto -->
                     <div class="col-sm-8"><h2>Producto <b>Detalles</b></h2></div>
                     <div class="col-sm-4">
                    </div>
@@ -110,10 +108,11 @@
             </div>
             <div class="col-md-9">
             
-            
+            <!--Creacion de la tabla--->
             <table class="table table-bordered">
                 <thead>                
                     <tr>
+                     <!--Nombre de los campos de la tabla --->
                           <th th:text="nombre"></th>
                           <th th:text="PrecioUnitario"></th>
                           <th th:text="PrecioCompra"></th>
@@ -128,6 +127,8 @@
                     </tr>
                 </thead>
                 <tbody>
+<!--Accedo a el objeto productos y traigo los atributos para que me los liste-->
+                
               <tr th:each="po : ${productos}">
                <td th:text="${po.nombre}"> </td>  
                <td th:text="${po.precioUnitario}"> </td>  
@@ -140,7 +141,7 @@
                             <td> 
                               
                                   
-
+ <!--Botones de modificar y eliminar -->
                                  <a th:href="@{/administrador/{dni}(dni=${administrador.dni})/editProducto/{id_producto}(id_producto=${po.id_producto})}" 
                                   class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
                                   

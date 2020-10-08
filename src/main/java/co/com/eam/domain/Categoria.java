@@ -11,7 +11,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the categoria database table.
+La clase persistente para la tabla en la base de datos de la categoria.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -19,12 +20,16 @@ import java.util.List;
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_categoria")
 	private int id_categoria;
 
 	private String nombre;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Subcategoria
 	@OneToMany(mappedBy="categoria")
 	private List<Subcategoria> subcategorias;

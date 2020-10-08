@@ -9,7 +9,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the producto database table.
+La clase persistente para la tabla en la base de datos del producto.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -18,6 +19,8 @@ import java.util.List;
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_producto")
 	private int id_producto;
@@ -35,6 +38,8 @@ public class Producto implements Serializable {
 	@Column(name="precio_unitario")
 	private double precioUnitario;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to DetalleFactura
 	@OneToMany(mappedBy="producto")
 	private List<DetalleFactura> detalleFacturas;
