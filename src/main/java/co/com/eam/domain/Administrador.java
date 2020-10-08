@@ -5,7 +5,9 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the administrador database table.
+ * 
+La clase persistente para la tabla en la base de datos del administrador.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -13,6 +15,8 @@ import javax.persistence.*;
 public class Administrador implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	private int dni;
 

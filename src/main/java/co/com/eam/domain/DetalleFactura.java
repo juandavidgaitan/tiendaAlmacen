@@ -5,7 +5,8 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the detalle_factura database table.
+La clase persistente para la tabla en la base de datos de DetalleFactura.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -14,6 +15,8 @@ import javax.persistence.*;
 public class DetalleFactura implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_detalle")
 	private int idDetalle;
@@ -21,6 +24,8 @@ public class DetalleFactura implements Serializable {
 	@Column(name="total_factura")
 	private String totalFactura;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Factura
 	@ManyToOne
 	@JoinColumn(name="Factura_fk")

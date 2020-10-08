@@ -10,7 +10,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the departamento database table.
+La clase persistente para la tabla en la base de datos del Departamento.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -19,12 +20,16 @@ import java.util.List;
 public class Departamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_departamento")
 	private int id_departamento;
 
 	private String nombre;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Pai
 	@ManyToOne
 	@JoinColumn(name="pais_fk")

@@ -5,7 +5,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the proveedor database table.
+La clase persistente para la tabla en la base de datos del proveedor.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -13,6 +14,8 @@ import java.util.List;
 public class Proveedor implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_proveedor")
 	private int id_proveedor;
@@ -23,6 +26,8 @@ public class Proveedor implements Serializable {
 
 	private String telefono;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Producto
 	@OneToMany(mappedBy="proveedor")
 	private List<Producto> productos;

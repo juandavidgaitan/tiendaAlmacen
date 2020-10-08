@@ -7,7 +7,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the cliente database table. 
+ La clase persistente para la tabla en la base de datos del Cliente.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -15,6 +16,8 @@ import java.util.List;
 public class Cliente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="cedula")
 	private int cedula;
@@ -27,6 +30,8 @@ public class Cliente implements Serializable {
 
 	private String telefono;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Municipio
 	@ManyToOne
 	@JoinColumn(name="Municipio_fk")

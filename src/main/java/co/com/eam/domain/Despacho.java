@@ -5,7 +5,8 @@ import javax.persistence.*;
 
 
 /**
- * The persistent class for the despacho database table.
+La clase persistente para la tabla en la base de datos del Despacho.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -13,12 +14,16 @@ import javax.persistence.*;
 public class Despacho implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_despacho")
 	private int idDespacho;
 
 	private String direccion;
 
+	//Asociocion o relacion con otras tablas
+	
 	//bi-directional many-to-one association to Cliente
 	@ManyToOne
 	@JoinColumn(name="cliente_fk")

@@ -10,7 +10,8 @@ import java.util.List;
 
 
 /**
- * The persistent class for the usuario database table.
+La clase persistente para la tabla en la base de datos del Usuario.
+Identidad encargada de instanciar los atribotes de esta clase y crear gett y sett y constructores
  * 
  */
 @Entity
@@ -19,6 +20,8 @@ import java.util.List;
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	//Creacion de atributos
+	
 	@Id
 	@Column(name="id_usuario")
 	private int id_usuario;
@@ -40,6 +43,8 @@ public class Usuario implements Serializable {
 	private String nombre_usuario;
 
 	private String username;
+	
+	//Asociocion o relacion con otras tablas
 
 	//bi-directional many-to-one association to Despacho
 	@OneToMany(mappedBy="usuario")
