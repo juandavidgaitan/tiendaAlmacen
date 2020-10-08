@@ -19,7 +19,7 @@
 
 <body>
 
-
+	<!-- Template para Agregar -->
 	<div class="container register">
 		<h2 class="mb-5" th:text="Agregar-SubCategoria"></h2>
 		<div class="row">
@@ -36,7 +36,7 @@
 						<div class="tab-pane fade show active" id="home" role="tabpanel"
 							aria-labelledby="home-tab">
 							<div class="row register-form">
-
+ <!-- Campos para llenar el formulario -->
 								<label for="descripcion" class="col-form-label"
 									th:text="Descripcion-SubCategoria"></label> <input type="text"
 									th:field="*{descripcion}" class="form-control" id="descripcion"
@@ -54,7 +54,7 @@
 										</option>
 									</select>
 								</div>
-
+<!-- Boton para agregar -->
 								<div class="col-md-6 mt-5">
 									<input type="submit" class="btnRegister" th:value="REGISTRAR">
 								</div>
