@@ -60,7 +60,7 @@ public class SubcategoriaController {
     @PostMapping("/{dni}/updateSubcategoria/{id_subcategoria}")
     public String updateSubcategoria(@PathVariable("id_subcategoria") int idSubCategoria, @Valid Subcategoria subcategoria, BindingResult result, Model model) {
         if (result.hasErrors()) {
-        	 model.addAttribute("subcategoria", subcategoria);
+        	model.addAttribute("subcategoria", subcategoria);
         	subcategoria.setId_subcategoria(idSubCategoria);
             return "update-subca";
         }
