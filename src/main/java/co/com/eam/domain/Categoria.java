@@ -2,10 +2,12 @@ package co.com.eam.domain;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 import javax.persistence.*;
 
-
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
@@ -16,7 +18,9 @@ Identidad encargada de instanciar los atribotes de esta clase y crear gett y set
  * 
  */
 @Entity
+@AllArgsConstructor
 @NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
+@Table(name = "categoria")
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
