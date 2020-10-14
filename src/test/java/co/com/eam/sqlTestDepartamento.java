@@ -15,15 +15,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import co.com.eam.domain.Categoria;
+import co.com.eam.domain.Departamento;
 import co.com.eam.domain.Pai;
 import co.com.eam.domain.Proveedor;
 import co.com.eam.repository.ICategoriaRepo;
+import co.com.eam.repository.IDepartamentoRepo;
 import co.com.eam.repository.IPaiRepo;
 import co.com.eam.repository.IProveedorRepo;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
-class SqlTestPais {
+class sqlTestDepartamento {
 	/*
 	 * @Autowired private UserRepository userRepository;
 	 * 
@@ -39,92 +41,94 @@ class SqlTestPais {
 	  private TestEntityManager entityManager;
 
 	  @Autowired
-	  IPaiRepo repository;
+	  IDepartamentoRepo repository;
 	  
 	//saber si un usuario esta vacio
 			@Test
 			  public void should_find_no_users_if_repository_is_empty() {
-			    Iterable<Pai> pais = repository.findAll();
+			    Iterable<Departamento> departamentos = repository.findAll();
 			    
-			    for (Pai pai : pais) {
-					System.out.println("Pai:     "+pai.toString());
+			    for (Departamento departamento : departamentos) {
+					System.out.println("Proveedor:     "+departamento.toString());
 				}
 
-			    assertThat(pais).isEmpty();
+			    assertThat(departamentos).isEmpty();
 			  }
+			
 
 	//guardar un usuario
 		@Test
-		  public void should_store_a_categoria() {
-			Pai cate = repository.save(new Pai(1, "colombia"));
+		  public void should_store_a_user() {
+			
+			Departamento depa = repository.save(new Departamento (1, "Quindio"));
 
-		   assertThat(cate).hasFieldOrPropertyWithValue("id_pais", 1);
-		   assertThat(cate).hasFieldOrPropertyWithValue("nombre", "colombia");
+		   assertThat(depa).hasFieldOrPropertyWithValue("id_departamento", 1);
+		   assertThat(depa).hasFieldOrPropertyWithValue("nombre", "Quindio");
 		 
 		  }
 		
 		 //buscar usuario por una id
 		  @Test
 		  public void should_find_user_by_id() {
-			  Pai usu1   = new Pai(1, "juan");
+			  Departamento usu1   = new Departamento(1, "quindio");
 		    entityManager.persist(usu1);
 
 		    
-		    Pai foundUser = repository.findById(usu1.getId_pais()).get();
+		    Departamento foundUser = repository.findById(usu1.getId_departamento()).get();
 
 		    assertThat(foundUser).isEqualTo(usu1);
 		  }
-		  
  //buscar un usuario por el nombre
 		  
 		  @Test
 		  public void should_find_users_by_name_containing_string() {
-			  Pai usu1   = new Pai(1, "colombia");
+			  Departamento usu1   = new Departamento(1, "colombia");
 		    entityManager.persist(usu1);
 
-		    Pai usu2   = new Pai(2, "brasil");
+		    Departamento usu2   = new Departamento(2, "ecuador");
 		    entityManager.persist(usu2);
 
-		    Pai usu3  = new Pai(3, "chile");
+		    Departamento usu3  = new Departamento(3, "argentina");
 		    entityManager.persist(usu3);
 
-		    Iterable<Pai> users = (Iterable<Pai>) repository.BuscarPaisNombre("colombia");
-		    Iterable<Pai> user = (Iterable<Pai>) repository.BuscarPaisNombre("brasil");
+		    Iterable<Departamento> users = (Iterable<Departamento>) repository.BuscarDepartamentoNombre("colombia");
+		    Iterable<Departamento> user = (Iterable<Departamento>) repository.BuscarDepartamentoNombre("ecuador");
 
 		    assertThat(users).hasSize(1).contains(usu1);
 		    assertThat(user).hasSize(1).contains(usu2);
 		  }
-
 		//trae todos los usuario de la base datos
 		  @Test
-		  public void should_find_all_categorias() {
-			  Pai cate1   = new Pai(1, "colombia");
-		    entityManager.persist(cate1);
+		  public void should_find_all_users() {
+			  Departamento usu1   = new Departamento(1, "colombia");
+		    entityManager.persist(usu1);
 
 		    
 
-		    Iterable<Pai> users = repository.findAll();
+		    Iterable<Departamento> users = repository.findAll();
 
-		    assertThat(users).hasSize(1).contains(cate1 );
+		    assertThat(users).hasSize(1).contains(usu1 );
 		  }
+
+		   
 		  
 		  //actualizar usuario por llave primaria
 		  @Test
 		  public void should_update_user_by_id() {
-			  Pai usu1   = new Pai(1, "colombia");
+			  Departamento usu1   = new Departamento(1, "colombia");
 		    entityManager.persist(usu1);
 
 		   
-		    Pai updatedUsu = new Pai(1, "colombia");
+		    Departamento updatedUsu = new Departamento(1, "argentina");
 
-		    Pai usu = repository.findById(usu1.getId_pais()).get();
+		    Departamento usu = repository.findById(usu1.getId_departamento()).get();
 		    usu.setNombre(updatedUsu.getNombre());
 		    
 		    repository.save(usu);
 
-		    Pai checkUsu = repository.findById(usu1.getId_pais()).get();
+		    Departamento checkUsu = repository.findById(usu1.getId_departamento()).get();
 		    
-		    assertThat(checkUsu.getId_pais()).isEqualTo(usu1.getId_pais());
+		    assertThat(checkUsu.getId_departamento()).isEqualTo(usu1.getId_departamento());
 		    assertThat(checkUsu.getNombre()).isEqualTo(updatedUsu.getNombre());
 		     
 
@@ -133,18 +137,18 @@ class SqlTestPais {
 		  //eliminar usuario por llave primaria
 		  @Test
 		  public void should_delete_user_by_id() {
-			  Pai usu1   = new Pai(1, "colombia");
+			  Departamento usu1   = new Departamento(1, "colombia");
 		    entityManager.persist(usu1);
 
-		    Pai usu2   = new Pai(2, "chile");
+		    Departamento usu2   = new Departamento(2, "argentina");
 		    entityManager.persist(usu2);
 
-		    Pai usu3  = new Pai(3, "ecuador");
+		    Departamento usu3  = new Departamento(3, "ecuador");
 		    entityManager.persist(usu3);
 
-		    repository.deleteById(usu2.getId_pais());
+		    repository.deleteById(usu2.getId_departamento());
 
-		    Iterable<Pai> users = repository.findAll();
+		    Iterable<Departamento> users = repository.findAll();
 
 		    assertThat(users).hasSize(2).contains(usu1, usu3 );
 		  }
@@ -152,13 +156,12 @@ class SqlTestPais {
 		  //eliminar todos los usuarios
 		  @Test
 		  public void should_delete_all_users() {
-		    entityManager.persist(new Proveedor(1, "colombia"));
-		    entityManager.persist(new Proveedor(2, "ecuador"));
+		    entityManager.persist(new Departamento(1, "colombia"));
+		    entityManager.persist(new Departamento(2, "argentina"));
 
 		    repository.deleteAll();
 
 		    assertThat(repository.findAll()).isEmpty();
 		  }
-
 		  
 }
