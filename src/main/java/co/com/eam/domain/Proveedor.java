@@ -25,6 +25,14 @@ public class Proveedor implements Serializable {
 	private String nombre;
 
 	private String telefono;
+	
+
+	public Proveedor(int id_proveedor, String nombre) {
+		super();
+		this.id_proveedor = id_proveedor;
+		this.nombre = nombre;
+		 
+	}
 
 	//Asociocion o relacion con otras tablas
 	
