@@ -36,6 +36,14 @@ public class Pai implements Serializable {
 
 	public Pai() {
 	}
+	
+
+	public Pai(int id_pais, String nombre) {
+		super();
+		this.id_pais = id_pais;
+		this.nombre = nombre;
+	}
+
 
 	public int getId_pais() {
 		return id_pais;

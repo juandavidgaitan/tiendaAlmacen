@@ -111,7 +111,7 @@ class SqlTestCategoria {
 		    entityManager.persist(cate1);
 
 		   
-		    Proveedor updatedUsu = new Proveedor(1, "aseo");
+		    Categoria updatedUsu = new Categoria(1, "aseo");
 
 		    Categoria cate = repository.findById(cate1.getId_categoria()).get();
 		    cate.setNombre(updatedUsu.getNombre());
