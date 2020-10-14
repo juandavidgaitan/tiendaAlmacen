@@ -31,6 +31,8 @@ public class Categoria implements Serializable {
 	private int id_categoria;
 
 	private String nombre;
+	
+	
 
 	//Asociocion o relacion con otras tablas
 	
@@ -41,12 +43,7 @@ public class Categoria implements Serializable {
 	public Categoria() {
 	}
 	 
-	public Categoria(int id_categoria, String nombre) {
-		super();
-		this.id_categoria = id_categoria;
-		this.nombre = nombre;
-	}
-
+	
 	public int getId_categoria() {
 		return id_categoria;
 	}
@@ -74,7 +71,20 @@ public class Categoria implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	
+
+	public Categoria(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+
+	public Categoria(int id_categoria, String nombre) {
+		super();
+		this.id_categoria = id_categoria;
+		this.nombre = nombre;
+	}
+
+
 
 
 }
