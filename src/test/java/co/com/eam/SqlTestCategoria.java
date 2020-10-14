@@ -3,6 +3,7 @@ package co.com.eam;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
+
  
 
 import org.junit.jupiter.api.Test;
@@ -16,7 +17,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import co.com.eam.domain.Categoria;
 import co.com.eam.domain.Proveedor;
 import co.com.eam.repository.ICategoriaRepo;
-import co.com.eam.repository.IProveedorRepo;
 
 @ExtendWith(SpringExtension.class)
 @DataJpaTest

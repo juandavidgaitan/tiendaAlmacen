@@ -44,6 +44,13 @@ public class Usuario implements Serializable {
 
 	private String username;
 	
+	
+	public Usuario(int id_usuario, String nombre) {
+		super();
+		this.id_usuario = id_usuario;
+		this.nombre = nombre;
+	}
+
 	//Asociocion o relacion con otras tablas
 
 	//bi-directional many-to-one association to Despacho

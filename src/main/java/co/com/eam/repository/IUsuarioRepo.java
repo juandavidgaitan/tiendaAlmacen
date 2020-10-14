@@ -18,7 +18,7 @@ import co.com.eam.domain.Usuario;
 public interface IUsuarioRepo extends
 CrudRepository<Usuario, Integer>{
 	
-	//Usuario findByNombre(String Nombre);
+ 
 	
 	@Query("SELECT u From Usuario u WHERE u.username=?1 and u.contrasena=?2")
 	Usuario Login(String username, String contrasena);
@@ -29,7 +29,7 @@ CrudRepository<Usuario, Integer>{
 	@Query("SELECT u FROM Usuario u WHERE u.nombre=?1")
 	List<Usuario> BuscarUsuarioNombre(String nombre);
   
-	@Query("SELECT u FROM Usuario u WHERE u.nombre= : nombre")
-	Usuario findByNameCustomQuery(@Param("nombre") String nombre);
+	//@Query("SELECT u FROM Usuario u WHERE u.nombre= : nombre")
+	//Usuario findByNameCustomQuery(@Param("nombre") String nombre);
 	
 }
