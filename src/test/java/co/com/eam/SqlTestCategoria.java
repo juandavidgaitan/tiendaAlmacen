@@ -34,42 +34,42 @@ class SqlTestCategoria {
 
 	  @Autowired
 	  ICategoriaRepo repository;
+//
+//	  @Test
+//	  public void should_find_no_categorias_if_repository_is_empty() {
+//	    Iterable<Categoria> categorias = repository.findAll();
+//	    
+//	    for (Categoria categoria : categorias) {
+//			System.out.println("Categoria:     "+categoria.toString());
+//		}
+//
+//	    assertThat(categorias).isEmpty();
+//	  }
 
 	  @Test
-	  public void should_find_no_categorias_if_repository_is_empty() {
-	    Iterable<Categoria> categorias = repository.findAll();
+	  public void should_store_a_categoria() {
+	    Categoria categoria = repository.save(new Categoria("Aseo")); 
 	    
-	    for (Categoria categoria : categorias) {
-			System.out.println("Categoria:     "+categoria.toString());
-		}
-
-	    assertThat(categorias).isEmpty();
+	    assertThat(categoria).hasFieldOrPropertyWithValue("nombre", "Aseo");
 	  }
+//
+//
+	  @Test
+	  public void should_find_all_categorias() {
+	    Categoria cat1   = new Categoria("Cat#1");
+	    entityManager.persist(cat1);
 
-//	  @Test
-//	  public void should_store_a_categoria() {
-//	    Categoria categoria = repository.save(new Categoria("Aseo")); 
-//	    
-//	    assertThat(categoria).hasFieldOrPropertyWithValue("nombre", "Aseo");
-//	  }
-//
-//
-//	  @Test
-//	  public void should_find_all_categorias() {
-//	    Categoria cat1   = new Categoria("Cat#1");
-//	    entityManager.persist(cat1);
-//
-//	    Categoria cat2   = new Categoria("Cat#2");
-//	    entityManager.persist(cat2);
-//
-//	    Categoria cat3   = new Categoria("Cat#3");
-//	    entityManager.persist(cat3);
-//	    
-//
-//	    Iterable<Categoria> categorias = repository.findAll();
-//
-//	    assertThat(categorias).hasSize(3).contains(cat1, cat2  , cat3 );
-//	  }
+	    Categoria cat2   = new Categoria("Cat#2");
+	    entityManager.persist(cat2);
+
+	    Categoria cat3   = new Categoria("Cat#3");
+	    entityManager.persist(cat3);
+	    
+
+	    Iterable<Categoria> categorias = repository.findAll();
+
+	    assertThat(categorias).hasSize(3).contains(cat1, cat2  , cat3 );
+	  }
 //
 //	  @Test
 //	  public void should_find_categoria_by_id() {
