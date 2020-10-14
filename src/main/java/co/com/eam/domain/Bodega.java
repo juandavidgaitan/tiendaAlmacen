@@ -39,6 +39,19 @@ public class Bodega implements Serializable {
 	public Bodega() {
 	}
 
+	
+	
+	
+	public Bodega(String direccion, String nombre, Municipio municipio) {
+		super();
+		this.direccion = direccion;
+		this.nombre = nombre;
+		this.municipio = municipio;
+	}
+
+
+
+
 	public int getId_bodega() {
 		return id_bodega;
 	}
