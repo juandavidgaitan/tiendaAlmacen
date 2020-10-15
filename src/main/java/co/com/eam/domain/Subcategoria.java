@@ -40,6 +40,14 @@ public class Subcategoria implements Serializable {
 
 	public Subcategoria() {
 	}
+	
+
+	public Subcategoria(int id_subcategoria, String descripcion) {
+		super();
+		this.id_subcategoria = id_subcategoria;
+		this.descripcion = descripcion;
+	}
+
 
 	public int getId_subcategoria() {
 		return id_subcategoria;
