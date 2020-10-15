@@ -108,11 +108,6 @@ public class ProductoController {
         return "listarProducto";
     }
      
-    @GetMapping("/{cedula}/listarProductoCliente")
-    public String ListarProductoCliente(@PathVariable("cedula")String cedula,Model model) {
-    model.addAttribute("cliente",iClienteRepo.findAll());
-    model.addAttribute("productos", iProductoRepo.findAll());
-        return "listarProductoCliente";
-    }
+    
     
 }

@@ -14,6 +14,7 @@ import co.com.eam.domain.Cliente;
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IClienteRepo;
+import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.ISubCategoriaRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
@@ -28,6 +29,8 @@ public class InicioController {
 	private IAdministradorRepo iAdministradorRepo;
 	@Autowired
 	private ISubCategoriaRepo iSubCategoriaRepo;
+	@Autowired
+	private IProductoRepo iProductoRepo;
 	@Autowired
 	private IClienteRepo iClienteRepo;
 	@Autowired
@@ -48,7 +51,7 @@ public class InicioController {
 	@RequestMapping("/cliente")
 	public String InicioCliente(Model model) {
 		model.addAttribute("cliente", clientelogeado);
-		model.addAttribute("subcategorias", iSubCategoriaRepo.findAll());
+		model.addAttribute("productos", iProductoRepo.findAll());
 
 		return "index-cliente";
 	}
@@ -56,7 +59,7 @@ public class InicioController {
 	@RequestMapping("/usuario")
 	public String InicioUsuario(Model model) {
 		model.addAttribute("usuario", usuariologeado);
-		model.addAttribute("subcategorias", iSubCategoriaRepo.findAll());
+		model.addAttribute("productos", iProductoRepo.findAll());
 
 		return "index-usuario";
 	}
