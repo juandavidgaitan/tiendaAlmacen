@@ -48,6 +48,14 @@ public class Cliente implements Serializable {
 	public Cliente() {
 	}
 
+	public Cliente(int cedula, String nombre) {
+		super();
+		this.cedula = cedula;
+		this.nombre = nombre;
+	}
+
+
+
 	public int getCedula() {
 		return this.cedula;
 	}
