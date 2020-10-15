@@ -25,6 +25,8 @@ public class Bodega implements Serializable {
 
 	private String nombre;
 
+	
+	
 	//Asociocion o relacion con otras tablas
 	
 	//bi-directional many-to-one association to Municipio
@@ -35,6 +37,17 @@ public class Bodega implements Serializable {
 	//bi-directional many-to-one association to Producto
 	@OneToMany(mappedBy="bodega")
 	private List<Producto> productos;
+
+	
+	
+	public Bodega(int id_bodega, String nombre) {
+		super();
+		this.id_bodega = id_bodega;
+		this.nombre = nombre;
+	}
+
+
+
 
 	public Bodega() {
 	}

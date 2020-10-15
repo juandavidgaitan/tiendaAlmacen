@@ -9,6 +9,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+
 import co.com.eam.domain.Municipio;
 import co.com.eam.repository.IMunicipioRepo;
 
@@ -36,6 +37,16 @@ public class SqlMunicipio {
 			    assertThat(municipios).isEmpty();
 			  }
 			
+			//guardar un municipio
+			@Test
+			  public void should_store_a_user() {
+				
+				Municipio depa = repository.save(new Municipio (1, "Armenia"));
+
+			   assertThat(depa).hasFieldOrPropertyWithValue("id_municipio", 1);
+			   assertThat(depa).hasFieldOrPropertyWithValue("nombre", "Armenia");
+			 
+			  }
 			
 			 //buscar municipio por una id
 			  @Test
