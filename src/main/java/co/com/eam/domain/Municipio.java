@@ -43,6 +43,8 @@ public class Municipio implements Serializable {
 	@OneToMany(mappedBy="municipio")
 	private List<Usuario> usuarios;
 
+	
+	
 	public Municipio() {
 	}
 
@@ -88,6 +90,12 @@ public class Municipio implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Municipio(int id_municipio, String nombre) {
+		super();
+		this.id_municipio = id_municipio;
+		this.nombre = nombre;
 	}
 
 

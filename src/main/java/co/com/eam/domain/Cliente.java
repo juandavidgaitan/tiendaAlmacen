@@ -29,6 +29,10 @@ public class Cliente implements Serializable {
 	private String nombre;
 
 	private String telefono;
+	
+	private String username;
+
+	private String contrasena;
 
 	//Asociocion o relacion con otras tablas
 	
@@ -88,6 +92,22 @@ public class Cliente implements Serializable {
 		return this.municipio;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
+
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
 	}
@@ -113,5 +133,6 @@ public class Cliente implements Serializable {
 
 		return despacho;
 	}
+	
 
 }

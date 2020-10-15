@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.com.eam.domain.Administrador;
+import co.com.eam.domain.Cliente;
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
+import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.ISubCategoriaRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
@@ -26,12 +28,14 @@ public class InicioController {
 	private IAdministradorRepo iAdministradorRepo;
 	@Autowired
 	private ISubCategoriaRepo iSubCategoriaRepo;
-//	@Autowired
-//	private IDepartamentoRepo iDepartamentoRepo;
+	@Autowired
+	private IClienteRepo iClienteRepo;
 	@Autowired
 	public static Usuario usuariologeado;
 	@Autowired
 	public static Administrador admindlogeado;
+	@Autowired
+	public static Cliente clientelogeado;
 	
 //	@RequestMapping("/")
 //	public String Inicio(Model model) {
@@ -41,6 +45,14 @@ public class InicioController {
 //		
 //	}
 //
+	@RequestMapping("/cliente")
+	public String InicioCliente(Model model) {
+		model.addAttribute("cliente", clientelogeado);
+		model.addAttribute("subcategorias", iSubCategoriaRepo.findAll());
+
+		return "index-cliente";
+	}
+	
 	@RequestMapping("/usuario")
 	public String InicioUsuario(Model model) {
 		model.addAttribute("usuario", usuariologeado);
@@ -65,13 +77,15 @@ public class InicioController {
 	
 	@SuppressWarnings("unused")
 	@PostMapping("/ingresar")
-	public String ingresar(Usuario usuario,BindingResult result, Model model) {
+	public String ingresar(Usuario usuario,  BindingResult result, Model model) {
 		if(result.hasErrors()) {
 		 	model.addAttribute("usuario", new Usuario());
+		 	model.addAttribute("cliente", new Cliente());
 		 	model.addAttribute("administrador", new Administrador());
 		 	return "login";
 		}
 		Usuario nuevousuario = iUsuarioRepo.Login(usuario.getUsername(), usuario.getContrasena());
+		Cliente nuevocliente = iClienteRepo.LoginCliente(usuario.getUsername(), usuario.getContrasena());
 		Administrador admind = iAdministradorRepo.LoginAdmin(usuario.getUsername(), usuario.getContrasena());
 		if(nuevousuario!=null) {
 			usuariologeado = nuevousuario;
@@ -79,6 +93,9 @@ public class InicioController {
 		}else if(admind!=null){
 			admindlogeado = admind;
 			return "redirect:/admind";			
+		}else if (nuevocliente!=null) {
+			clientelogeado = nuevocliente;
+			return "redirect:/cliente";
 		}
 	 	model.addAttribute("error", "usuario o contraseña incorectos");
 		return "login";	

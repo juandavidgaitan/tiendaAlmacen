@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import co.com.eam.domain.Producto;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IBodegaRepo;
+import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.IProveedorRepo;
 import co.com.eam.repository.ISubCategoriaRepo;
@@ -32,7 +33,8 @@ public class ProductoController {
 	private IProductoRepo iProductoRepo;
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
-	 
+	@Autowired
+	private  IClienteRepo iClienteRepo; 
 	@Autowired
 	private  IBodegaRepo iBodegaRepo;
 	@Autowired
@@ -106,5 +108,11 @@ public class ProductoController {
         return "listarProducto";
     }
      
-
+    @GetMapping("/{cedula}/listarProductoCliente")
+    public String ListarProductoCliente(@PathVariable("cedula")String cedula,Model model) {
+    model.addAttribute("cliente",iClienteRepo.findAll());
+    model.addAttribute("productos", iProductoRepo.findAll());
+        return "listarProductoCliente";
+    }
+    
 }
