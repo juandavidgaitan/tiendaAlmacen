@@ -85,12 +85,7 @@
                      <!--Nombre de los campos de la tabla --->
                           <th th:text="nombre"></th>
                           <th th:text="PrecioUnitario"></th>
-                          <th th:text="PrecioCompra"></th>
-                          <th th:text="CantidadProducto"></th>
-                          <th th:text="Marca"></th>
-                          <th th:text="Bodega"></th>
-                           <th th:text="Proveedor"></th>
-                          <th th:text="SubCategoria"></th>
+                           
                          
                                                    
                     </tr>
@@ -101,12 +96,7 @@
               <tr th:each="po : ${productos}">
                <td th:text="${po.nombre}"> </td>  
                <td th:text="${po.precioUnitario}"> </td>  
-               <td th:text="${po.precioCompra}"> </td>  
-               <td th:text="${po.cantidadProducto}"> </td>  
-               <td th:text="${po.marca}"> </td> 
-               <td th:text="${po.bodega.nombre}"> </td>   
-               <td th:text="${po.proveedor.nombre}"> </td>  
-               <td th:text="${po.subcategoria.descripcion}"> </td>  
+               
                           
                 </tr>      
                 </tbody>
