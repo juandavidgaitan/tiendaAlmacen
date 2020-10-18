@@ -15,8 +15,8 @@ import co.com.eam.repository.IMunicipioRepo;
 
 
 
-@ExtendWith(SpringExtension.class)
-@DataJpaTest
+@ExtendWith(SpringExtension.class)//es la anotacion para importar junit.jupiter
+@DataJpaTest//configuaracion de la base de datos de java
 public class SqlMunicipio {
 	
 	@Autowired
@@ -25,7 +25,7 @@ public class SqlMunicipio {
 	  @Autowired
 	  IMunicipioRepo repository;
 	  
-	//saber si un municipio esta vacio
+	//saber si un municipio esta vacio verificamos que no haya nada registrado 
 			@Test
 			  public void should_find_no_municipio_if_repository_is_empty() {
 			    Iterable<Municipio> municipios = repository.findAll();
@@ -42,16 +42,18 @@ public class SqlMunicipio {
 			  public void should_store_a_user() {
 				
 				Municipio depa = repository.save(new Municipio (1, "Armenia"));
+				// creamos un objeto de tipo municipio con los parametros que le mandamos arriba
 
 			   assertThat(depa).hasFieldOrPropertyWithValue("id_municipio", 1);
 			   assertThat(depa).hasFieldOrPropertyWithValue("nombre", "Armenia");
-			 
+			   //este metodo tambien lo estamos utilizando de JUnit debe de estar importado
+			 //del paquete de asserciones que seria como verificar
 			  }
 			
 			 //buscar municipio por una id
 			  @Test
 			  public void should_find_municipio_by_id() {
-				  Municipio usu1   = new Municipio(1, "armenia");
+			    Municipio usu1   = new Municipio(1, "armenia");
 			    entityManager.persist(usu1);
 
 			    
@@ -65,7 +67,7 @@ public class SqlMunicipio {
 			  
 			  @Test
 			  public void should_find_municipio_by_name_containing_string() {
-				  Municipio usu1   = new Municipio(1, "armenia");
+				Municipio usu1   = new Municipio(1, "armenia");
 			    entityManager.persist(usu1);
 
 			    Municipio usu2   = new Municipio(2, "calarca");
@@ -96,7 +98,7 @@ public class SqlMunicipio {
 			  //actualizar municipio por llave primaria
 			  @Test
 			  public void should_update_user_by_id() {
-				  Municipio usu1   = new Municipio(1, "armenia");
+				Municipio usu1   = new Municipio(1, "armenia");
 			    entityManager.persist(usu1);
 
 			   
