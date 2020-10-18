@@ -26,17 +26,19 @@ public class Producto implements Serializable {
 	private int id_producto;
 
 	@Column(name="cantidad_producto")
-	private int cantidadProducto;
+	private Float cantidadProducto;
 
 	private String marca;
 
 	private String nombre;
+	
+	private String codigo;
 
 	@Column(name="precio_compra")
 	private double precioCompra;
 
 	@Column(name="precio_unitario")
-	private double precioUnitario;
+	private Float precioUnitario;
 
 	//Asociocion o relacion con otras tablas
 	
@@ -74,85 +76,121 @@ public class Producto implements Serializable {
 		return id_producto;
 	}
 
+
 	public void setId_producto(int id_producto) {
 		this.id_producto = id_producto;
 	}
 
-	public int getCantidadProducto() {
+
+	public Float getCantidadProducto() {
 		return cantidadProducto;
 	}
 
-	public void setCantidadProducto(int cantidadProducto) {
+
+	public void setCantidadProducto(Float cantidadProducto) {
 		this.cantidadProducto = cantidadProducto;
 	}
+
 
 	public String getMarca() {
 		return marca;
 	}
 
+
 	public void setMarca(String marca) {
 		this.marca = marca;
 	}
+
 
 	public String getNombre() {
 		return nombre;
 	}
 
+
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
 
 	public double getPrecioCompra() {
 		return precioCompra;
 	}
 
+
 	public void setPrecioCompra(double precioCompra) {
 		this.precioCompra = precioCompra;
 	}
 
-	public double getPrecioUnitario() {
+
+	public Float getPrecioUnitario() {
 		return precioUnitario;
 	}
 
-	public void setPrecioUnitario(double precioUnitario) {
+
+	public void setPrecioUnitario(Float precioUnitario) {
 		this.precioUnitario = precioUnitario;
 	}
+
 
 	public List<DetalleFactura> getDetalleFacturas() {
 		return detalleFacturas;
 	}
 
+
 	public void setDetalleFacturas(List<DetalleFactura> detalleFacturas) {
 		this.detalleFacturas = detalleFacturas;
 	}
+
 
 	public Bodega getBodega() {
 		return bodega;
 	}
 
+
 	public void setBodega(Bodega bodega) {
 		this.bodega = bodega;
 	}
+
 
 	public Proveedor getProveedor() {
 		return proveedor;
 	}
 
+
 	public void setProveedor(Proveedor proveedor) {
 		this.proveedor = proveedor;
 	}
+
 
 	public Subcategoria getSubcategoria() {
 		return subcategoria;
 	}
 
+
 	public void setSubcategoria(Subcategoria subcategoria) {
 		this.subcategoria = subcategoria;
 	}
 
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+
+	 
+
+
+	 
 
 
 }
