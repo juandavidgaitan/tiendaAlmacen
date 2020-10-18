@@ -1,4 +1,5 @@
-/*
+<!doctype html>
+<!--
     Programado por Luis Cabrera Benito
   ____          _____               _ _           _
  |  _ \        |  __ \             (_) |         | |
@@ -13,16 +14,12 @@
     Blog:       https://parzibyte.me/blog
     Ayuda:      https://parzibyte.me/blog/contrataciones-ayuda/
     Contacto:   https://parzibyte.me/blog/contacto/
-*/
-package me.parzibyte.sistemaventasspringboot;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class Application {
-
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-}
+-->
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="layouts/encabezado :: encabezado"></head>
+<body>
+<nav th:replace="layouts/navbar :: navbar"></nav>
+<main layout:fragment="contenido" role="main" class="container"></main>
+<footer th:replace="layouts/pie :: pie"></footer>
+</body>
+</html>
