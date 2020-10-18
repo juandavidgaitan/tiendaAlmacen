@@ -26,7 +26,7 @@ public class SqlCliente {
 	  IClienteRepo repository;
 	  
 	  
-//		//saber si un cliente esta vacio
+		//saber si un cliente esta vacio
 				@Test
 				  public void should_find_no_clientes_if_repository_is_empty() {
 				    Iterable<Cliente> clientes = repository.findAll();

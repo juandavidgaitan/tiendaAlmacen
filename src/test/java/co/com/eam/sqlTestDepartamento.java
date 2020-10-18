@@ -115,7 +115,7 @@ class sqlTestDepartamento {
 		  //actualizar usuario por llave primaria
 		  @Test
 		  public void should_update_user_by_id() {
-			  Departamento usu1   = new Departamento(1, "colombia");
+			Departamento usu1   = new Departamento(1, "colombia");
 		    entityManager.persist(usu1);
 
 		   
