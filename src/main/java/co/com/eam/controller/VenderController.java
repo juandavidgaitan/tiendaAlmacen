@@ -1,10 +1,18 @@
-package me.parzibyte.sistemaventasspringboot;
+package co.com.eam.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import co.com.eam.domain.Producto;
+import co.com.eam.domain.ProductoParaVender;
+import co.com.eam.domain.ProductoVendido;
+import co.com.eam.domain.Venta;
+import co.com.eam.repository.ProductosRepository;
+import co.com.eam.repository.ProductosVendidosRepository;
+import co.com.eam.repository.VentasRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -53,14 +61,14 @@ public class VenderController {
         // Recorrer el carrito
         for (ProductoParaVender productoParaVender : carrito) {
             // Obtener el producto fresco desde la base de datos
-            Producto p = productosRepository.findById(productoParaVender.getId()).orElse(null);
+            Producto p = productosRepository.findById(productoParaVender.getId_producto()).orElse(null);
             if (p == null) continue; // Si es nulo o no existe, ignoramos el siguiente código con continue
             // Le restamos existencia
             p.restarExistencia(productoParaVender.getCantidad());
             // Lo guardamos con la existencia ya restada
             productosRepository.save(p);
             // Creamos un nuevo producto que será el que se guarda junto con la venta
-            ProductoVendido productoVendido = new ProductoVendido(productoParaVender.getCantidad(), productoParaVender.getPrecio(), productoParaVender.getNombre(), productoParaVender.getCodigo(), v);
+            ProductoVendido productoVendido = new ProductoVendido(productoParaVender.getCantidad(), productoParaVender.getPrecioUnitario(), productoParaVender.getNombre(), productoParaVender.getCodigo(), v);
             // Y lo guardamos
             productosVendidosRepository.save(productoVendido);
         }
@@ -106,12 +114,7 @@ public class VenderController {
                     .addFlashAttribute("clase", "warning");
             return "redirect:/vender/";
         }
-        if (productoBuscadoPorCodigo.sinExistencia()) {
-            redirectAttrs
-                    .addFlashAttribute("mensaje", "El producto está agotado")
-                    .addFlashAttribute("clase", "warning");
-            return "redirect:/vender/";
-        }
+        
         boolean encontrado = false;
         for (ProductoParaVender productoParaVenderActual : carrito) {
             if (productoParaVenderActual.getCodigo().equals(productoBuscadoPorCodigo.getCodigo())) {
@@ -121,7 +124,7 @@ public class VenderController {
             }
         }
         if (!encontrado) {
-            carrito.add(new ProductoParaVender(productoBuscadoPorCodigo.getNombre(), productoBuscadoPorCodigo.getCodigo(), productoBuscadoPorCodigo.getPrecio(), productoBuscadoPorCodigo.getExistencia(), productoBuscadoPorCodigo.getId(), 1f));
+            carrito.add(new ProductoParaVender(productoBuscadoPorCodigo.getNombre() , codigo, precioUnitario, cantidadProducto, marca, precioCompra, cantidad)
         }
         this.guardarCarrito(carrito, request);
         return "redirect:/vender/";

@@ -1,4 +1,4 @@
-package me.parzibyte.sistemaventasspringboot;
+package co.com.eam.domain;
 
 import javax.persistence.*;
 import java.util.Set;

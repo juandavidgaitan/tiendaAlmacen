@@ -187,6 +187,31 @@ public class Producto implements Serializable {
 	}
 
 
+	public Producto(int id_producto, Float cantidadProducto, String marca, String nombre, String codigo,
+			double precioCompra, Float precioUnitario) {
+		super();
+		this.id_producto = id_producto;
+		this.cantidadProducto = cantidadProducto;
+		this.marca = marca;
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.precioCompra = precioCompra;
+		this.precioUnitario = precioUnitario;
+	}
+
+
+	public Producto(Float cantidadProducto, String marca, String nombre, String codigo, double precioCompra,
+			Float precioUnitario) {
+		super();
+		this.cantidadProducto = cantidadProducto;
+		this.marca = marca;
+		this.nombre = nombre;
+		this.codigo = codigo;
+		this.precioCompra = precioCompra;
+		this.precioUnitario = precioUnitario;
+	}
+
+
 	 
 
 

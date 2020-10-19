@@ -14,7 +14,7 @@
     Ayuda:      https://parzibyte.me/blog/contrataciones-ayuda/
     Contacto:   https://parzibyte.me/blog/contacto/
 */
-package me.parzibyte.sistemaventasspringboot;
+package co.com.eam.domain;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
