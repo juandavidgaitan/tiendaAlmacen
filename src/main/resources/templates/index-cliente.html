@@ -48,9 +48,21 @@
 	       <li class="nav-item">
 	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
 	      </li>
+	        <li class="nav-item">
+		        <a class="navbar-brand" th:href="@{/cliente}" th:text="Comprar"></a>
+		    </li>
+	        <li class="nav-item">
+		        <a class="navbar-brand" th:href="@{/factura/{cedulaCliente}(cedulaCliente=${cliente.cedula})}" th:text="Factura"></a>
+		      </li>
+	 		<li class="nav-item"><a class="navbar-brand"
+						th:field="${usuario}"
+						th:href="@{/factura/detalle/{cedulaCliente}(cedulaCliente=${cliente.cedula})}">Detalle
+							Factura</a></li>
 	    </ul>
   </div>  
 </nav>
+
+
 	</nav>
 	<br>
 	<br>
@@ -70,7 +82,7 @@
             
                 <div class="row">
                 
-                    <div class="col-sm-8"><h2>Lista productos <b>Disponibles</b></h2></div>
+                    <div class="col-sm-8"><h4>Lista productos <b>Disponibles</b></h4></div>
                     <div class="col-sm-4">
                     
                    </div>
@@ -84,27 +96,55 @@
                     <tr>
                      <!--Nombre de los campos de la tabla --->
                           <th th:text="nombre"></th>
-                          <th th:text="PrecioUnitario"></th>
-                           
-                         
-                                                   
+                          <th th:text="PrecioUnitario"></th>                              
+                          <th th:text="Codigo"></th>                              
+                          <th th:text="Cantidad"></th>                              
                     </tr>
                 </thead>
                 <tbody>
 <!--Accedo a el objeto productos y traigo los atributos para que me los liste-->
-                
-              <tr th:each="po : ${productos}">
-               <td th:text="${po.nombre}"> </td>  
-               <td th:text="${po.precioUnitario}"> </td>  
-               
-                          
+              	<tr th:each="po : ${productos}">
+               		<td th:text="${po.nombre}"> </td>  
+               		<td th:text="${po.precioUnitario}"> </td>               		
+               		<td th:text="${po.codigo}"> </td>
+              		<td><input th:id="${po.id_producto}" type="number" class="form-control"></td>
+               		<td>
+               			<button type="button" class="btn btn-success" th:onclick="|agregarProducto('${po.id_producto}')|">Agregar</button>
+               		</td>
                 </tr>      
                 </tbody>
             </table>
             </div>
         </div>
-    </div>    
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    </div>
+
+	<div class="container">
+		<div class="table-wrapper">
+			<div class="table-title">
+				<div class="row">
+					<div class="col-sm-8">
+						<h4>carrito: productos <b>agregados</b></h4>
+					</div>
+					<div class="col-sm-4"></div>
+				</div>
+			</div>
+			<div class="col-md-9">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th th:text="Nombre"></th>
+							<th th:text="PrecioUnitario"></th>
+							<th th:text="Cantidad"></th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody id="listProductosAgregados">
+					</tbody>
+				</table>				
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
 		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
 		crossorigin="anonymous"></script>
 	<script
@@ -115,6 +155,7 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
+		
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#locales").change(function() {
@@ -125,5 +166,12 @@
 			});
 		});
 	</script>
+	<script th:inline="javascript">
+		/*<![CDATA[*/
+		    var cedula = [[${cedula}]];
+		    var productosAsCarrito = [[${productosAsCarrito}]];
+		/*]]>*/
+	</script>	
+        <script th:src="@{/js/carritoCompras.js}"></script>
 	</body>
 	</html>

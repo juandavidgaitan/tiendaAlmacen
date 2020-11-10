@@ -23,6 +23,7 @@ import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.IProveedorRepo;
 import co.com.eam.repository.ISubCategoriaRepo;
+import co.com.eam.repository.IUsuarioRepo;
 
 
 @Controller
@@ -41,6 +42,8 @@ public class ProductoController {
 	private IProveedorRepo iProveedorRepo;
 	@Autowired
 	private ISubCategoriaRepo iSubcategoriaRepo;	
+	@Autowired
+	private IUsuarioRepo iUsuarioRepo;
 
 //Metodo que nos permite acceder a la plantilla add-producto con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases		    
 	@GetMapping("/{dni}/addProducto")
@@ -49,8 +52,9 @@ public class ProductoController {
 		model.addAttribute("bodegas", iBodegaRepo.findAll());
 		model.addAttribute("proveedors", iProveedorRepo.findAll());
 		model.addAttribute("subcategorias", iSubcategoriaRepo.findAll());
-		 model.addAttribute("administrador",iAdministradorRepo.findAll());
-     
+		model.addAttribute("administrador",iAdministradorRepo.findAll());
+		model.addAttribute("vendedores", iUsuarioRepo.findAll());
+		
         return "add-producto";
     }
 //Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
@@ -72,10 +76,12 @@ public class ProductoController {
 	 @GetMapping("/{dni}/editProducto/{id_producto}")
 	 public String showUpdateForm(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, Model model) {
 	   	Producto producto = iProductoRepo.findById(idProducto).orElseThrow(() -> new IllegalArgumentException("Invalid categoria id:" + idProducto));
-	       model.addAttribute("producto", producto);
-	       model.addAttribute("bodegas", iBodegaRepo.findAll());
-			model.addAttribute("proveedors", iProveedorRepo.findAll());
-			model.addAttribute("subcategorias", iSubcategoriaRepo.findAll());
+	      model.addAttribute("producto", producto);
+	      model.addAttribute("bodegas", iBodegaRepo.findAll());
+	      model.addAttribute("proveedors", iProveedorRepo.findAll());
+	      model.addAttribute("subcategorias", iSubcategoriaRepo.findAll());
+	      model.addAttribute("vendedores", iUsuarioRepo.findAll());
+
 	       return "update-producto";
 	   }
 //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..

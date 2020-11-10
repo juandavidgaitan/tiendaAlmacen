@@ -20,7 +20,8 @@ public class Factura implements Serializable {
 	
 	@Id
 	@Column(name="id_factura")
-	private int idFactura;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idFactura;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecha_factura")
@@ -36,15 +37,23 @@ public class Factura implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="Usuario_fk")
 	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name="cliente_fk")
+	private Cliente cliente;
+	
+	private Double total;
+	
+	private boolean despachado;
 
 	public Factura() {
 	}
 
-	public int getIdFactura() {
+	public Long getIdFactura() {
 		return this.idFactura;
 	}
 
-	public void setIdFactura(int idFactura) {
+	public void setIdFactura(Long idFactura) {
 		this.idFactura = idFactura;
 	}
 
@@ -86,4 +95,27 @@ public class Factura implements Serializable {
 		this.usuario = usuario;
 	}
 
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Double getTotal() {
+		return total;
+	}
+
+	public void setTotal(Double total) {
+		this.total = total;
+	}
+
+	public boolean isDespachado() {
+		return despachado;
+	}
+
+	public void setDespachado(boolean despachado) {
+		this.despachado = despachado;
+	}
 }

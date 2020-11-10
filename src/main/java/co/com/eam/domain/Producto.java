@@ -60,11 +60,14 @@ public class Producto implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="Subcategoria_fk")
 	private Subcategoria subcategoria;
+	
+	@ManyToOne
+	@JoinColumn(name="usuario_fk")
+	private Usuario vendedor;
 
 	public Producto() {
 	}
 	
-
 	public Producto(int id_producto, String nombre) {
 		super();
 		this.id_producto = id_producto;
@@ -186,6 +189,13 @@ public class Producto implements Serializable {
 		return serialVersionUID;
 	}
 
+	public Usuario getVendedor() {
+		return vendedor;
+	}
+
+	public void setVendedor(Usuario vendedor) {
+		this.vendedor = vendedor;
+	}
 
 	public Producto(int id_producto, Float cantidadProducto, String marca, String nombre, String codigo,
 			double precioCompra, Float precioUnitario) {

@@ -44,6 +44,25 @@
 									class="text-danger"></span>
 
 							</div>
+							
+							<div class="form-group col-md-6">
+								<label for="codigo" class="col-form-label" th:text="Codigo"></label>
+								<input type="text" th:field="*{codigo}" class="form-control"
+									id="nombre" th:placeholder="Codigo" required="required">
+								<span th:if="${#fields.hasErrors('codigo')}" th:errors="codigo"
+									class="text-danger"></span>
+							</div>
+							
+							<div class="form-group col-md-6">
+								<label for="vendedor" class="col-form-label"
+									th:text="Seleccione-vendedor"></label> <select
+									th:field="*{vendedor}" class="form-control">
+									<option value="Seleccionar" th:text="Seleccione"></option>
+									<option th:each="cate : ${vendedores}"
+										th:value="${cate.id_usuario}" th:text="${cate.nombre}">
+									</option>
+								</select>
+							</div>
 
 							<div class="form-group col-md-6">
 								<label for="cantidadProducto" class="col-form-label"

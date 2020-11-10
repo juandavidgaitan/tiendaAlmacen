@@ -1,8 +1,11 @@
 package co.com.eam.controller;
 
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,18 +14,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.com.eam.domain.Cliente;
- 
+import co.com.eam.domain.DetalleFactura;
+import co.com.eam.domain.Factura;
+import co.com.eam.domain.Producto;
+import co.com.eam.domain.ProductoCarritoDto;
+import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.IDepartamentoRepo;
+import co.com.eam.repository.IDetalleFacturaRepo;
+import co.com.eam.repository.IFacturaRepo;
 import co.com.eam.repository.IMunicipioRepo;
 import co.com.eam.repository.IPaiRepo;
+import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.IUsuarioRepo;
-
- 
-
 
 @Controller
 @RequestMapping("/usuario")
@@ -32,15 +40,18 @@ public class ClienteController {
 	private IClienteRepo iClienteRepo;
 	@Autowired
 	private IUsuarioRepo iUsuarioRepo;
-	
 	@Autowired
     IPaiRepo iPaiRepo;
 	@Autowired
 	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
 	private IMunicipioRepo iMunicipioRepo;	
-	
-	 
+	@Autowired
+	private IProductoRepo iProductoRepo;
+	@Autowired
+	private IFacturaRepo iFacturaRepo;
+	@Autowired
+	private IDetalleFacturaRepo iDetalleFacturaRepo;
 	 
 	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
 	@GetMapping("/{id_usuario}/addcliente")
@@ -145,6 +156,60 @@ public class ClienteController {
         model.addAttribute("municipio", iMunicipioRepo.findAll());
         return "listarCliente";
     }
+ 
+ 	@PostMapping("/comprar/{cedula}")
+ 	public String comprar(@RequestBody List<ProductoCarritoDto> productosCarrito, @PathVariable String cedula) throws Exception {
+ 		Optional<Cliente> cliente = iClienteRepo.findById(Integer.parseInt(cedula));
+ 		if(!cliente.isPresent()) {
+ 			throw new Exception("no se encontro el cliente");
+ 		}
+ 		
+ 		Cliente clienteCompra = cliente.get();
+ 		Factura factura = new Factura();
+ 		factura.setFechaFactura(new Date());
+ 		factura.setCliente(clienteCompra);
+ 		
+ 		final Float total = productosCarrito.stream().map(it -> it.getCantidad() * it.getPrecioUnitario()).reduce(0F, Float::sum);
+ 		
+ 		factura.setTotal(total.doubleValue());
+ 		factura = iFacturaRepo.save(factura);
+ 		
+ 		final Factura facturaFinal = factura;
+ 		List<DetalleFactura> detalles = productosCarrito.stream().map(prod -> {
+ 				Optional<Producto> productoOriginal = iProductoRepo.findById(prod.getProductoId());
+ 				Producto producto = productoOriginal.get();
+ 				DetalleFactura detalleFactura = new DetalleFactura();
+ 				detalleFactura.setFactura(facturaFinal);
+ 				detalleFactura.setProducto(productoOriginal.get());
+ 				detalleFactura.setCantidadComprada(prod.getCantidad());
+ 				
+ 				producto.setCantidadProducto(producto.getCantidadProducto() - prod.getCantidad());
+ 				iProductoRepo.save(producto);
+ 				return detalleFactura;
+ 		}).collect(Collectors.toList());
+ 		iDetalleFacturaRepo.saveAll(detalles);
+ 		
+ 		Usuario usuario = detalles.get(0).getProducto().getVendedor();
+ 		factura = iFacturaRepo.findById(factura.getIdFactura()).get();
+ 		factura.setUsuario(usuario);
+ 		
+ 		iFacturaRepo.save(factura);
+ 		return "redirect:/cliente";
+ 	}
+ 	
+ 	
+ 	@GetMapping("/ventas/{usuarioId}")
+ 	public String ventas(@PathVariable int usuarioId, Model model) {
+ 		model.addAttribute("usuario", iUsuarioRepo.findById(usuarioId).get());
+ 		model.addAttribute("ventas", iFacturaRepo.findByVendedor(usuarioId));
+ 		return "ventas";
+ 	}
      
-
+ 	@GetMapping("/despachar/{facturaId}")
+ 	public String comprar(@PathVariable String facturaId, Model model) throws Exception {
+ 		Factura factura = iFacturaRepo.findById(Long.valueOf(facturaId)).get();
+ 		factura.setDespachado(true);
+ 		iFacturaRepo.save(factura);
+ 		return "redirect:/cliente";
+ 	}
 }

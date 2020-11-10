@@ -44,6 +44,10 @@ public class Cliente implements Serializable {
 	//bi-directional many-to-one association to Despacho
 	@OneToMany(mappedBy="cliente")
 	private List<Despacho> despachos;
+	
+	//bi-directional many-to-one association to Factura
+	@OneToMany(mappedBy="usuario")
+	private List<Factura> facturas;
 
 	public Cliente() {
 	}

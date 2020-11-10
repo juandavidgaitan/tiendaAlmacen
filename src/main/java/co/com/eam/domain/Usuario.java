@@ -66,6 +66,10 @@ public class Usuario implements Serializable {
 	@JoinColumn(name="municipio_fk")
 	private Municipio municipio;
 
+	//bi-directional many-to-one association to Producto
+	@OneToMany(mappedBy="vendedor")
+	private List<Producto> productos;
+	
 	public Usuario() {
 	}
 

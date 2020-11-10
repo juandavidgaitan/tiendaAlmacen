@@ -19,7 +19,8 @@ public class DetalleFactura implements Serializable {
 	
 	@Id
 	@Column(name="id_detalle")
-	private int idDetalle;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idDetalle;
 
 	@Column(name="total_factura")
 	private String totalFactura;
@@ -35,15 +36,17 @@ public class DetalleFactura implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="Producto_fk")
 	private Producto producto;
+	
+	private int cantidadComprada;
 
 	public DetalleFactura() {
 	}
 
-	public int getIdDetalle() {
+	public Long getIdDetalle() {
 		return this.idDetalle;
 	}
 
-	public void setIdDetalle(int idDetalle) {
+	public void setIdDetalle(Long idDetalle) {
 		this.idDetalle = idDetalle;
 	}
 
@@ -71,4 +74,11 @@ public class DetalleFactura implements Serializable {
 		this.producto = producto;
 	}
 
+	public int getCantidadComprada() {
+		return cantidadComprada;
+	}
+
+	public void setCantidadComprada(int cantidadComprada) {
+		this.cantidadComprada = cantidadComprada;
+	}
 }

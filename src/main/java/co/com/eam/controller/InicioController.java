@@ -1,16 +1,23 @@
 package co.com.eam.controller;
 
 
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
+
+import org.omg.CosNaming._BindingIteratorImplBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.com.eam.domain.Administrador;
 import co.com.eam.domain.Cliente;
+import co.com.eam.domain.Producto;
+import co.com.eam.domain.ProductoCarritoDto;
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IClienteRepo;
@@ -50,9 +57,18 @@ public class InicioController {
 //
 	@RequestMapping("/cliente")
 	public String InicioCliente(Model model) {
+		Iterable<Producto> productosIterable = iProductoRepo.findAll();
 		model.addAttribute("cliente", clientelogeado);
-		model.addAttribute("productos", iProductoRepo.findAll());
-
+		model.addAttribute("productos", productosIterable);
+		model.addAttribute("cedula", clientelogeado != null ? clientelogeado.getCedula() : "");		
+		model.addAttribute("productosAsCarrito", StreamSupport.stream(productosIterable.spliterator(), false).map(pro -> {
+			ProductoCarritoDto prod = new ProductoCarritoDto();
+			prod.setProductoId(pro.getId_producto());
+			prod.setNombre(pro.getNombre());
+			prod.setPrecioUnitario(pro.getPrecioUnitario());
+			prod.setCodigo(prod.getCodigo());
+			return prod;
+		}).collect(Collectors.toList()));
 		return "index-cliente";
 	}
 	
