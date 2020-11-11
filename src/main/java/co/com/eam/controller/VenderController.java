@@ -64,7 +64,7 @@ public class VenderController {
             Producto p = productosRepository.findById(productoParaVender.getId_producto()).orElse(null);
             if (p == null) continue; // Si es nulo o no existe, ignoramos el siguiente código con continue
             // Le restamos existencia
-            p.restarExistencia(productoParaVender.getCantidad());
+           // p.restarExistencia(productoParaVender.getCantidad());
             // Lo guardamos con la existencia ya restada
             productosRepository.save(p);
             // Creamos un nuevo producto que será el que se guarda junto con la venta
@@ -124,7 +124,7 @@ public class VenderController {
             }
         }
         if (!encontrado) {
-            carrito.add(new ProductoParaVender(productoBuscadoPorCodigo.getNombre() , codigo, precioUnitario, cantidadProducto, marca, precioCompra, cantidad)
+      //      carrito.add(new ProductoParaVender(productoBuscadoPorCodigo.getNombre() , codigo, precioUnitario, cantidadProducto, marca, precioCompra, cantidad)
         }
         this.guardarCarrito(carrito, request);
         return "redirect:/vender/";
