@@ -46,22 +46,24 @@ public class SqlFactura {
 			  public void should_store_a_factura() {
 				
 				Factura factura = repository.save(new Factura());
+				
 
-			   //assertThat(factura).hasFieldOrPropertyWithValue("idFactura", 123);
-			 
+
 			  }
-//			
-//			 //buscar cliente por una cedula
+			
+			 //buscar factura por una idFactura
 //			  @Test
-//			  public void should_find_cliente_by_id() {
-//				  Cliente usu1   = new Cliente(1, "santiago");
+//			  public void should_find_factura_by_id() {
+//				  Factura usu1   = new Factura((long) 2);
 //			    entityManager.persist(usu1);
 //
 //			    
-//			    Cliente foundUser = repository.findById(usu1.getCedula()).get();
+//			    Factura foundUser = repository.findById(usu1.getIdFactura()).get();
 //
 //			    assertThat(foundUser).isEqualTo(usu1);
 //			  }
+			  
+			  
 //	 //buscar un usuario por el nombre
 //			  
 //			  @Test
@@ -81,18 +83,15 @@ public class SqlFactura {
 //			    assertThat(clientes).hasSize(1).contains(usu1);
 //			    assertThat(cliente).hasSize(1).contains(usu2);
 //			  }
-//			//trae todos los usuario de la base datos
-//			  @Test
-//			  public void should_find_all_clientes() {
-//				  Cliente usu1   = new Cliente (1, "sergio");
-//			    entityManager.persist(usu1);
-//
-//			    
-//
-//			    Iterable<Cliente> clientes = repository.findAll();
-//
-//			    assertThat(clientes).hasSize(1).contains(usu1 );
-//			  }
+			
+			//trae todos los usuario de la base datos
+			  @Test
+			  public void should_find_all_facturas() {
+				  Factura usu1   = new Factura ();
+			    entityManager.persist(usu1);
+			    Iterable<Factura> clientes = repository.findAll();
+			    assertThat(clientes).hasSize(1).contains(usu1 );
+			  }
 //
 //			   
 //			  

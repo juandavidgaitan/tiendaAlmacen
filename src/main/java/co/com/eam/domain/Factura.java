@@ -49,6 +49,13 @@ public class Factura implements Serializable {
 	public Factura() {
 	}
 
+	
+	public Factura(Long idFactura) {
+		super();
+		this.idFactura = idFactura;
+	}
+
+
 	public Long getIdFactura() {
 		return this.idFactura;
 	}
