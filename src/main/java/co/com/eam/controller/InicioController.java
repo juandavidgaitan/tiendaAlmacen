@@ -72,7 +72,7 @@ public class InicioController {
 		return "index-administrador";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/")
 	public String login(Usuario usuario, Model model) {
 	 	model.addAttribute("usuario", new Usuario());
 		return "login";

@@ -13,8 +13,8 @@ import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IUsuarioRepo;
 
 
-@ExtendWith(SpringExtension.class)
-@DataJpaTest
+@ExtendWith(SpringExtension.class)//Dependen del contesto de persistencia
+@DataJpaTest//utilizamos esta anotacion es para emular contesto en spring boot
 public class SqlUsuario {
 	 @Autowired
 	  private TestEntityManager entityManager;
@@ -24,8 +24,8 @@ public class SqlUsuario {
 	  
 	//saber si un usuario esta vacio
 			@Test
-			  public void should_find_no_users_if_repository_is_empty() {
-			    Iterable<Usuario> usuarios = repository.findAll();
+			  public void should_find_no_users_if_repository_is_empty(){//nos permite saber si un usuario del reposirtio esta vacio 
+			    Iterable<Usuario> usuarios = repository.findAll();//llamamos el metodo que este en la entidad para traer los ususarios
 			    
 			    for (Usuario usuario : usuarios) {
 					System.out.println("Usuario:     "+usuario.toString());
