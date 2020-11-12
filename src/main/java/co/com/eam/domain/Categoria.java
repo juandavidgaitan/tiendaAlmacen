@@ -2,9 +2,14 @@ package co.com.eam.domain;
 
 
 import java.io.Serializable;
+
 import java.time.LocalDateTime;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -21,16 +26,20 @@ Identidad encargada de instanciar los atribotes de esta clase y crear gett y set
 @AllArgsConstructor
 @NamedQuery(name="Categoria.findAll", query="SELECT c FROM Categoria c")
 @Table(name = "categoria")
-public class Categoria implements Serializable {
+    public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	//Creacion de atributos
 	
 	@Id
-	@Column(name="id_categoria")
+	@Column(name="id_categoria") 
 	private int id_categoria;
-
-	private String nombre;
+	
+	@NotEmpty
+	@Size(min=2, max=4)
+	/*@Pattern(regexp = "^[ñA-Za-z _]*[ñA-Za-z][ñA-Za-z _]*$", message = "El nombre solo puede contener letras")*/
+	@Pattern(regexp="^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$", message="Solo se admiten letras")
+    private String nombre;
 	
 	
 
