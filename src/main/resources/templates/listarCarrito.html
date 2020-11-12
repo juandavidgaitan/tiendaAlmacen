@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+      <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title th:text="listarCliente"></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/shards.min.css">
+        <link rel="stylesheet" th:href="@{/css/brands.css}">
+        <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+        <link rel="stylesheet" th:href="@{/css/solid.css}">
+        <script th:src="@{/js/brands.js}"></script>
+        <script th:src="@{/js/solid.js}"></script>
+        <script th:src="@{/js/fontawesome.js}"></script>
+    </head>
+<body>
+<!--Etiqueta nav la cual es la que contiene el menu del listar cliente -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	<nav id="navbar" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+	
+  
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  
+    <span class="navbar-toggler-icon"></span>
+    
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+   <ul class="navbar-nav mr-auto">
+   
+   <li class="nav-item">
+	        <a class="navbar-brand" th:field="${usuario}" th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/listarCliente}" th:text="Cliente"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${usuario}" th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/listarCliente}" th:text="Factura"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${usuario}" th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/listarCliente}" th:text="DetalleFactura"></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:field="${usuario}" th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/listarCliente}" th:text="Despacho"></a>
+	      </li>
+	       <li class="nav-item">
+	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
+	      </li>
+	    </ul>
+  </div>  
+</nav>
+	</nav>
+	
+	<div class="row">
+                	<!--Etiqueta para ponerle el nombre a la vista de Cliente -->
+                    <div class="col-sm-8"><h2>Cliente <b>Detalles</b></h2></div>
+                    <div class="col-sm-4">
+                   </div>
+                </div>
+
+
+<div class="container">
+
+        <div class="table-wrapper">
+            <div class="table-title">
+            
+            
+                <div class="row">
+                
+                    <div class="col-sm-8"><h2>Cliente <b>Detalles</b></h2></div>
+                    <div class="col-sm-4">
+                    
+                   </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+            
+            <!--Creacion de la tabla--->
+            <table class="table table-bordered">
+                <thead>                
+                    <tr>
+                    <!--Nombre de los campos de la tabla --->
+                    	<th th:text="Cedula"></th>
+                          <th th:text="Nombre"></th>
+                          <th th:text="Apellido"></th>
+                          <th th:text="telefono"></th>
+                          <th th:text="Direccion"></th>
+                          <th th:text="Municipio"></th>
+                          <th th:text="actions"></th>    
+                           <a href="/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/addcliente" 
+                                  class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a> 
+                
+                    </tr>
+                </thead>
+                <tbody>
+         <!--Accedo a el objeto clientes y traigo los atributos para que me los liste-->
+                
+              <tr th:each="clie : ${cliente}">
+              <td th:text="${clie.cedula}"></td>  
+               <td th:text="${clie.nombre}"></td>  
+               <td th:text="${clie.apellido}"></td>  
+               <td th:text="${clie.telefono}"></td>  
+               <td th:text="${clie.direccion}"></td>  
+               <td th:text="${clie.municipio.nombre}"></td>  
+               
+                <td>     
+                                  
+                             
+                                  <a th:href=" @{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/editCliente/{cedula}(cedula=${clie.cedula})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-edit ml-2"></i></a>
+                                  
+                                  
+                                  <a th:href=" @{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/deleteCliente/{cedula}(cedula=${clie.cedula})}" 
+                                  class="btn btn-primary"><i class="fas fa-user-times ml-2"></i></a>         
+                                       </td>
+              
+               
+                </tr>      
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+		integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption != '') {
+					window.location.replace('?lang=' + selectedOption);
+				}
+			});
+		});
+	</script>
+	</body>
+	</html>
