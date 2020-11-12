@@ -62,23 +62,23 @@ public class SqlFactura {
 //
 //			  }
 	 
-		//trae todos los factura de la base datos
-	  @Test
-	  public void should_find_all_facturas() {
-		  Factura usu1   = new Factura ();
-	    entityManager.persist(usu1);
-	    Iterable<Factura> clientes = repository.findAll();
-	    assertThat(clientes).hasSize(1).contains(usu1 );
-	  }
-
-	  //eliminar todas las facturas
-	  @Test
-	  public void should_delete_all_factura() {
-	    entityManager.persist(new Factura());
-	    entityManager.persist(new Factura());
-
-	    repository.deleteAll();
-
-	    assertThat(repository.findAll()).isEmpty();
-	  }
+//		//trae todos los factura de la base datos
+//	  @Test
+//	  public void should_find_all_facturas() {
+//		  Factura usu1   = new Factura ();
+//	    entityManager.persist(usu1);
+//	    Iterable<Factura> clientes = repository.findAll();
+//	    assertThat(clientes).hasSize(1).contains(usu1 );
+//	  }
+//
+//	  //eliminar todas las facturas
+//	  @Test
+//	  public void should_delete_all_factura() {
+//	    entityManager.persist(new Factura());
+//	    entityManager.persist(new Factura());
+//
+//	    repository.deleteAll();
+//
+//	    assertThat(repository.findAll()).isEmpty();
+//	  }
 }
