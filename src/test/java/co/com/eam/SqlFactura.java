@@ -27,15 +27,38 @@ public class SqlFactura {
 	  IFacturaRepo repository;
 	  
 	  
-		//saber si un factura esta vacio
-				@Test
-				  public void should_find_no_clientes_if_repository_is_empty() {
-				    Iterable<Factura> factura = repository.findAll();
-				    
-				    for (Factura facturas : factura) {
-						System.out.println("Factura:     "+facturas.toString());
-					}
+//		//saber si un factura esta vacio
+//				@Test
+//				  public void should_find_no_clientes_if_repository_is_empty() {
+//				    Iterable<Factura> factura = repository.findAll();
+//				    
+//				    for (Factura facturas : factura) {
+//						System.out.println("Factura:     "+facturas.toString());
+//					}
+//
+//				    assertThat(factura).isEmpty();
+//				  }
+	  
 
-				    assertThat(factura).isEmpty();
-				  }
+		//guardar un should_store_a_factura
+			@Test
+			  public void should_store_a_factura() {
+				Factura factura = repository.save(new Factura());
+			  }
+			
+			//buscar una factura por el id
+			  
+			  @Test
+			  public void should_find_factura_by_name_containing_string() {
+				Factura usu1   = new Factura();
+			    entityManager.persist(usu1);
+
+			    Factura usu2   = new Factura();
+			    entityManager.persist(usu2);
+
+			    Factura usu3  = new Factura();
+			    entityManager.persist(usu3);
+
+
+			  }
 }
