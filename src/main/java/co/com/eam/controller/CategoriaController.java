@@ -2,7 +2,6 @@ package co.com.eam.controller;
 
 import javax.validation.Valid;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +36,7 @@ public class CategoriaController {
 	 @GetMapping("/{dni}/addCategoria")
     public String showSignUpForm(@PathVariable("dni") String dni,Categoria categoria,Model model) {
     	 model.addAttribute("administrador",iAdministradorRepo.findAll());
-     	 model.addAttribute("categoria", iCategoriaRepo.findAll());
+     	 model.addAttribute("categorias", iCategoriaRepo.findAll());
         return "add-categoria";
     }
 //Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
@@ -45,8 +44,8 @@ public class CategoriaController {
    	 @PostMapping("/{dni}/add_categoria")
     public String addCategoria(@PathVariable("dni") String dni,@Valid Categoria categoria, BindingResult result, Model model) {
         if (result.hasErrors()) {
-        	 model.addAttribute("categoria", iCategoriaRepo.findAll());
-        	return "add-categoria";
+         
+            return "add-categoria";
         }
         
         iCategoriaRepo.save(categoria);
