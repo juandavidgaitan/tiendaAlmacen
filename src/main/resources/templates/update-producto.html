@@ -146,19 +146,37 @@
 									</option>
 								</select>
 								
-<div class="form-group col-md-6">
+								<div class="form-group col-md-6">
+								<label for="descripcionFoto" class="col-form-label" th:text="descripcionFoto"></label>
+								<input type="text" th:field="*{descripcionFoto}" class="form-control"
+									id="descripcionFoto" th:placeholder="descripcionFoto" required="required">
+								<span th:if="${#fields.hasErrors('descripcionFoto')}" th:errors="descripcionFoto"
+									class="text-danger"></span>
+
+							</div>
+							
+							<div class="form-group col-md-6">
+								<label for="precioIva" class="col-form-label" th:text="precioIva"></label>
+								<input type="text" th:field="*{precioIva}" class="form-control"
+									id="precioIva" th:placeholder="precioIva" required="required">
+								<span th:if="${#fields.hasErrors('precioIva')}" th:errors="precioIva"
+									class="text-danger"></span>
+
+							</div>
+								
+<div class="row">
 			     <div class="col-xs-4">
-          	      <label for="file-upload" class="subir btn btn-primary" th:text="SubirImagen"></label> </div>
+          	      <label for="file-upload" class="subir btn btn-primary" th:text="#{addfotobtnins.ins}"></label> </div>
 		           <div class="col-xs-8">
 		           <input type="file" id="file-upload" accept="image/" class="form-control-file" style='display: none;' name="file">
                     <span th:if="${#fields.hasErrors('foto')}" th:errors="{foto}" class="text-danger"></span>
             
-            
+            <div>
+            <img id="imcargar" src="/images/cargar.jpg" class="img-fluid rounded mt-2" style='width: 14rem; height: auto'>
+            </div>
             
              </div>
-		      </div><div>
-            <img id="imcargar" src="/images/cargar.jpg" class="img-fluid rounded mt-2" style='width: 10rem; height: auto'>
-            </div>
+		      </div>
 								
 								<!-- Boto para modificar -->
 								<div class="col-md-6 mt-5">

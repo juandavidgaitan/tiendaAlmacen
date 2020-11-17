@@ -116,12 +116,14 @@
                           <th th:text="nombre"></th>
                           <th th:text="PrecioUnitario"></th>
                           <th th:text="PrecioCompra"></th>
-                          <th th:text="CantidadProducto"></th>
+                          <th th:text="Cantidad"></th>
+                          <th th:text="IVA"></th>
                           <th th:text="Marca"></th>
                           <th th:text="Bodega"></th>
                            <th th:text="Proveedor"></th>
                           <th th:text="SubCategoria"></th>
                           <th th:text="Foto"></th>
+                          <th th:text="Descripcion"></th>
                           <th th:text="actions"></th>  
                           <a href="/administrador/{dni}(dni=${administrador.dni})/addProducto" 
                                   class="btn btn-primary"><i class="fas fa-user-plus ml-2"></i></a>                        
@@ -135,11 +137,13 @@
                <td th:text="${po.precioUnitario}"> </td>  
                <td th:text="${po.precioCompra}"> </td>  
                <td th:text="${po.cantidadProducto}"> </td>  
+               <td th:text="${po.precioIva}"> </td>  
                <td th:text="${po.marca}"> </td> 
                <td th:text="${po.bodega.nombre}"> </td>   
                <td th:text="${po.proveedor.nombre}"> </td>  
                <td th:text="${po.subcategoria.descripcion}"> </td>  
                <td><img id="imcargar" th:src="${po.foto}" class="img-fluid rounded mt-2" style='width: 10rem; heigth: auto;'></td>
+               <td th:text="${po.descripcionFoto}"> </td>  
                
                             <td> 
                               

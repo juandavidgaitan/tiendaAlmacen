@@ -102,7 +102,8 @@ public class ProductoController {
 //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
 //Pero si es verdadero llama el repository si esta lo actualiza	   
 	   @PostMapping("/{dni}/updateProducto/{id_producto}")
-	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model, @RequestParam("file") MultipartFile file, @RequestParam("cambioUrl") boolean cambioUrl) {
+	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model, 
+			   @RequestParam("file") MultipartFile file, @RequestParam("cambioUrl") boolean cambioUrl) {
 	       if (result.hasErrors()) {
 	    	 
 	       	producto.setId_producto(idProducto);
