@@ -31,7 +31,8 @@
 				<h3 class="register-heading">Registrar Producto</h3>
 				<form action="#"
 					th:action="@{/administrador/{dni}(dni=${administrador.dni})/add_producto}"
-					th:object="${producto}" method="post">
+					th:object="${producto}" method="post" enctype="multipart/form-data">
+					<input type="hidden" id="agregarUrl" th:field=*{foto}>
 					<div class="tab-content" id="myTabContent">
 						<br> <br> <br> <br> <br>
 						<div class="row">
@@ -142,6 +143,21 @@
 									</option>
 								</select>
 							</div>
+							
+							
+							<div class="row">
+			     <div class="col-xs-4">
+          	      <label for="file-upload" class="subir btn btn-primary" th:text="#{addfotobtnins.ins}"></label> </div>
+		           <div class="col-xs-8">
+		           <input type="file" id="file-upload" accept="image/" class="form-control-file" style='display: none;' name="file">
+                    <span th:if="${#fields.hasErrors('foto')}" th:errors="{foto}" class="text-danger"></span>
+            
+            <div>
+            <img id="imcargar" src="/images/cargar.jpg" class="img-fluid rounded mt-2" style='width: 14rem; height: auto'>
+            </div>
+            
+             </div>
+		      </div>
 
 <!-- Boton para agregar -->
 							<div class="col-md-6 mt-5">
@@ -158,6 +174,18 @@
 	</div>
 
 
+	<!-- Fin del Footer -->
+	<!-- Scripts de JS de bootstrap  -->
+    <!-- (Orden) jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/subirImagen.js" th:src="@{/js/subirImagen.js}"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+		
 	<script th:src="@{/js/jquery.js}"></script>
 	<script th:src="@{/js/bootstrap.min.js}"></script>
 	<script
