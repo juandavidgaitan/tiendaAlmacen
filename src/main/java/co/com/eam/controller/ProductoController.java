@@ -1,5 +1,7 @@
 package co.com.eam.controller;
 
+import java.util.Map;
+
 import javax.validation.Valid;
 
 
@@ -14,8 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.cloudinary.utils.ObjectUtils;
 
+import co.com.eam.CloudinaryConfig;
 import co.com.eam.domain.Producto;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IBodegaRepo;
@@ -44,6 +50,8 @@ public class ProductoController {
 	private ISubCategoriaRepo iSubcategoriaRepo;	
 	@Autowired
 	private IUsuarioRepo iUsuarioRepo;
+	@Autowired
+	private CloudinaryConfig cloudc;
 
 //Metodo que nos permite acceder a la plantilla add-producto con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases		    
 	@GetMapping("/{dni}/addProducto")
@@ -60,12 +68,19 @@ public class ProductoController {
 //Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
 //En este caso es para agregar una nuevo producto, estos metodos tienen que se publicos   
 	 @PostMapping("/{dni}/add_producto")
-	 public String addCategoria(@PathVariable("dni") String dni,@Valid Producto producto, BindingResult result, Model model) {
+	 public String addCategoria(@PathVariable("dni") String dni,@Valid Producto producto, BindingResult result, Model model, @RequestParam("file") MultipartFile file) {
 	        if (result.hasErrors()) {
 	        	model.addAttribute("productos", iProductoRepo.findAll());
 	        	 
 	            return "add-producto";
 	        }
+	        try {
+				Map uploadResult = cloudc .upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+				System.out.println(uploadResult.get("url").toString());
+				producto.setFoto(uploadResult.get("url").toString());	
+			}catch(Exception e){
+				System.out.println(e.getMessage());
+			}	
 	        
 	        iProductoRepo.save(producto);
 	        model.addAttribute("productos", iProductoRepo.findAll());
@@ -87,12 +102,21 @@ public class ProductoController {
 //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
 //Pero si es verdadero llama el repository si esta lo actualiza	   
 	   @PostMapping("/{dni}/updateProducto/{id_producto}")
-	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model) {
+	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model, @RequestParam("file") MultipartFile file, @RequestParam("cambioUrl") boolean cambioUrl) {
 	       if (result.hasErrors()) {
 	    	 
 	       	producto.setId_producto(idProducto);
 	           return "update-producto";
 	       }
+	       if (cambioUrl) { 
+				try {
+		            Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
+		            System.out.println(uploadResult.get("url").toString());
+		            producto.setFoto(uploadResult.get("url").toString());	
+		        } catch (Exception e) {
+		        	System.out.println(e.getMessage());
+		        }
+			}
 	       
 	       iProductoRepo.save(producto);
 	       model.addAttribute("productos", iProductoRepo.findAll());

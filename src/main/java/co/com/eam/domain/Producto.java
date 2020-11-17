@@ -33,6 +33,12 @@ public class Producto implements Serializable {
 	private String nombre;
 	
 	private String codigo;
+	
+	private String foto;
+	
+	private String descripcionFoto;
+	
+	private String precioIva;
 
 	@Column(name="precio_compra")
 	private double precioCompra;
