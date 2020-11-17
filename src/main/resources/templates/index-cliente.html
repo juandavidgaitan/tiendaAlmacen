@@ -97,8 +97,11 @@
                      <!--Nombre de los campos de la tabla --->
                           <th th:text="nombre"></th>
                           <th th:text="PrecioUnitario"></th>                              
-                          <th th:text="Codigo"></th>                              
-                          <th th:text="Cantidad"></th>                              
+                          <th th:text="Codigo"></th>   
+                          <th th:text="PrecioIVA"></th>   
+                          <th th:text="Foto"></th>    
+                          <th th:text="Existencia"></th>    
+                          <th th:text="Cantidad"></th>                        
                     </tr>
                 </thead>
                 <tbody>
@@ -107,6 +110,9 @@
                		<td th:text="${po.nombre}"> </td>  
                		<td th:text="${po.precioUnitario}"> </td>               		
                		<td th:text="${po.codigo}"> </td>
+               		<td th:text="${po.precioIva}"> </td>
+               		<td><img id="imcargar" th:src="${po.foto}" class="img-fluid rounded mt-2" style='width: 10rem; heigth: auto;'></td>
+               		<td th:text="${po.cantidadProducto}"> </td>
               		<td><input th:id="${po.id_producto}" type="number" class="form-control"></td>
                		<td>
                			<button type="button" class="btn btn-success" th:onclick="|agregarProducto('${po.id_producto}')|">Agregar</button>

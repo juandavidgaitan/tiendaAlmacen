@@ -91,6 +91,13 @@ public class InicioController {
 	@GetMapping("/")
 	public String login(Usuario usuario, Model model) {
 	 	model.addAttribute("usuario", new Usuario());
+	 	model.addAttribute("productos", iProductoRepo.findAll());
+		return "homePageUsuario";
+	}
+	
+	@GetMapping("/login")
+	public String login1(Usuario usuario, Model model) {
+	 	model.addAttribute("usuario", new Usuario());
 		return "login";
 	}
 	

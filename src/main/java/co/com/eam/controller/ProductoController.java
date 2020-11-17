@@ -101,28 +101,20 @@ public class ProductoController {
 	   }
 //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
 //Pero si es verdadero llama el repository si esta lo actualiza	   
-	   @PostMapping("/{dni}/updateProducto/{id_producto}")
-	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model, 
-			   @RequestParam("file") MultipartFile file, @RequestParam("cambioUrl") boolean cambioUrl) {
+	 @PostMapping("/{dni}/updateProducto/{id_producto}")
+	   public String updateProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, @Valid Producto producto, BindingResult result, Model model) {
 	       if (result.hasErrors()) {
 	    	 
 	       	producto.setId_producto(idProducto);
 	           return "update-producto";
 	       }
-	       if (cambioUrl) { 
-				try {
-		            Map uploadResult = cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
-		            System.out.println(uploadResult.get("url").toString());
-		            producto.setFoto(uploadResult.get("url").toString());	
-		        } catch (Exception e) {
-		        	System.out.println(e.getMessage());
-		        }
-			}
 	       
 	       iProductoRepo.save(producto);
 	       model.addAttribute("productos", iProductoRepo.findAll());
 	       return "listarProducto";
 	   }
+	   
+	   
 //Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista             
     @GetMapping("/{dni}/deleteProducto/{id_producto}")
     public String deleteProducto(@PathVariable("dni")String dni,@PathVariable("id_producto") int idProducto, Model model) {
@@ -139,6 +131,4 @@ public class ProductoController {
         return "listarProducto";
     }
      
-    
-    
 }
