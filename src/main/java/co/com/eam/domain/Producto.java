@@ -81,6 +81,30 @@ public class Producto implements Serializable {
 	}
 
 
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getDescripcionFoto() {
+		return descripcionFoto;
+	}
+
+	public void setDescripcionFoto(String descripcionFoto) {
+		this.descripcionFoto = descripcionFoto;
+	}
+
+	public String getPrecioIva() {
+		return precioIva;
+	}
+
+	public void setPrecioIva(String precioIva) {
+		this.precioIva = precioIva;
+	}
+
 	public int getId_producto() {
 		return id_producto;
 	}
