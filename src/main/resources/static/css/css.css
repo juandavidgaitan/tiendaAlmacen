@@ -80,6 +80,12 @@ width: 100px;
 margin-left: 250px;
 }
 
+.form-groupbtn1{
+margin-left: -250px;
+margin-top: -40px;
+ 
+}
+
 .login_btn:hover{
 color: black;
 background-color: white;

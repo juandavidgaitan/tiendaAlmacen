@@ -33,7 +33,7 @@ import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.IUsuarioRepo;
 
 @Controller
-@RequestMapping("/usuario")
+ 
 public class ClienteController {
 	
 	@Autowired
@@ -54,8 +54,8 @@ public class ClienteController {
 	private IDetalleFacturaRepo iDetalleFacturaRepo;
 	 
 	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
-	@GetMapping("/{id_usuario}/addcliente")
-    public String showSignUpForm(@PathVariable("id_usuario") String id_usuario,Cliente cliente, Model model) {
+	@GetMapping("/addcliente")
+    public String showSignUpForm(Cliente cliente, Model model) {
 		model.addAttribute("paises", iPaiRepo.findAll());
 		model.addAttribute("departamentos", iDepartamentoRepo.findAll());
 		model.addAttribute("municipios", iMunicipioRepo.findAll());
@@ -65,16 +65,16 @@ public class ClienteController {
 	
 //Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
 //En este caso es para agregar un	 nuevo cliente, estos metodos tienen que se publicos    
-	 @PostMapping("/{id_usuario}/add_cliente")
-	    public String addProveedor(@PathVariable("id_usuario") String id_usuario,@Valid Cliente cliente, BindingResult result, Model model) {
+	 @PostMapping("/add_cliente")
+	    public String addProveedor(@Valid Cliente cliente, BindingResult result, Model model) {
 	        if (result.hasErrors()) {
-	        	 model.addAttribute("cliente", iClienteRepo.findAll());
+	        	 
 	            return "add-cliente";
 	        }
 	        
 	        iClienteRepo.save(cliente);
-	        model.addAttribute("cliente", iClienteRepo.findAll());
-	        return "listarCliente";
+	    	model.addAttribute("usuario", new Usuario());
+	        return "login";
 	    }
 	
 	
@@ -117,7 +117,7 @@ public class ClienteController {
 //    		return "add-proveedor :: municipios";
 //    	}
 //Metodo que nos permite hacer una solicitud para hacer un edit, para ver que tiene ese registro, antes de esto recibe unos parametros   
-    @GetMapping("/{id_usuario}/editCliente/{cedula}")
+    @GetMapping("/editCliente/{cedula}")
     public String showUpdateForm(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
     	Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid proveedor id:" + cedula));
         model.addAttribute("cliente", cliente);
@@ -126,7 +126,7 @@ public class ClienteController {
     }
 //Este es para hacer un cambio, tiene dos opciones, si hay un error se queda en updateAdminid..
 //Pero si es verdadero llama el repository si esta lo actualiza.     
-    @PostMapping("/{id_usuario}/updateCliente/{cedula}")
+    @PostMapping("/updateCliente/{cedula}")
     public String updateUsuario(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, @Valid Cliente cliente, BindingResult result, Model model) {
         if (result.hasErrors()) {
         	model.addAttribute("cliente", iClienteRepo.findAll());
@@ -140,7 +140,7 @@ public class ClienteController {
     }
     
 //Se esta desobteniendo una informacion	y se elimina, y se actualiza para pintar la lista      
-    @GetMapping("/{id_usuario}/deleteCliente/{cedula}")
+    @GetMapping("/deleteCliente/{cedula}")
     public String deleteProveedor(@PathVariable("id_usuario")String id_usuario,@PathVariable("cedula") int cedula, Model model) {
         Cliente cliente = iClienteRepo.findById(cedula).orElseThrow(() -> new IllegalArgumentException("Invalid usuario id:" + cedula));
         iClienteRepo.delete(cliente);
@@ -149,8 +149,8 @@ public class ClienteController {
     }
     
 //Metodo que nos devuelve una cadena(lista)
- @GetMapping("/{id_usuario}/listarCliente")
-    public String ListarProveedor(@PathVariable ("id_usuario")String id_usuario,Model model) {
+ @GetMapping("/listarCliente")
+    public String ListarProveedor(Model model) {
     	model.addAttribute("usuario",iUsuarioRepo.findAll());
         model.addAttribute("cliente", iClienteRepo.findAll());
         model.addAttribute("municipio", iMunicipioRepo.findAll());
