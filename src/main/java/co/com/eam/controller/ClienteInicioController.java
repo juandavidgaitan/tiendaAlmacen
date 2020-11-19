@@ -65,7 +65,7 @@ public class ClienteInicioController {
 	        
 	        iClienteRepo.save(cliente);
 	        model.addAttribute("cliente", iClienteRepo.findAll());
-	        return "listarCliente";
+	        return "login";
 	    }
 	
 

@@ -54,28 +54,6 @@ public class ClienteController {
 	private IDetalleFacturaRepo iDetalleFacturaRepo;
 	 
 	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
-	@GetMapping("/{id_usuario}/addcliente")
-    public String showSignUpForm(@PathVariable("id_usuario") String id_usuario,Cliente cliente, Model model) {
-		model.addAttribute("paises", iPaiRepo.findAll());
-		model.addAttribute("departamentos", iDepartamentoRepo.findAll());
-		model.addAttribute("municipios", iMunicipioRepo.findAll());
-    	model.addAttribute("usuario",iUsuarioRepo.findAll());
-        return "add-cliente";
-    }
-	
-//Metodo que nos permite modificar el estado de esta endtidad  a nivel de la base de datos o nivel de la logica del negocio.
-//En este caso es para agregar un	 nuevo cliente, estos metodos tienen que se publicos    
-	 @PostMapping("/{id_usuario}/add_cliente")
-	    public String addProveedor(@PathVariable("id_usuario") String id_usuario,@Valid Cliente cliente, BindingResult result, Model model) {
-	        if (result.hasErrors()) {
-	        	 model.addAttribute("cliente", iClienteRepo.findAll());
-	            return "add-cliente";
-	        }
-	        
-	        iClienteRepo.save(cliente);
-	        model.addAttribute("cliente", iClienteRepo.findAll());
-	        return "listarCliente";
-	    }
 	
 	
 //    @GetMapping("/{dni}/addProveedor")
