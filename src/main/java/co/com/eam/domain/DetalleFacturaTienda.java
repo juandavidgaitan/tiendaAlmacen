@@ -27,11 +27,6 @@ public class DetalleFacturaTienda implements Serializable {
 	private String factura;
 
 	//Asociocion o relacion con otras tablas
-	
-	 
-
-	 
- 
 
 	public DetalleFacturaTienda() {
 	}
