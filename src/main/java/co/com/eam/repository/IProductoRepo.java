@@ -2,6 +2,8 @@ package co.com.eam.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -25,4 +27,6 @@ CrudRepository<Producto, Integer>{
 	
 	@Query("SELECT P FROM Producto P WHERE P.nombre=?1")
 	List<Producto> BuscarProductoNombre(String nombre);
+	
+	Page<Producto> findAll(Pageable pageable);
 }

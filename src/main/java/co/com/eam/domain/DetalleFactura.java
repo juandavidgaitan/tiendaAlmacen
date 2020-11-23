@@ -20,7 +20,7 @@ public class DetalleFactura implements Serializable {
 	@Id
 	@Column(name="id_detalle")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idDetalle;
+	private int id_detalle;
 
 	@Column(name="total_factura")
 	private String totalFactura;
@@ -42,13 +42,19 @@ public class DetalleFactura implements Serializable {
 	public DetalleFactura() {
 	}
 
-	public Long getIdDetalle() {
-		return this.idDetalle;
+	 
+
+	public int getId_detalle() {
+		return id_detalle;
 	}
 
-	public void setIdDetalle(Long idDetalle) {
-		this.idDetalle = idDetalle;
+
+
+	public void setId_detalle(int id_detalle) {
+		this.id_detalle = id_detalle;
 	}
+
+
 
 	public String getTotalFactura() {
 		return this.totalFactura;

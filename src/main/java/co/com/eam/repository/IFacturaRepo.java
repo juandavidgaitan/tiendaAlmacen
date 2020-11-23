@@ -9,7 +9,11 @@ import co.com.eam.domain.Factura;
 
 @Repository
 public interface IFacturaRepo extends CrudRepository<Factura, Long>{
+	
 	List<Factura> findByClienteCedula(int cedula);
+	
+ 
+	 
 	
 	@Query("SELECT f FROM Factura f WHERE f.usuario.id_usuario = ?1")
 	List<Factura> findByVendedor(int id);
