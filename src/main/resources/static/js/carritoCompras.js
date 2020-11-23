@@ -14,7 +14,7 @@ loadProductosCarrito = () => {
 		html += `<tr><td>${prod.nombre}</td><td>${prod.precioUnitario}</td> <td>${prod.cantidad}</td><td><button type="button" class="btn btn-danger" onclick="eliminar(${prod.productoId})">Eliminar</button></td></tr>`;
 		total += prod.cantidad * prod.precioUnitario;
 	})
-	html+= `<tr><td/><td><b>TOTAL</b></td><td>${total}</td><td><button type="button" class="btn btn-success" onclick="comprar()">Comprar</button></td></tr>`;
+	html+= `<tr><td/><td><b>TOTAL SIN IVA</b></td><td>${total}</td><td><button type="button" class="btn btn-success" onclick="comprar()">Comprar</button></td></tr>`;
 	$('#listProductosAgregados').html('');
 	$('#listProductosAgregados').html(html);
 }
