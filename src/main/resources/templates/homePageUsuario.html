@@ -1,123 +1,155 @@
 <html xmlns:th="http://www.thymeleaf.org">
-	<head>
-		<meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title   th:text="Inicio"></title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" th:href="@{/css/all.css}">
-        <link rel="stylesheet" th:href="@{/css/fontawesome.css}">
-        <link rel="stylesheet" th:href="@{/css/shard.min.css}">
-        <link rel="stylesheet" th:href="@{/css/solid.css}">
-        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
-	</head>
-	<body>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title th:text="Inicio"></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/all.css}">
+<link rel="stylesheet" th:href="@{/css/fontawesome.css}">
+<link rel="stylesheet" th:href="@{/css/shard.min.css}">
+<link rel="stylesheet" th:href="@{/css/solid.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-	<nav id="navbar" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-	
-  
-  
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-  
-    <span class="navbar-toggler-icon"></span>
-    
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-   <ul class="navbar-nav mr-auto">
-	    
-	      
-	       <li class="nav-item">
-	      <a class="btn btn-primary" th:href="@{/login}" th:text="Comprar"><i class="fas fa-power-off"></i></a>
-	      </li>
-	    </ul>
-  </div>  
-</nav>
+		<nav id="navbar"
+			class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+
+
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#collapsibleNavbar">
+
+				<span class="navbar-toggler-icon"></span>
+
+			</button>
+			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+				<ul class="navbar-nav mr-auto">
+
+
+					<li class="nav-item"><a class="btn btn-primary"
+						th:href="@{/login}" th:text="Comprar"><i
+							class="fas fa-power-off"></i></a></li>
+				</ul>
+			</div>
+		</nav>
 	</nav>
-	<img src="https://www.gsoft.es/wp-content/uploads/2018/01/crear-tienda-online.jpg" class="img-fluid" width="2000">
-	<br><br>
-	
+	<img
+		src="https://www.gsoft.es/wp-content/uploads/2018/01/crear-tienda-online.jpg"
+		class="img-fluid" width="2000">
+	<br>
+	<br>
+
 	<div class="container my-5 text-center">
-        <h1></h1>
-        <br>
-        <div class="row">
-            <div class="col">
-            	<div class="row">
-            		<div class="col-md-4" th:each="po : ${productos}">
-            			<div class="container text-left">
-						       <div class="card-deck">
-									 <div class="card">
-										   <td><img id="imcargar" th:src="${po.foto}" class="img-fluid rounded mt-2" style='width: 20rem; heigth: auto;'></td>
-										   <div class="card-body">
-										   		
-										   		<div class="row">	
-										   			<div class="col">
-										   				<h5 class="card-title"  th:text="Nombre"></h5>	
-										   			</div>
-										   			<div class="col">
-										   				<p class="card-text" th:text="${po.nombre}"></p>	
-										   			</div>
-										   		</div>
-										   		
-										   		<div class="row">
-										   			<div class="col">
-										   				<h5 class="card-title"  th:text="Precio"></h5>	
-										   			</div>
-										   			<div class="col">
-										   				<p class="card-text" th:text="${po.precioIva}"></p>	
-										   			</div>
-										   		</div>
-										   		
-										   		<div class="row">	
-										   			<div class="col">
-										   				<h5 class="card-title"  th:text="Descripcion"></h5>	
-										   			</div>
-										   			<div class="col">
-										   				<p class="card-text" th:text="${po.descripcionFoto}"></p>	
-										   			</div>
-										   		</div>
-										   		
-										   		<div class="row">	
-										   			<div class="col">
-										   				<h5 class="card-title"  th:text="TipoProducto"></h5>	
-										   			</div>
-										   			<div class="col">
-										   				<p class="card-text" th:text="${po.subcategoria.descripcion}"></p>	
-										   			</div>
-										   		</div>
-										       
-										     	<a th:href="@{/login}" 
-										     	class="btn btn-primary"  th:text="Comprar"></a>
-										     	
-										   </div>
-									 </div>	
-						       </div>
-					    </div>
-		    			<br>
-            		</div>
-            	</div>	
-            </div>
-        </div>
-    </div>
-	<script th:src="@{/js/jquery.js}"></script>
-    <script th:src="@{/js/jquery.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" 
-    crossorigin="anonymous"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#locales").change(function() {
-				var selectedOption = $('#locales').val();
-				if (selectedOption != '') {
-					window.location.replace('?lang=' + selectedOption);
-				}
+		<h1></h1>
+		<br>
+		<div class="row">
+			<div class="col">
+				<div class="row">
+					<div class="col-md-4" th:each="po : ${productos}">
+						<div class="container text-left">
+							<div class="card-deck">
+								<div class="card">
+									<td><img id="imcargar" th:src="${po.foto}"
+										class="img-fluid rounded mt-2"
+										style='width: 20rem; heigth: auto;'></td>
+									<div class="card-body">
+
+										<div class="row">
+											<div class="col">
+												<h5 class="card-title" th:text="Nombre"></h5>
+											</div>
+											<div class="col">
+												<p class="card-text" th:text="${po.nombre}"></p>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<h5 class="card-title" th:text="Precio"></h5>
+											</div>
+											<div class="col">
+												<p class="card-text" th:text="${po.precioIva}"></p>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<h5 class="card-title" th:text="Descripcion"></h5>
+											</div>
+											<div class="col">
+												<p class="card-text" th:text="${po.descripcionFoto}"></p>
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col">
+												<h5 class="card-title" th:text="TipoProducto"></h5>
+											</div>
+											<div class="col">
+												<p class="card-text"
+													th:text="${po.subcategoria.descripcion}"></p>
+											</div>
+										</div>
+
+										<a th:href="@{/login}" class="btn btn-primary"
+											th:text="Comprar"></a>
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+					</div>
+					
+					<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<nav aria-label="Pagination">
+						<ul class="pagination justify-content-center">
+							<li class="page-item" th:classappend="${prev == 0 ? 'disabled': ''}">
+								<a class="page-link" th:href="@{|/?page=${prev}|}">Anterior</a>
+							</li>
+							<li class="page-item" th:each="page : ${pages}" th:classappend="${current == page ? 'active': ''}">
+								<a class="page-link" th:href="@{|/?page=${page}|}" th:text="${page}"></a>
+							</li>
+							<li class="page-item" th:classappend="${current == last ? 'disabled': ''}">
+								<a class="page-link" th:href="@{|/?page=${next}|}">Siguiente</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+				 
+				</div>
+			</div>
+		</div>
+		<script th:src="@{/js/jquery.js}"></script>
+		<script th:src="@{/js/jquery.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+			integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+			crossorigin="anonymous"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#locales").change(function() {
+					var selectedOption = $('#locales').val();
+					if (selectedOption != '') {
+						window.location.replace('?lang=' + selectedOption);
+					}
+				});
 			});
-		});
-	</script>
+		</script>
 </body>
-<footer>
-</footer>
+<footer> </footer>
 </html>

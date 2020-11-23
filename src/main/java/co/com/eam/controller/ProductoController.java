@@ -2,6 +2,9 @@ package co.com.eam.controller;
 
 import java.util.Map;
 
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import javax.validation.Valid;
 
@@ -21,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.cloudinary.utils.ObjectUtils;
 
+ 
 import co.com.eam.CloudinaryConfig;
 import co.com.eam.domain.Categoria;
 import co.com.eam.domain.DetalleFactura;
@@ -30,10 +34,12 @@ import co.com.eam.repository.IBodegaRepo;
 import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.IDetalleFacturaRepo;
 import co.com.eam.repository.IProductoRepo;
+import co.com.eam.repository.IProductoRepoPaginacion;
 import co.com.eam.repository.IProveedorRepo;
 import co.com.eam.repository.ISubCategoriaRepo;
 import co.com.eam.repository.IUsuarioRepo;
-import co.com.eam.util.RenderizadorPaginas;
+import co.com.eam.util.ProductoPaginacion;
+ 
 
 
 @Controller
@@ -57,6 +63,8 @@ public class ProductoController {
 	@Autowired
 	private CloudinaryConfig cloudc;
 	
+	@Autowired
+	private ProductoPaginacion productoPaginacion;
 	 
 	
 	
@@ -140,22 +148,31 @@ public class ProductoController {
 	}
 
 	// Metodo que nos devuelve una cadena(lista)
-	@GetMapping("/{dni}/listarProducto")
-	public String ListarProducto(@RequestParam(name = "page", defaultValue = "0") int page,
-			@PathVariable("dni") String dni, Model model) {
+	@GetMapping(value="/")
+	public String ListarProducto(@RequestParam Map<String,Object> params, Model model) {
 
-		Pageable userPegeable = PageRequest.of(page, 5);
-		Page<Producto> producto = iProductoRepo.findAll(userPegeable);
-		RenderizadorPaginas<Producto> renderizadorPaginas = new RenderizadorPaginas<Producto>("/listarProducto",
-				producto);
-
-		model.addAttribute("page", renderizadorPaginas);
-		model.addAttribute("productos", producto);
+		int page = params.get("page") !=null ? Integer.valueOf(params.get("page").toString()) - 1 :0;
+		
+		PageRequest pageRequest = PageRequest.of(page, 1);
+		
+		Page<Producto> pageproducto = productoPaginacion.getAll(pageRequest);
+		
+	int totalPage = pageproducto.getTotalPages();
+	
+	if(totalPage > 0) {
+		List<Integer> pages = IntStream.range(1, totalPage).boxed().collect(Collectors.toList());
+		model.addAttribute("pages", pages);
+		
+	
+	}
+	
+	model.addAttribute("list", pageproducto.getContent());
+	 
 
 		model.addAttribute("administrador", iAdministradorRepo.findAll());
 		model.addAttribute("productos", iProductoRepo.findAll());
 
-		return "listarProducto";
+		return "homePageUsuario";
 
 	}
 	
