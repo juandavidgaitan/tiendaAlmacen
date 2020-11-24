@@ -42,6 +42,9 @@ public class ClienteInicioController {
 	private IDepartamentoRepo iDepartamentoRepo;
 	@Autowired
 	private IMunicipioRepo iMunicipioRepo;	
+	
+	@Autowired
+	private IFacturaRepo iFacturaRepo;
 	 
 	 
 	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
@@ -67,6 +70,25 @@ public class ClienteInicioController {
 	        model.addAttribute("cliente", iClienteRepo.findAll());
 	        return "login";
 	    }
+	 
+	 @GetMapping("/detalle")
+		public String  Factura(Model model){
+			 
+			
+			 
+	    model.addAttribute("facturas", iFacturaRepo.findAll());
+		 
+			return "facturasVendedor";
 	
 
+}
+	 @GetMapping("/listaDetalleVendedor")
+		public String detalleFactura(Model model){
+			 
+			
+			 
+	    model.addAttribute("facturas", iFacturaRepo.findAll());
+		 
+			return "facturasVendedorDetalle";
+}
 }

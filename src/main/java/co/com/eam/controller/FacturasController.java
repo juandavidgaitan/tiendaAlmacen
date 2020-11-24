@@ -30,6 +30,8 @@ public class FacturasController {
 
 	@Autowired
 	private IClienteRepo iClienteRepo;
+	
+ 
  
 
 	@GetMapping("/{cedula}")

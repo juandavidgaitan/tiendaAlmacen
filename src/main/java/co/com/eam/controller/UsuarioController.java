@@ -1,5 +1,8 @@
 package co.com.eam.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import javax.validation.Valid;
 
 
@@ -13,10 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
- 
+import co.com.eam.domain.Cliente;
+import co.com.eam.domain.Factura;
 import co.com.eam.domain.Usuario;
 import co.com.eam.repository.IAdministradorRepo;
 import co.com.eam.repository.IDepartamentoRepo;
+import co.com.eam.repository.IFacturaRepo;
 import co.com.eam.repository.IMunicipioRepo;
 import co.com.eam.repository.IPaiRepo;
 import co.com.eam.repository.IUsuarioRepo;
@@ -37,6 +42,8 @@ public class UsuarioController {
 	private IMunicipioRepo iMunicipioRepo;	
 	@Autowired
 	private IAdministradorRepo iAdministradorRepo;
+	@Autowired
+	private IFacturaRepo iFacturaRepo;
 	
 	//Metodo que nos permite acceder a la plantilla add-usuario con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases		 
 	
@@ -141,5 +148,14 @@ public class UsuarioController {
         return "listarUsuario";
     }
      
+    @GetMapping("/detalle")
+	public String detalleFactura(Model model){
+		 
+		
+		 
+    model.addAttribute("municipio", iFacturaRepo.findAll());
+	 
+		return "facturasVendedor";
+	}
 
 }
