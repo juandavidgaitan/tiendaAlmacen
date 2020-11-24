@@ -26,15 +26,15 @@
 <script th:src="@{/js/fontawesome.js}"></script>
 <style>
 @media print {
-    .btn {
-        display: none;
-    }
+	.btn {
+		display: none;
+	}
 }
 </style>
 </head>
 <body>
 
- 
+
 	<br>
 	<br>
 
@@ -43,15 +43,23 @@
 		<div class="col-sm-4"></div>
 	</div>
 
+	<img
+		src="https://www.gsoft.es/wp-content/uploads/2018/01/crear-tienda-online.jpg"
+		class="img-fluid" width="2000">
+	<br>
+	 
 
 	<div class="container">
 		<div class="table-wrapper">
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-8">
+						<br> <br>
 						<h4>
-							Listado<b> Detalle de facturas</b>
+							<b>Supermercado mercamos</b>
 						</h4>
+						
+						<br>
 					</div>
 					<div class="col-sm-4"></div>
 				</div>
@@ -73,7 +81,7 @@
 							<td th:text="${fa.idFactura}"></td>
 							<td th:text="${fa.fechaFactura}"></td>
 							<td th:text="${fa.total}"></td>
-							<td th:text="${fa.total + (fa.total * 0.19)}"></td>			
+							<td th:text="${fa.total + (fa.total * 0.19)}"></td>
 							<td>
 								<table class="table table-bordered">
 									<thead>
@@ -89,22 +97,21 @@
 											<td th:text="${det.producto.nombre}"></td>
 											<td th:text="${det.producto.codigo}"></td>
 											<td th:text="${det.cantidadComprada}"></td>
-											<td th:text="${det.producto.precioUnitario}"></td>
+										<td th:text="${det.producto.precioIva}"></td>
 										</tr>
 									</tbody>
 								</table>
-								
-										<p class="my-2">
-                        <a href="#"
-                             
-                            class="btn btn-outline-primary col"
-                              onClick="print()">Imprimir
-                            factura </i>
-                        </a>
-                         
-                    </p>
+
+								<p class="my-2">
+									<a href="#" class="btn btn-outline-primary col"
+										onClick="print()">Descargar factura <i class="fas fa-arrow-alt-circle-down"> </i>
+										
+									 
+									</a>
+
+								</p>
 							</td>
-							
+
 						</tr>
 					</tbody>
 				</table>
