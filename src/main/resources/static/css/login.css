@@ -1,0 +1,11 @@
+body,html {
+    background-image: url('https://www.ecestaticos.com/image/clipping/588906965d3b24fc2d442db7b52421ce/opening.jpg');
+    height: 100%;
+}
+
+#profile-img {
+    height:180px;
+}
+.h-80 {
+    height: 80% !important;
+}
