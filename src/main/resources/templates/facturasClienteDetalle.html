@@ -24,13 +24,6 @@
 <script th:src="@{/js/brands.js}"></script>
 <script th:src="@{/js/solid.js}"></script>
 <script th:src="@{/js/fontawesome.js}"></script>
-<style>
-@media print {
-    .btn {
-        display: none;
-    }
-}
-</style>
 </head>
 <body>
 
@@ -135,7 +128,7 @@
 						
                         
                         <a th:href="@{/listar/{idFactura}(idFactura=${fa.idFactura})}" 
-                                    class="btn btn-outline-primary col">Ver</a>
+                                    class="btn btn-outline-success col">Ver</a>
                     </p>
 							</td>
 							
@@ -157,17 +150,16 @@
 		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
 		integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
 		crossorigin="anonymous"></script>
-
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("#locales").change(function() {
-				var selectedOption = $('#locales').val();
-				if (selectedOption != '') {
-					window.location.replace('?lang=' + selectedOption);
-				}
+			$(document).ready(function() {
+				$("#locales").change(function() {
+					var selectedOption = $('#locales').val();
+					if (selectedOption != '') {
+						window.location.replace('?lang=' + selectedOption);
+					}
+				});
 			});
-		});
-	</script>
-
+		</script>
+	<script th:src="@{/js/despachos.js}"></script>
 </body>
 </html>
