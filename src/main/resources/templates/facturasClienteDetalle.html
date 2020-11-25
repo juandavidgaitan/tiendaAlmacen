@@ -60,7 +60,8 @@
 						th:text="Factura"></a></li>
 					<li class="nav-item"><a class="navbar-brand"
 						th:field="${usuario}"
-						th:href="@{/factura/detalle/{cedulaCliente}(cedulaCliente=${cliente.cedula})}">Detalle
+						
+					th:href="@{/factura/detalle/{cedulaCliente}(cedulaCliente=${cliente.cedula})}">Detalle
 							Factura</a></li>
 				</ul>
 			</div>
