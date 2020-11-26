@@ -21,6 +21,12 @@ public class Despacho implements Serializable {
 	private int idDespacho;
 
 	private String direccion;
+	
+	public Despacho(int idDespacho, String direccion) {
+		super();
+		this.idDespacho = idDespacho;
+		this.direccion = direccion;
+	}
 
 	//Asociocion o relacion con otras tablas
 	
