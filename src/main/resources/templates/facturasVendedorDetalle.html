@@ -32,8 +32,54 @@
 }
 </style>
 </head>
-<body>
 
+<body>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	<nav id="navbar" class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+	
+  
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+  
+    <span class="navbar-toggler-icon"></span>
+    
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+ <ul class="navbar-nav mr-auto">
+	    
+	       <li class="nav-item">
+	       <img src="../images/admin-ui.png">
+	      </li>
+	      
+	   
+
+	    <li class="nav-item">
+	       <a class="navbar-brand"  th:href="@{/usuario}" th:text="Inicio"></a>
+
+	      </li>
+	      
+	        
+	      <li class="nav-item">
+	       <a class="navbar-brand"  th:href="@{/detalle}" th:text="Facturas"></a>
+
+	      </li>
+	      <li class="nav-item">
+	         <a class="navbar-brand"  th:href="@{/listaDetalleVendedor}" th:text="Detalle-factura"></a>
+	      </li>
+	      
+	       <li class="nav-item">
+	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
+	      </li>
+	     
+	    </ul>
+  </div>  
+</nav>
+	</nav>
 	 
 	<br>
 	<br>

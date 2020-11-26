@@ -44,7 +44,10 @@
 	      
 	   
 
-	    
+	    <li class="nav-item">
+	       <a class="navbar-brand"  th:href="@{/usuario}" th:text="Inicio"></a>
+
+	      </li>
 	      
 	        
 	      <li class="nav-item">
@@ -54,13 +57,7 @@
 	      <li class="nav-item">
 	         <a class="navbar-brand"  th:href="@{/listaDetalleVendedor}" th:text="Detalle-factura"></a>
 	      </li>
-	      <li class="nav-item">
-	       <a class="navbar-brand" th:field="${usuario}" th:href="@{/usuario/{id_usuario}(id_usuario=${usuario.id_usuario})/listarCliente}" th:text="Despacho"></a>
-	      </li>
 	      
-	      <li class="nav-item">
-	      	<a class="navbar-brand" th:href="@{/usuario/ventas/{id_usuario}(id_usuario=${usuario.id_usuario})}" th:text="Ventas"><i class="navbar-brand"></i></a>
-	      </li>
 	       <li class="nav-item">
 	      <a class="btn btn-outline-success my-2 my-sm-0" th:href="@{/}" th:text="Salir"><i class="fas fa-power-off"></i></a>
 	      </li>
