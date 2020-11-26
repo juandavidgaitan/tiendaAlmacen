@@ -176,27 +176,27 @@ public class ProductoController {
 
 	}*/
 	
-	@GetMapping(value ="/")
-	public String xxx(@RequestParam Map <String, Object> params,Model model) {
-		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
-		
-		PageRequest pageRequest = PageRequest.of(page,1);
-		
-		Page<Producto> pageProducto = productoPaginacion.getAll(pageRequest);
-		
-		int totalPage = pageProducto.getTotalPages();
-		if(totalPage > 0) {
-			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
-			model.addAttribute("pages", pages);
-		}
-		model.addAttribute("list", pageProducto.getContent());
-		model.addAttribute("current", page + 1);
-		model.addAttribute("next", page + 2);
-		model.addAttribute("prev", page);
-		model.addAttribute("last", totalPage);
-		
-		return "homePageUsuario";	
-	}
+//	@GetMapping(value ="/")
+//	public String xxx(@RequestParam Map <String, Object> params,Model model) {
+//		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
+//		
+//		PageRequest pageRequest = PageRequest.of(page,1);
+//		
+//		Page<Producto> pageProducto = productoPaginacion.getAll(pageRequest);
+//		
+//		int totalPage = pageProducto.getTotalPages();
+//		if(totalPage > 0) {
+//			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+//			model.addAttribute("pages", pages);
+//		}
+//		model.addAttribute("list", pageProducto.getContent());
+//		model.addAttribute("current", page + 1);
+//		model.addAttribute("next", page + 2);
+//		model.addAttribute("prev", page);
+//		model.addAttribute("last", totalPage);
+//		
+//		return "homePageUsuario";	
+//	}
 	
 	
 

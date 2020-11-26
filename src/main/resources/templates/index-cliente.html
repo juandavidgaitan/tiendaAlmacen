@@ -120,8 +120,31 @@
                			<button type="button" class="btn btn-success" th:onclick="|agregarProducto('${po.id_producto}')|">Agregar</button>
                		</td>
                 </tr>      
+                
+                <div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<nav aria-label="Pagination">
+						<ul class="pagination justify-content-center">
+							<li class="page-item" th:classappend="${prev == 0 ? 'disabled': ''}">
+								<a class="page-link" th:href="@{|/cliente?page=${prev}|}">Anterior</a>
+							</li>
+							<li class="page-item" th:each="page : ${pages}" th:classappend="${current == page ? 'active': ''}">
+								<a class="page-link" th:href="@{|/cliente?page=${page}|}" th:text="${page}"></a>
+							</li>
+							<li class="page-item" th:classappend="${current == last ? 'disabled': ''}">
+								<a class="page-link" th:href="@{|/cliente?page=${next}|}">Siguiente</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-md-2"></div>
+			</div> 
                 </tbody>
+                
+                
             </table>
+            
             </div>
         </div>
     </div>

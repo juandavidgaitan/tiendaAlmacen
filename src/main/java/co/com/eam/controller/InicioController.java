@@ -1,11 +1,16 @@
 package co.com.eam.controller;
 
 
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.StreamSupport;
 
 import org.omg.CosNaming._BindingIteratorImplBase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import co.com.eam.domain.Administrador;
 import co.com.eam.domain.Cliente;
@@ -24,6 +30,7 @@ import co.com.eam.repository.IClienteRepo;
 import co.com.eam.repository.IProductoRepo;
 import co.com.eam.repository.ISubCategoriaRepo;
 import co.com.eam.repository.IUsuarioRepo;
+import co.com.eam.util.ProductoPaginacion;
 
 
 
@@ -46,6 +53,8 @@ public class InicioController {
 	public static Administrador admindlogeado;
 	@Autowired
 	public static Cliente clientelogeado;
+	@Autowired
+	private ProductoPaginacion productoPaginacion;
 	
 //	@RequestMapping("/")
 //	public String Inicio(Model model) {
@@ -56,10 +65,25 @@ public class InicioController {
 //	}
 //
 	@RequestMapping("/cliente")
-	public String InicioCliente(Model model) {
+	public String InicioCliente(@RequestParam Map <String, Object> params,Model model) {
+		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
+		PageRequest pageRequest = PageRequest.of(page,3);
+		
+		Page<Producto> pageProducto = productoPaginacion.getAll(pageRequest);
+		
+		int totalPage = pageProducto.getTotalPages();
+		if(totalPage > 0) {
+			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
+		}
 		Iterable<Producto> productosIterable = iProductoRepo.findAll();
 		model.addAttribute("cliente", clientelogeado);
 		model.addAttribute("productos", productosIterable);
+		model.addAttribute("productos", pageProducto.getContent());
+		model.addAttribute("current", page + 1);
+		model.addAttribute("next", page + 2);
+		model.addAttribute("prev", page);
+		model.addAttribute("last", totalPage);
 		model.addAttribute("cedula", clientelogeado != null ? clientelogeado.getCedula() : "");		
 		model.addAttribute("productosAsCarrito", StreamSupport.stream(productosIterable.spliterator(), false).map(pro -> {
 			ProductoCarritoDto prod = new ProductoCarritoDto();
@@ -71,6 +95,7 @@ public class InicioController {
 		}).collect(Collectors.toList()));
 		return "index-cliente";
 	}
+	 
 	
 	@RequestMapping("/usuario")
 	public String InicioUsuario(Model model) {
@@ -89,9 +114,24 @@ public class InicioController {
 	}
 	
 	@GetMapping("/")
-	public String login(Usuario usuario, Model model) {
+	public String login(@RequestParam Map <String, Object> params,Usuario usuario, Model model) {
+		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
+		PageRequest pageRequest = PageRequest.of(page,3);
+		
+		Page<Producto> pageProducto = productoPaginacion.getAll(pageRequest);
+		
+		int totalPage = pageProducto.getTotalPages();
+		if(totalPage > 0) {
+			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
+		}
 	 	model.addAttribute("usuario", new Usuario());
 	 	model.addAttribute("productos", iProductoRepo.findAll());
+	 	model.addAttribute("productos", pageProducto.getContent());
+		model.addAttribute("current", page + 1);
+		model.addAttribute("next", page + 2);
+		model.addAttribute("prev", page);
+		model.addAttribute("last", totalPage);
 		return "homePageUsuario";
 	}
 	
