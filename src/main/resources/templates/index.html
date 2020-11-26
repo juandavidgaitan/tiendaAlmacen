@@ -1,91 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="../css/csss.css">
-    <title>HOME</title>
-    <style>
-
-    body{  
-    background: -webkit-linear-gradient(to right, #ec2F4B, #009FFF);
-    background: linear-gradient(to right, #ec2F4B, #009FFF);
-    }    
-    /* Para un comportamiento responsive */
-    .carousel-inner img {
-    width: 100%;
-    height: 100%;
-    }
-  </style> 
-      
-  </head>
-  <body>
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <img src="">
-	 
-	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	    <ul class="navbar-nav mr-auto">
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/login}" th:text="INGRESAR"></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/addusuario}" th:text="REGISTRARSE"></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" th:href="@{/login}" th:text="VENDER"></a>
-	      </li>
-	    </ul>
-	  </div>
-	</nav>
-    
-        <div id="carousel1" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-            <div class="carousel-item active">
-               <img src="images/1.jpeg" alt="" width="20" height="20">
-            </div>
-            <div class="carousel-item">
-               <img src="images/2.jpeg" alt="" width="20" height="20">
-            </div>
-            <div class="carousel-item">
-               <img src="images/3.jpeg" alt="" width="20" height="20">
-            </div>
-            </div>
-            
-            <!--Controles NEXT y PREV-->
-            <a class="carousel-control-prev" href="#carousel1" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Supermercamos</title>
+        <link rel="icon" type="image/x-icon" href="../img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/index.css" rel="stylesheet" />
+        <link rel="stylesheet" th:href="@{/css/index.css}">
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span class="d-block d-lg-none">Supermercamos</span>
+                <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="../images/supermercamos.png" alt="" /></span>
             </a>
-            <a class="carousel-control-next" href="#carousel1" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-            <!--Controles de indicadores-->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel1" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel1" data-slide-to="1"></li>
-                <li data-target="#carousel1" data-slide-to="2"></li>
-            </ol>
-            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+               		<li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/login}" >Login</a></li>
+               		<li class="nav-item"><a class="nav-link js-scroll-trigger" th:href="@{/producto}" >Produtos</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Calidad</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Equipo</a></li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container-fluid p-0">
+            <!-- About-->
+            <section class="resume-section" id="about">
+                <div class="resume-section-content">
+                    <h1 class="mb-0">
+                        Super
+                        <span class="text-primary">Mercamos</span>
+                    </h1>
+                    <div class="subheading mb-5">
+                        Armenia Quindio · SeperMercamos, CO 80810 · (317) 585-8468 ·
+                        <a href="">sergio.guzman.1832@eam.edu.co</a>
+                    </div>
+                    <p class="lead mb-5">Fundada a principios de 2020 por Los hermanos Guzman Daza y Juan David Gaitan Reyes, Supermercamos es, en la actualidad, la marca  de venta al por menor puntera en Armenia Quindio Colombia. Según los informes 2020,Se clasifica como uno de los supermercados mas avanzados de colombia, Supermercamos cuenta con un valor total de marca de 131.877 millones de pesos cop.</p>
+                    <div class="social-icons">
+                        <a class="social-icon" href="https://www.instagram.com"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="social-icon" href="https://github.com/juandavidgaitan/tiendaAlmacen"><i class="fab fa-github"></i></a>
+                        <a class="social-icon" href="https://www.facebook.com/juandavid.gaitanreyes"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+            </section>
+            <hr class="m-0" />
+            <!-- Experience-->
+            <section class="resume-section" id="experience">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Calidad</h2>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                          <p>Encontrar un lugar de confianza para ir a mercar donde le ofrezcan precios asequibles y de alta calidad puede convertirse en la clave a la hora de decantarse por uno u otro supermercado. En ese sentido, según una medición de BrandStrat sobre el valor percibido de marca, Supermercamos es el almacén más valorado por los consumidores colombianos.</p>
+
+						  <p>Con 79% de los votos, la compañía liderada por Carlos Mario Giraldo es la más familiar para los consumidores; seguida de la marca Olímpica, que obtuvo 58% de los votos; Jumbo, con 55%; D1, con 53%; y Surtimax, con 52%. Detrás, le siguen otros nombres de supermercados como Metro y Carulla, ambos con 51% de familiaridad; Alkosto, con 38% de los votos; Makro, con 36%; Colsubsidio, con 30%; La 14, con 27%; y Justo & Bueno, con 26%.</p>
+                        </div>
+                        <div class="flex-shrink-0"><span class="text-primary"></span></div>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        <div class="flex-grow-1">
+                            <h3 class="mb-0">Calidad de productos</h3>
+                            <p>Todos los productos que manejamos cuentan con el registro invima, el cual garantiza la inocuidad de los mismos. De igual manera las empresas proveedoras estan certificadas en buenas practicas de manofacturas, Con el objetivo de proteger al consumidor tanto del fraude como de su salud</p>
+                            <p></p>
+                        </div>
+                    </div>
+                   
+                </div>
+            </section>
+            <hr class="m-0" />  
+            <!-- Awards-->
+            <section class="resume-section" id="awards">
+                <div class="resume-section-content">
+                    <h2 class="mb-5">Developer Team</h2>
+                    <ul class="fa-ul mb-0">
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                            Sergio Guzman Daza
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                           Juan David Gaitan Reyes
+                        </li>
+                        <li>
+                            <span class="fa-li"><i class="fas fa-trophy text-warning"></i></span>
+                           Santiago Guzman Daza
+                        </li>
+                       
+                    </ul>
+                </div>
+            </section>
         </div>
-      
-      
-      
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-    <script>
-        $('.carousel').carousel();
-    </script>  
-      
-  </body>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Third party plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
