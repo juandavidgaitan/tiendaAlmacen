@@ -33,9 +33,11 @@
     
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-   <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto">
 	    
-
+	       <li class="nav-item">
+	       <img src="../images/admin-ui.png">
+	      </li>
 	      
 	      <li class="nav-item">
 	   
@@ -55,7 +57,7 @@
 	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarMunicipio}" th:text="Municipio"></a>
 	      </li>
 	      <li class="nav-item">
-	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProducto}" th:text="Producto"></a>
+	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/home}" th:text="Producto"></a>
 	      </li>
 	      <li class="nav-item">
 	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarBodega}" th:text="Bodega"></a>
@@ -63,7 +65,7 @@
 	      <li class="nav-item">
 	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarProveedor}" th:text="Proveedor"></a>
 	      </li>
-	      
+	     
 	      <li class="nav-item">
 	        <a class="navbar-brand" th:field="${administrador}" th:href="@{/administrador/{dni}(dni=${administrador.dni})/listarUsuario}" th:text="Vendedor"></a>
 	      </li>
