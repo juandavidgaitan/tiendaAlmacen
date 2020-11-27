@@ -80,14 +80,14 @@ public class CategoriaController {
         Categoria categoria = iCategoriaRepo.findById(idCategoria).orElseThrow(() -> new IllegalArgumentException("Invalid categoria id:" + idCategoria));
         iCategoriaRepo.delete(categoria);
     	model.addAttribute("categorias", iCategoriaRepo.findAll());
-        return "listarcategoria";
+        return "listarCategoria";
     }
 //Metodo que nos devuelve una cadena(lista)
     @GetMapping("/{dni}/listarcategoria")
     public String ListarCate(@PathVariable ("dni")String dni,Model model) {
     	model.addAttribute("administrador",iAdministradorRepo.findAll());
         model.addAttribute("categorias", iCategoriaRepo.findAll());
-        return "listarcategoria";
+        return "listarCategoria";
     }
      
 
