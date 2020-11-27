@@ -45,30 +45,15 @@ public class FacturasController {
  
 
 	@GetMapping("/{cedula}")
-	public String factura(@RequestParam Map <String, Object> params,@PathVariable String cedula, Model model) throws Exception {
-		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
-		
-		PageRequest pageRequest = PageRequest.of(page,3);
-		
-		Page<Factura> pageFactura = facturaPaginacion.getAll(pageRequest);
-		
-		int totalPage = pageFactura.getTotalPages();
-		if(totalPage > 0) {
-			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
-			model.addAttribute("pages", pages);
-			 
-		}
+	public String factura(@PathVariable String cedula, Model model) throws Exception {
+	 
 		Optional<Cliente> cliente = iClienteRepo.findById(Integer.parseInt(cedula));
 		if (!cliente.isPresent()) {
 			throw new Exception("No existe el cliente con cedula:" + cliente);
 		}
 		model.addAttribute("facturas", iFacturaRepo.findByClienteCedula(Integer.parseInt(cedula)));
 		model.addAttribute("cliente", cliente.get());
-		model.addAttribute("facturas", pageFactura.getContent());
-		model.addAttribute("current", page + 1);
-		model.addAttribute("next", page + 2);
-		model.addAttribute("prev", page);
-		model.addAttribute("last", totalPage);
+		 
 		return "facturasCliente";
 	}
 
