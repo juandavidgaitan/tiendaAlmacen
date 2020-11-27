@@ -9,10 +9,9 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-
+import co.com.eam.domain.Despacho;
 import co.com.eam.domain.Municipio;
-import co.com.eam.repository.IMunicipioRepo;
-
+import co.com.eam.repository.IDespachoRepo;
 
 
 @ExtendWith(SpringExtension.class)//es la anotacion para importar junit.jupiter
@@ -23,125 +22,124 @@ public class SqlDespacho {
 	  private TestEntityManager entityManager;
 
 	  @Autowired
-	  IMunicipioRepo repository;
+	  IDespachoRepo repository;
 	  
-	//saber si un municipio esta vacio verificamos que no haya nada registrado 
+	//saber si un despacho esta vacio verificamos que no haya nada registrado 
 			@Test
-			  public void should_find_no_municipio_if_repository_is_empty() {
-			    Iterable<Municipio> municipios = repository.findAll();
+			  public void should_find_no_despacho_if_repository_is_empty() {
+			    Iterable<Despacho> despachos = repository.findAll();
 			    
-			    for (Municipio municipio : municipios) {
-					System.out.println("Municipio:     "+municipio.toString());
+			    for (Despacho despcaho : despachos) {
+					System.out.println("Municipio:     "+despcaho.toString());
 				}
 
-			    assertThat(municipios).isEmpty();
+			    assertThat(despachos).isEmpty();
 			  }
 			
-			//guardar un municipio
+			//guardar un despacho
 			@Test
 			  public void should_store_a_user() {
 				
-				Municipio depa = repository.save(new Municipio (1, "Armenia"));
+				Despacho depa = repository.save(new Despacho (1, "centro de armenia"));
 				// creamos un objeto de tipo municipio con los parametros que le mandamos arriba
 
-			   assertThat(depa).hasFieldOrPropertyWithValue("id_municipio", 1);
-			   assertThat(depa).hasFieldOrPropertyWithValue("nombre", "Armenia");
+			   assertThat(depa).hasFieldOrPropertyWithValue("idDespacho", 1);
+			   assertThat(depa).hasFieldOrPropertyWithValue("direccion", "centro de armenia");
 			   //este metodo tambien lo estamos utilizando de JUnit debe de estar importado
 			 //del paquete de asserciones que seria como verificar
 			  }
 			
-			 //buscar municipio por una id
+			 //buscar despacho por una id
 			  @Test
-			  public void should_find_municipio_by_id() {
-			    Municipio usu1   = new Municipio(1, "armenia");
+			  public void should_find_despacho_by_id() {
+			    Despacho usu1   = new Despacho(1, "centro de armenia");
 			    entityManager.persist(usu1);
 
 			    
-			    Municipio foundUser = repository.findById(usu1.getId_municipio()).get();
+			    Despacho foundUser = repository.findById(usu1.getIdDespacho()).get();
 
 			    assertThat(foundUser).isEqualTo(usu1);
 			  }
-			  
-			  
-			//buscar un municipio por el nombre
+		  
+			//buscar un despachos por el nombre
 			  
 			  @Test
-			  public void should_find_municipio_by_name_containing_string() {
-				Municipio usu1   = new Municipio(1, "armenia");
+			  public void should_find_despacho_by_name_containing_string() {
+				Despacho usu1   = new Despacho(1, "centro de armenia");
 			    entityManager.persist(usu1);
 
-			    Municipio usu2   = new Municipio(2, "calarca");
+			    Despacho usu2   = new Despacho(2, "Barrio Parasiso");
 			    entityManager.persist(usu2);
 
-			    Municipio usu3  = new Municipio(3, "salento");
+			    Despacho usu3  = new Despacho(3, "Cr 15 cll 18");
 			    entityManager.persist(usu3);
 
-			    Iterable<Municipio> users = (Iterable<Municipio>) repository.BuscarMunicipiosNombre("armenia");
-			    Iterable<Municipio> user = (Iterable<Municipio>) repository.BuscarMunicipiosNombre("calarca");
+			    Iterable<Despacho> users = (Iterable<Despacho>) repository.BuscarDespachoNombre("centro de armenia");
+			    Iterable<Despacho> user = (Iterable<Despacho>) repository.BuscarDespachoNombre("Barrio Parasiso");
 
 			    assertThat(users).hasSize(1).contains(usu1);
 			    assertThat(user).hasSize(1).contains(usu2);
 			  }
 			  
-			//trae todos los usuario de la base datos
+			//trae todos los despachos de la base datos
 			  @Test
-			  public void should_find_all_municipios () {
-				  Municipio usu1   = new Municipio(1, "armenia");
+			  public void should_find_all_despachos () {
+				  Despacho usu1   = new Despacho(1, "centro de armenia");
 			    entityManager.persist(usu1);
 
-			    Iterable<Municipio> users = repository.findAll();
+			    Iterable<Despacho> users = repository.findAll();
 
 			    assertThat(users).hasSize(1).contains(usu1 );
 			  }
 			  
 			  
-			  //actualizar municipio por llave primaria
+			  //actualizar despacho por llave primaria
 			  @Test
 			  public void should_update_user_by_id() {
-				Municipio usu1   = new Municipio(1, "armenia");
+				Despacho usu1   = new Despacho(1, "centro de armenia");
 			    entityManager.persist(usu1);
 
 			   
-			    Municipio updatedUsu = new Municipio(1, "salento");
+			    Despacho updatedUsu = new Despacho(1, "Barrio Parasiso");
 
-			    Municipio usu = repository.findById(usu1.getId_municipio()).get();
-			    usu.setNombre(updatedUsu.getNombre());
+			    Despacho usu = repository.findById(usu1.getIdDespacho()).get();
+			    usu.setDireccion(updatedUsu.getDireccion());
 			    
 			    repository.save(usu);
 
-			    Municipio checkUsu = repository.findById(usu1.getId_municipio()).get();
+			    Despacho checkUsu = repository.findById(usu1.getIdDespacho()).get();
 			    
-			    assertThat(checkUsu.getId_municipio()).isEqualTo(usu1.getId_municipio());
-			    assertThat(checkUsu.getNombre()).isEqualTo(updatedUsu.getNombre());
+			    assertThat(checkUsu.getIdDespacho()).isEqualTo(usu1.getIdDespacho());
+			    assertThat(checkUsu.getDireccion()).isEqualTo(updatedUsu.getDireccion());
 			     
 
 			  }
 			  
 
-			  //eliminar municipio por llave primaria
+			  //eliminar despacho por llave primaria
 			  @Test
-			  public void should_delete_municipio_by_id() {
-				  Municipio usu1   = new Municipio(1, "armenia");
+			  public void should_delete_despacho_by_id() {
+				Despacho usu1   = new Despacho(1, "centro de armenia");
 			    entityManager.persist(usu1);
 
-			    Municipio usu2   = new Municipio(2, "salento");
+			    Despacho usu2   = new Despacho(2, "Barrio Parasiso");
 			    entityManager.persist(usu2);
 
-			    Municipio usu3  = new Municipio(3, "calarca");
+			    Despacho usu3  = new Despacho(3, "Cr 15 cll 18");
 			    entityManager.persist(usu3);
 
-			    repository.deleteById(usu2.getId_municipio());
+			    repository.deleteById(usu2.getIdDespacho());
 
-			    Iterable<Municipio> users = repository.findAll();
+			    Iterable<Despacho> users = repository.findAll();
 
 			    assertThat(users).hasSize(2).contains(usu1, usu3 );
 			  }
 			  
-			  //eliminar todos los municipios
+			  //eliminar todos los despacho
 			  @Test
-			  public void should_delete_all_municipios() {
-			    entityManager.persist(new Municipio(1, "armenia"));
-			    entityManager.persist(new Municipio(2, "salento"));
+			  public void should_delete_all_despachos() {
+			    entityManager.persist(new Despacho(1, "centro de armenia"));
+			    entityManager.persist(new Despacho(2, "Barrio Parasiso"));
 
 			    repository.deleteAll();
 
