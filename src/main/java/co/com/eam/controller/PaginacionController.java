@@ -26,6 +26,7 @@ import co.com.eam.repository.IClienteRepo;
  
 import co.com.eam.repository.IFacturaRepo;
 import co.com.eam.repository.IProductoRepo;
+import co.com.eam.util.FacturaPaginacion;
 import co.com.eam.util.ProductoPaginacion;
 
 @Controller
@@ -39,6 +40,8 @@ public class PaginacionController {
 	@Autowired
 	private IProductoRepo iProductoRepo;
 	
+	@Autowired
+	private FacturaPaginacion facturaPaginacion;
 
 	 
 	 @GetMapping(value ="/home")
@@ -63,6 +66,30 @@ public class PaginacionController {
 			
 			
 			return "listarProducto";	
+		}
+	
+	 @GetMapping(value ="/valen")
+		public String xxxx(@RequestParam Map <String, Object> params,Model model) {
+			int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
+			
+			PageRequest pageRequest = PageRequest.of(page,3);
+			
+			Page<Factura> pageProducto = facturaPaginacion.getAll(pageRequest);
+			
+			int totalPage = pageProducto.getTotalPages();
+			if(totalPage > 0) {
+				List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+				model.addAttribute("pages", pages);
+				 
+			}
+			model.addAttribute("facturas", pageProducto.getContent());
+			model.addAttribute("current", page + 1);
+			model.addAttribute("next", page + 2);
+			model.addAttribute("prev", page);
+			model.addAttribute("last", totalPage);
+			
+			
+			return "index-usuario";	
 		}
 	 
 //	 @GetMapping(value ="/Index")

@@ -67,7 +67,7 @@ public class InicioController {
 	@RequestMapping("/cliente")
 	public String InicioCliente(@RequestParam Map <String, Object> params,Model model) {
 		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
-		PageRequest pageRequest = PageRequest.of(page,3);
+		PageRequest pageRequest = PageRequest.of(page,5);
 		
 		Page<Producto> pageProducto = productoPaginacion.getAll(pageRequest);
 		
@@ -98,9 +98,25 @@ public class InicioController {
 	 
 	
 	@RequestMapping("/usuario")
-	public String InicioUsuario(Model model) {
+	public String InicioUsuario(@RequestParam Map <String, Object> params,Model model) {
+		
+		int page = params.get("page") != null ? (Integer.valueOf(params.get("page").toString()) - 1) : 0;
+		PageRequest pageRequest = PageRequest.of(page,1);
+		
+		Page<Producto> pageProducto = productoPaginacion.getAll(pageRequest);
+		
+		int totalPage = pageProducto.getTotalPages();
+		if(totalPage > 0) {
+			List<Integer> pages = IntStream.rangeClosed(1, totalPage).boxed().collect(Collectors.toList());
+			model.addAttribute("pages", pages);
+		}
 		model.addAttribute("usuario", usuariologeado);
 		model.addAttribute("productos", iProductoRepo.findAll());
+		model.addAttribute("productos", pageProducto.getContent());
+		model.addAttribute("current", page + 1);
+		model.addAttribute("next", page + 2);
+		model.addAttribute("prev", page);
+		model.addAttribute("last", totalPage);
 
 		return "index-usuario";
 	}
