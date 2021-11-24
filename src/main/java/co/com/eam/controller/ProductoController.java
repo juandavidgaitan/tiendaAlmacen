@@ -70,7 +70,7 @@ public class ProductoController {
 	
 
 //Metodo que nos permite acceder a la plantilla add-producto con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases		    
-	@GetMapping("/{dni}/addProducto")
+	@GetMapping("/{dni}/addproducto")
 	public String showSignUpForm(@PathVariable("dni") String dni, Producto producto, Model model) {
 		model.addAttribute("productos", iProductoRepo.findAll());
 		model.addAttribute("bodegas", iBodegaRepo.findAll());
