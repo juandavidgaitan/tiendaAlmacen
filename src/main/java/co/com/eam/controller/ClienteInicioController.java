@@ -60,7 +60,7 @@ public class ClienteInicioController {
 	 
 	 
 	//Metodo que nos permite acceder a la plantilla add-cliente con la restrigcion de que tiene que acceder por medio de un administrador y estamos recibiendo parametros de otras clases	
-	@GetMapping("/addclientes")
+	@GetMapping("addclientes")
     public String showSignUpForm(Cliente cliente, Model model) {
 		model.addAttribute("paises", iPaiRepo.findAll());
 		model.addAttribute("departamentos", iDepartamentoRepo.findAll());
